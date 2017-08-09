@@ -923,6 +923,7 @@
 	border-collapse: collapse;
 	font-size: 13px;
 	line-height: 27px;
+	text-align: center;
 }
 .ui-datepicker-calendar th {
 	color: #999;

@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('login', function () {
     return view('layout/login');
 });
+
+Route::get('/', function () {
+    return view('front');
+});
+
+Route::get('profile/myProfile'      , ['uses'=>'ProfileController@myProfile']);
+
+Route::get('profile/Settings'      , ['uses'=>'ProfileController@Settings']);

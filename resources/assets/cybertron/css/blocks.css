@@ -809,6 +809,13 @@
   font-size: 30px;
 }
 
+.service-block-v3 .textName {
+  display: block;
+  line-height: 1;
+  font-size: 20px;
+  color: white;
+}
+
 .service-block-v3 .progress {
   margin-bottom: 7px;
 }

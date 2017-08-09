@@ -1,0 +1,1 @@
+$("a.myProfile").click(function(){loadingSystem("profile/myProfile")}),$("a.settingsProfile").click(function(){loadingSystem("profile/Settings")});

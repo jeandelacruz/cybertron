@@ -24,13 +24,16 @@
     </div><!--/copyright-->
 </div>
 @include('layout.recursos.modals.modals')
-<script src="{!! asset('js/app.js')!!}"></script>
-<script src="{!! asset('js/node_modules.js')!!}"></script>
-<script src="{!! asset('js/implement.js')!!}"></script>
-<script src="{!! asset('js/cybertron.js')!!}"></script>
+<script src="{!! asset('js/app.js?version='.date('YmdHis'))!!}"></script>
+<script src="{!! asset('js/node_modules.js?version='.date('YmdHis'))!!}"></script>
+<script src="{!! asset('js/implement.js?version='.date('YmdHis'))!!}"></script>
+<script src="{!! asset('js/extras.js?version='.date('YmdHis'))!!}"></script>
+<script src="{!! asset('js/cybertron.js?version='.date('YmdHis'))!!}"></script>
+<script src="{!! asset('js/routesCybertron.js?version='.date('YmdHis'))!!}"></script>
 <script>
     $(document).ready(function() {
         Unify.init()
+        Datepicker.initDatepicker()
         loadingCss()
     })
 </script>

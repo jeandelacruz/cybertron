@@ -18,7 +18,7 @@ mix.styles([
     'resources/assets/cybertron/css/blocks.css',
     'resources/assets/cybertron/plugins/style-switcher.css',
     'resources/assets/cybertron/css/style.css'
-], 'public/css/global.css');
+], 'public/css/global.css').version();
 
 mix.styles([
     'resources/assets/cybertron/plugins/animate.css',
@@ -30,58 +30,66 @@ mix.styles([
     'resources/assets/cybertron/plugins/img-hover/imagehover.css',
     'node_modules/sweetalert2/dist/sweetalert2.css',
     'node_modules/font-awesome/css/font-awesome.css'
-], 'public/css/implement.css');
+], 'public/css/implement.css').version();
 
 mix.styles([
     'resources/assets/cybertron/css/pages/page_log_reg_v2.css'
-], 'public/css/login.css');
+], 'public/css/login.css').version();
 
 mix.styles([
     'resources/assets/cybertron/css/theme-colors/default.css',
     'resources/assets/cybertron/css/theme-skins/dark.css',
     'resources/assets/cybertron/css/custom.css'
-], 'public/css/theme.css');
+], 'public/css/theme.css').version();
 
 mix.styles([
     'resources/assets/cybertron/css/headers/header-default.css',
     'resources/assets/cybertron/css/footers/footer-v1.css',
     'resources/assets/cybertron/css/pages/profile.css'
-], 'public/css/cybertron.css');
+], 'public/css/cybertron.css').version();
 
 mix.js([
     'resources/assets/js/app.js'
-], 'public/js/app.js');
+], 'public/js/app.js').version();
 
 mix.babel([
     'resources/assets/cybertron/js/*.js',
     'resources/assets/cybertron/js/plugins/*.js'
-], 'public/js/cybertron.js');
+], 'public/js/cybertron.js').version();
 
 mix.combine([
     'node_modules/sweetalert2/dist/sweetalert2.js',
     'node_modules/blazy/blazy.js'
-], 'public/js/node_modules.js');
+], 'public/js/node_modules.js').version();
 
 mix.combine([
     'resources/assets/cybertron/plugins/backstretch/jquery.backstretch.min.js',
-    'resources/assets/cybertro/plugins/counter/waypoints.min.js',
-    'resources/assets/cybertro/plugins/counter/jquery.counterup.min.js',
+    'resources/assets/cybertron/plugins/counter/waypoints.min.js',
+    'resources/assets/cybertron/plugins/counter/jquery.counterup.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js'
-], 'public/js/implement.js');
+], 'public/js/implement.js').version();
 
 mix.combine([
     'resources/assets/cybertron/plugins/smoothScroll.js',
     'resources/assets/cybertron/plugins/back-to-top.js',
     'resources/assets/cybertron/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js'
-], 'public/js/extras.js');
+], 'public/js/extras.js').version();
+
+mix.combine([
+    'resources/assets/cybertron/js/routes.js'
+], 'public/js/routesCybertron.js').version();
 
 mix.copy('resources/assets/favicon.ico', 'public/favicon.ico');
 
 mix.copyDirectory([
     'node_modules/font-awesome/fonts'
+],'public/fonts');
+
+mix.copyDirectory([
+    'resources/assets/cybertron/plugins/line-icons/fonts'
 ],'public/fonts');
 
 mix.copyDirectory([

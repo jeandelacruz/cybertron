@@ -5,7 +5,7 @@
     <title>@yield('title')</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
-    <!-- Web Fonts -->
+    <!-- Web CSS -->
     <link rel="stylesheet" type="text/css" href="{!! asset('css/app.css')!!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/global.css')!!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/implement.css')!!}">

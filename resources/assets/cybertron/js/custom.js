@@ -145,12 +145,8 @@ $(function() {
     }
 /* End Function Modal */
 
-/* Routes System */
-    $('.viewCP').click(function() {
-        loadingSystem('ajax/Views/tableCP.php')
+/* Routes Menu */
+    $('a.myProfile').click(function() {
+        loadingSystem('profile/myProfile')
     })
-
-    $('.changeTC').click(function() {
-        bodyModal('div.bodychangeTC','ajax/Views/changeTC.php')
-    })
-/* End Routes System */
+/* End Routes Menu */

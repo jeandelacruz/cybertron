@@ -1,14 +1,15 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/global.css": "/css/global.css",
-    "/css/implement.css": "/css/implement.css",
-    "/css/login.css": "/css/login.css",
-    "/css/theme.css": "/css/theme.css",
-    "/css/cybertron.css": "/css/cybertron.css",
-    "/js/cybertron.js": "/js/cybertron.js",
-    "/js/node_modules.js": "/js/node_modules.js",
-    "/js/implement.js": "/js/implement.js",
-    "/js/extras.js": "/js/extras.js",
-    "/favicon.ico": "/favicon.ico"
+    "/js/app.js": "/js/app.js?id=f28b83be24abb4e771dd",
+    "/css/app.css": "/css/app.css?id=4210f99a94f50755c237",
+    "/css/global.css": "/css/global.css?id=dd1d6368d8bbd23d7622",
+    "/css/implement.css": "/css/implement.css?id=db97e0c82121639485af",
+    "/css/login.css": "/css/login.css?id=69aff40c8102bb0b5dbd",
+    "/css/theme.css": "/css/theme.css?id=0b32c0419549eccd9bfe",
+    "/css/cybertron.css": "/css/cybertron.css?id=ad5998058170ed9f78dd",
+    "/js/cybertron.js": "/js/cybertron.js?id=67ef4b20fc6f0bbc105a",
+    "/js/node_modules.js": "/js/node_modules.js?id=856604d1e58f115387e5",
+    "/js/implement.js": "/js/implement.js?id=33d796806c491fabc3fa",
+    "/js/extras.js": "/js/extras.js?id=e9f1c268601f0c4c4ecb",
+    "/js/routesCybertron.js": "/js/routesCybertron.js?id=78ef4e63dcae8e2f07ae",
+    "/favicon.ico": "/favicon.ico?id=5ef0e7388ec17a68dfe7"
 }

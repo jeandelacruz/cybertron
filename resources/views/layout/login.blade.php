@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    @include('layout.login.head')
+    @include('layout.login.header')
     <div class="container">
         <!--Reg Block-->
         <div class="reg-block">
