@@ -29,7 +29,8 @@ mix.styles([
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css',
     'resources/assets/cybertron/plugins/img-hover/imagehover.css',
     'node_modules/sweetalert2/dist/sweetalert2.css',
-    'node_modules/font-awesome/css/font-awesome.css'
+    'node_modules/font-awesome/css/font-awesome.css',
+    'node_modules/daterangepicker/daterangepicker.css'
 ], 'public/css/implement.css').version();
 
 mix.styles([
@@ -53,34 +54,33 @@ mix.js([
 ], 'public/js/app.js').version();
 
 mix.babel([
-    'resources/assets/cybertron/js/*.js',
-    'resources/assets/cybertron/js/plugins/*.js'
+    'resources/assets/cybertron/js/custom.js'
 ], 'public/js/cybertron.js').version();
 
+mix.babel([
+    'resources/assets/cybertron/js/vueClass.js',
+    'resources/assets/cybertron/js/vueDatosPersonales.js'
+], 'public/js/vueCybertron.js').version();
+
 mix.combine([
-    'node_modules/sweetalert2/dist/sweetalert2.js',
     'node_modules/blazy/blazy.js'
 ], 'public/js/node_modules.js').version();
 
-mix.combine([
+mix.babel([
+    'resources/assets/cybertron/js/app.js',
+    'resources/assets/cybertron/js/plugins/datepicker.js',
     'resources/assets/cybertron/plugins/backstretch/jquery.backstretch.min.js',
     'resources/assets/cybertron/plugins/counter/waypoints.min.js',
     'resources/assets/cybertron/plugins/counter/jquery.counterup.min.js',
+    'resources/assets/cybertron/plugins/smoothScroll.js',
+    'resources/assets/cybertron/plugins/back-to-top.js',
+    'resources/assets/cybertron/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js',
-    'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js'
-], 'public/js/implement.js').version();
-
-mix.combine([
-    'resources/assets/cybertron/plugins/smoothScroll.js',
-    'resources/assets/cybertron/plugins/back-to-top.js',
-    'resources/assets/cybertron/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js'
-], 'public/js/extras.js').version();
-
-mix.combine([
+    'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js',
     'resources/assets/cybertron/js/routes.js'
-], 'public/js/routesCybertron.js').version();
+], 'public/js/implement.js').version();
 
 mix.copy('resources/assets/favicon.ico', 'public/favicon.ico');
 

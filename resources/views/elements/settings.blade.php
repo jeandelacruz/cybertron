@@ -2,95 +2,27 @@
 <div class="profile-body margin-bottom-20">
     <div class="tab-v1">
         <ul class="nav nav-justified nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#profile">Edit Profile</a></li>
-            <li><a data-toggle="tab" href="#passwordTab">Change Password</a></li>
-            <li><a data-toggle="tab" href="#payment">Payment Options</a></li>
-            <li><a data-toggle="tab" href="#settings">Notification Settings</a></li>
+            <li class="active"><a data-toggle="tab" href="#datosPersonales">Datos Personales</a></li>
+            <li><a data-toggle="tab" href="#datosAcademicos">Datos Academicos</a></li>
+            <li><a data-toggle="tab" href="#Certificaciones">Certificaciones</a></li>
+            <li><a data-toggle="tab" href="#experienciaLaboral">Experiencia Laboral</a></li>
         </ul>
         <div class="tab-content">
-            <div id="profile" class="profile-edit tab-pane fade in active">
-                <h2 class="heading-md">Manage your Name, ID and Email Addresses.</h2>
-                <p>Below are the name and email addresses on file for your account.</p>
+            <div id="datosPersonales" class="profile-edit tab-pane fade in active">
+                <h2 class="heading-md">Administra tus Datos Personales</h2>
+                <p>A continuación podras ver tus datos que se encuentran ya registrados.</p>
                 <br>
-                <dl class="dl-horizontal">
-                    <dt><strong>Your name </strong></dt>
-                    <dd>
-                        Edward Rooster
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                    <dt><strong>Your ID </strong></dt>
-                    <dd>
-                        FKJ-032440
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                    <dt><strong>Company name </strong></dt>
-                    <dd>
-                        Htmlstream
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                    <dt><strong>Primary Email Address </strong></dt>
-                    <dd>
-                        edward-rooster@gmail.com
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                    <dt><strong>Phone Number </strong></dt>
-                    <dd>
-                        (304) 33-2867-499
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                    <dt><strong>Office Number </strong></dt>
-                    <dd>
-                        (304) 44-9810-296
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                    <dt><strong>Address </strong></dt>
-                    <dd>
-                        California, US
-                                    <span>
-                                        <a class="pull-right" href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </span>
-                    </dd>
-                    <hr>
-                </dl>
-                <button type="button" class="btn-u btn-u-default">Cancel</button>
-                <button type="button" class="btn-u">Save Changes</button>
+                @include('elements.formularios.datosPersonales')
             </div>
 
-            <div id="passwordTab" class="profile-edit tab-pane fade">
-                <h2 class="heading-md">Manage your Security Settings</h2>
-                <p>Change your password.</p>
+            <div id="datosAcademicos" class="profile-edit tab-pane fade">
+                <h2 class="heading-md">Administra tus Datos Academicos</h2>
+                <span>
+                    <a class="pull-right" href="javascript:void(0)">
+                        <i class="fa fa-pencil fa-2x"></i>
+                    </a>
+                </span>
+                <p>A continuación podras ver tus datos que se encuentran ya registrados.</p>
                 <br>
                 <form class="sky-form" id="sky-form4" action="#">
                     <dl class="dl-horizontal">
@@ -145,7 +77,7 @@
                 </form>
             </div>
 
-            <div id="payment" class="profile-edit tab-pane fade">
+            <div id="Certificaciones" class="profile-edit tab-pane fade">
                 <h2 class="heading-md">Manage your Payment Settings</h2>
                 <p>Below are the payment options for your account.</p>
                 <br>
@@ -212,7 +144,7 @@
                 </form>
             </div>
 
-            <div id="settings" class="profile-edit tab-pane fade">
+            <div id="experienciaLaboral" class="profile-edit tab-pane fade">
                 <h2 class="heading-md">Manage your Notifications.</h2>
                 <p>Below are the notifications you may manage.</p>
                 <br>
@@ -235,8 +167,4 @@
     </div>
 </div>
 <!-- End Profile Content -->
-<script>
-    $(function() {
-        Unify.initScrollBar()
-    })
-</script>
+<script src="{!! asset('js/vueCybertron.js?version='.date('YmdHis'))!!}"></script>

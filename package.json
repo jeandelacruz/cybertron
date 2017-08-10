@@ -19,9 +19,12 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "blazy": "^1.8.2",
+    "daterangepicker": "^2.1.25",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "sweetalert2": "^6.6.6"
+    "sweetalert2": "^6.6.6",
+    "vue-select": "^2.2.0"
   }
 }

@@ -1,1 +1,154 @@
-var Unify=function(){function i(){$(window).scroll(function(){$(window).scrollTop()>100?$(".header-fixed .header-sticky").addClass("header-fixed-shrink"):$(".header-fixed .header-sticky").removeClass("header-fixed-shrink")})}function e(){$(document).on("click",".mega-menu .dropdown-menu",function(i){i.stopPropagation()})}function t(){$(".topbar-toggler").on("click",function(){$(".topbar-toggler").hasClass("topbar-list-visible")?($(".topbar-menu").slideUp(),$(this).removeClass("topbar-list-visible")):($(".topbar-menu").slideDown(),$(this).addClass("topbar-list-visible"))})}function o(){$(".topbar-list > li").on("click",function(i){$(this).children("ul").hasClass("topbar-dropdown")&&($(this).children("ul").hasClass("topbar-dropdown-visible")?($(this).children(".topbar-dropdown").slideUp(),$(this).children(".topbar-dropdown").removeClass("topbar-dropdown-visible")):($(this).children(".topbar-dropdown").slideDown(),$(this).children(".topbar-dropdown").addClass("topbar-dropdown-visible")))})}function n(){$(".list-toggle").on("click",function(){$(this).toggleClass("active")})}function a(){$(".hoverSelector").on("click",function(i){$(this).children("ul").hasClass("languages")&&($(this).children("ul").hasClass("languages-visible")?($(this).children(".languages").slideUp(),$(this).children(".languages").removeClass("languages-visible")):($(this).children(".languages").slideDown(),$(this).children(".languages").addClass("languages-visible")))})}function s(){$(".carousel").carousel({interval:15e3,pause:"hover"}),$(".tooltips").tooltip(),$(".tooltips-show").tooltip("show"),$(".tooltips-hide").tooltip("hide"),$(".tooltips-toggle").tooltip("toggle"),$(".tooltips-destroy").tooltip("destroy"),$(".popovers").popover(),$(".popovers-show").popover("show"),$(".popovers-hide").popover("hide"),$(".popovers-toggle").popover("toggle"),$(".popovers-destroy").popover("destroy")}$.fn.hasAttr=function(i){return void 0!==this.attr(i)};var l=function(){var i=$(window).height(),e=0;e=$(document.body).hasClass("promo-padding-top")?$(".header").height():0,$(".fullheight").css("height",i-e),$(window).resize(function(){var i=$(window).height();$(".fullheight").css("height",i-e)})},r=function(){$(".valign__middle").each(function(){$(this).css("padding-top",$(this).parent().height()/2-$(this).height()/2)}),$(window).resize(function(){$(".valign__middle").each(function(){$(this).css("padding-top",$(this).parent().height()/2-$(this).height()/2)})})};return{init:function(){s(),t(),o(),n(),i(),e(),a(),l(),r()},initCounter:function(){$(".counter").counterUp({delay:10,time:1e3})},initParallaxBg:function(){$(window).load(function(){$(".parallaxBg").parallax("50%",.2),$(".parallaxBg1").parallax("50%",.4)})},initScrollBar:function(){$(".mCustomScrollbar").mCustomScrollbar({theme:"minimal",scrollInertia:200,scrollEasing:"linear"})},initSidebarMenuDropdown:function(){!function(){$(".header-v7 .dropdown-toggle").on("click",function(){$(".header-v7 .dropdown-menu").stop(!0,!1).slideUp(),$(".header-v7 .dropdown").removeClass("open"),1==$(this).siblings(".dropdown-menu").is(":hidden")&&($(this).siblings(".dropdown-menu").stop(!0,!1).slideDown(),$(this).parents(".dropdown").addClass("open"))})}()},initAnimateDropdown:function(){function i(){$(".dropdown").on("show.bs.dropdown",function(){$(this).find(".dropdown-menu").first().stop(!0,!0).slideDown()}),$(".dropdown").on("hide.bs.dropdown",function(){$(this).find(".dropdown-menu").first().stop(!0,!0).slideUp()})}$(window).resize(function(){$(window).width()>768&&i()}),$(window).width()>768&&i()}}}();$(function(){$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="_token"]').attr("content")}})});var loginSistema=function(){var i=$(".username").val(),e=$(".password").val();return""===i&&""===e?alertaSimple("","Favor de llenar todos los campos","error"):""===i?alertaSimple("","Favor de llenar el campo de Username","error"):""===e?alertaSimple("","Favor de llenar el campo de Password","error"):void $.ajax({url:"ajax/Controller/Login/login.php",type:"post",data:"username="+i+"&password="+e,beforeSend:function(){$(".btnLogin").html('<i class="fa fa-spin fa-spinner"></i> Cargando')},success:function(i){if($(".btnLogin").html('<i class="fa fa-sign-in"></i> Conectarse'),"no_existe"===i)return alertaSimple("","El usuario y/o contraseña son incorrectos","warning");"existe"===i&&(alertaSimple("","Acceso Correcto","success",3e3),setTimeout(function(){window.location.href="sistema"},3e3))}})},logoutSistema=function(){$.ajax({url:"ajax/Controller/Login/logout.php",type:"post",data:"",beforeSend:function(){alertaSimple("","Te desconectaste con exito","success")},success:function(i){setTimeout(function(){window.location.href="login"},2e3)}})},alertaSimple=function(){var i=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",e=arguments[1],t=arguments[2],o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:2e3;swal({title:i,html:e,type:t,showConfirmButton:!1,showCancelButton:!1,allowOutsideClick:!1,allowEscapeKey:!1,allowEnterKey:!1,timer:o}).then(function(){},function(i){})},alertaSuccess=function(){var i=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",e=arguments[1],t=arguments[2],o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:2e3;swal({title:i,html:e,type:t,showConfirmButton:!1,showCancelButton:!1,allowOutsideClick:!1,allowEscapeKey:!1,allowEnterKey:!1,timer:o}).then(function(){},function(i){$(".modal").modal("toggle")})},loadingAjax=function(i,e){swal({html:i,type:e,showConfirmButton:!1,showCancelButton:!1,allowOutsideClick:!1,allowEscapeKey:!1,allowEnterKey:!1}).then(function(){},function(i){})},loadingCss=function(){$("div.loading").html('<div class="sk-fading-circle"><div class="sk-circle1 sk-circle"></div><div class="sk-circle2 sk-circle"></div><div class="sk-circle3 sk-circle"></div><div class="sk-circle4 sk-circle"></div><div class="sk-circle5 sk-circle"></div><div class="sk-circle6 sk-circle"></div><div class="sk-circle7 sk-circle"></div><div class="sk-circle8 sk-circle"></div><div class="sk-circle9 sk-circle"></div><div class="sk-circle10 sk-circle"></div><div class="sk-circle11 sk-circle"></div><div class="sk-circle12 sk-circle"></div></div>')},dataTable=function(i){$("#"+i).DataTable()},loadingSystem=function(i){$("div.bodySystem").fadeOut(function(){$("div.loading").fadeIn(function(){$(".bodySystem").load(i,function(){$("div.loading").fadeOut(function(){$(".bodySystem").fadeIn()})})})})},bodyModal=function(i,e){$(i).html('<h1 class="text-center text-primary"><i class="fa fa-gear fa-spin"></i> Cargando</h1>').promise().done(function(){$(i).load(e,function(){})})};$("a.myProfile").click(function(){loadingSystem("profile/myProfile")}),$("a.myProfile").click(function(){loadingSystem("profile/myProfile")}),$("a.settingsProfile").click(function(){loadingSystem("profile/Settings")});var Datepicker=function(){return{initDatepicker:function(){$("#date").datepicker({dateFormat:"dd.mm.yy",prevText:'<i class="fa fa-angle-left"></i>',nextText:'<i class="fa fa-angle-right"></i>'}),$("#start").datepicker({dateFormat:"dd.mm.yy",prevText:'<i class="fa fa-angle-left"></i>',nextText:'<i class="fa fa-angle-right"></i>',onSelect:function(i){$("#finish").datepicker("option","minDate",i)}}),$("#finish").datepicker({dateFormat:"dd.mm.yy",prevText:'<i class="fa fa-angle-left"></i>',nextText:'<i class="fa fa-angle-right"></i>',onSelect:function(i){$("#start").datepicker("option","maxDate",i)}}),$("#inline").datepicker({dateFormat:"dd.mm.yy",prevText:'<i class="fa fa-angle-left"></i>',nextText:'<i class="fa fa-angle-right"></i>'}),$("#inline-start").datepicker({dateFormat:"dd.mm.yy",prevText:'<i class="fa fa-angle-left"></i>',nextText:'<i class="fa fa-angle-right"></i>',onSelect:function(i){$("#inline-finish").datepicker("option","minDate",i)}}),$("#inline-finish").datepicker({dateFormat:"dd.mm.yy",prevText:'<i class="fa fa-angle-left"></i>',nextText:'<i class="fa fa-angle-right"></i>',onSelect:function(i){$("#inline-start").datepicker("option","maxDate",i)}})}}}();
+/* Write here your custom javascript codes */
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+/*Login y Logout */
+var loginSistema = function loginSistema() {
+    var username = $('.username').val();
+    var password = $('.password').val();
+    if (username === '' && password === '') return alertaSimple('', 'Favor de llenar todos los campos', 'error');
+    if (username === '') return alertaSimple('', 'Favor de llenar el campo de Username', 'error');
+    if (password === '') return alertaSimple('', 'Favor de llenar el campo de Password', 'error');
+    $.ajax({
+        url: 'ajax/Controller/Login/login.php',
+        type: 'post',
+        data: 'username=' + username + '&password=' + password,
+        beforeSend: function beforeSend() {
+            $('.btnLogin').html('<i class="fa fa-spin fa-spinner"></i> Cargando');
+        },
+        success: function success(data) {
+            $('.btnLogin').html('<i class="fa fa-sign-in"></i> Conectarse');
+            if (data === 'no_existe') return alertaSimple('', 'El usuario y/o contraseña son incorrectos', 'warning');
+            if (data === 'existe') {
+                alertaSimple('', 'Acceso Correcto', 'success', 3000);
+                setTimeout(function () {
+                    window.location.href = 'sistema';
+                }, 3000);
+            }
+        }
+    });
+};
+
+var logoutSistema = function logoutSistema() {
+    $.ajax({
+        url: 'ajax/Controller/Login/logout.php',
+        type: 'post',
+        data: '',
+        beforeSend: function beforeSend() {
+            alertaSimple('', 'Te desconectaste con exito', 'success');
+        },
+        success: function success(data) {
+            setTimeout(function () {
+                window.location.href = 'login';
+            }, 2000);
+        }
+    });
+};
+/* End Login y Logout */
+
+/* Resources */
+var alertaSimple = function alertaSimple() {
+    var titleAlerta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var textoAlerta = arguments[1];
+    var tipoAalerta = arguments[2];
+    var tiempoAlerta = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2000;
+
+    swal({
+        title: titleAlerta,
+        html: textoAlerta,
+        type: tipoAalerta,
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        timer: tiempoAlerta
+    }).then(function () {}, function (dismiss) {});
+};
+
+var alertaSuccess = function alertaSuccess() {
+    var titleAlerta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var textoAlerta = arguments[1];
+    var tipoAalerta = arguments[2];
+    var tiempoAlerta = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2000;
+
+    swal({
+        title: titleAlerta,
+        html: textoAlerta,
+        type: tipoAalerta,
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        timer: tiempoAlerta
+    }).then(function () {}, function (dismiss) {
+        $('.modal').modal('toggle');
+    });
+};
+
+var loadingAjax = function loadingAjax(textoAlerta, tipoAalerta) {
+    swal({
+        html: textoAlerta,
+        type: tipoAalerta,
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false
+    }).then(function () {}, function (dismiss) {});
+};
+
+var loadingCss = function loadingCss() {
+    $('div.loading').html('<div class="sk-fading-circle">' + '<div class="sk-circle1 sk-circle"></div>' + '<div class="sk-circle2 sk-circle"></div>' + '<div class="sk-circle3 sk-circle"></div>' + '<div class="sk-circle4 sk-circle"></div>' + '<div class="sk-circle5 sk-circle"></div>' + '<div class="sk-circle6 sk-circle"></div>' + '<div class="sk-circle7 sk-circle"></div>' + '<div class="sk-circle8 sk-circle"></div>' + '<div class="sk-circle9 sk-circle"></div>' + '<div class="sk-circle10 sk-circle"></div>' + '<div class="sk-circle11 sk-circle"></div>' + '<div class="sk-circle12 sk-circle"></div>' + '</div>');
+};
+
+var dataTable = function dataTable(nameTable) {
+    console.log(nameTable);
+    $('#' + nameTable).DataTable();
+};
+/* End Resources */
+
+/* Load Plataform */
+var loadingSystem = function loadingSystem(routeLoad) {
+    $('div.bodySystem').fadeOut(function () {
+        $('div.loading').fadeIn(function () {
+            $('.bodySystem').load(routeLoad, function () {
+                $('div.loading').fadeOut(function () {
+                    $('.bodySystem').fadeIn();
+                });
+            });
+        });
+    });
+};
+/* End Load Plataform */
+
+/* Function Modal */
+var bodyModal = function bodyModal(nameRoute, routeLoad) {
+    $(nameRoute).html('<h1 class="text-center text-primary"><i class="fa fa-gear fa-spin"></i> Cargando</h1>').promise().done(function () {
+        $(nameRoute).load(routeLoad, function () {});
+    });
+};
+/* End Function Modal */
+
+/* Add Active Div */
+var activeDiv = function activeDiv(nameContainer, nameClass) {
+    $(nameContainer).removeClass('active');
+    $(nameClass).addClass('active');
+};
+/* End Add Active Div */
+
+/* Date Picker Single */
+var singleDate = function singleDate(nameInput) {
+    $('input[name=' + nameInput).daterangepicker({
+        locale: {
+            format: 'YYYY-MM-DD'
+        },
+        singleDatePicker: true,
+        showDropdowns: true
+    });
+};
+/* End Date Picker Single */

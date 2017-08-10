@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.VueSelect = require('vue-select');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +16,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+/* Vue.component('example', require('./components/Example.vue')); */
+Vue.component('v-select', VueSelect.VueSelect)
 
-const app = new Vue({
+/*const app = new Vue({
     el: '#app'
-});
+});*/

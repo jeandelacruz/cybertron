@@ -21,4 +21,6 @@ Route::get('/', function () {
 
 Route::get('profile/myProfile'      , ['uses'=>'ProfileController@myProfile']);
 
-Route::get('profile/Settings'      , ['uses'=>'ProfileController@Settings']);
+Route::get('profile/Settings'       , ['uses'=>'ProfileController@Settings']);
+
+Route::post('profile/saveDatos'     , ['uses'=>'ProfileController@saveDatos']);

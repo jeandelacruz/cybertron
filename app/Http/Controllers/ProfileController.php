@@ -13,4 +13,15 @@ class ProfileController extends Controller
     public function Settings(){
         return view('elements/settings');
     }
+
+    public function saveDatos(Request $request){
+        if ($request->isMethod('post')) {
+            $this->validate(request(), [
+                'Names' => 'required',
+                'lastName' => 'required'
+            ]);
+            return ['message' => request('Names')];
+        }
+        return ['message' => 'Error'];
+    }
 }

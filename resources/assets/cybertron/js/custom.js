@@ -1,11 +1,10 @@
 /* Write here your custom javascript codes */
-$(function() {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    })
-})
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 /*Login y Logout */
     const loginSistema = () => {
         let username = $('.username').val()
@@ -145,8 +144,21 @@ $(function() {
     }
 /* End Function Modal */
 
-/* Routes Menu */
-    $('a.myProfile').click(function() {
-        loadingSystem('profile/myProfile')
-    })
-/* End Routes Menu */
+/* Add Active Div */
+    const activeDiv = (nameContainer, nameClass) => {
+        $(nameContainer).removeClass('active')
+        $(nameClass).addClass('active')
+    }
+/* End Add Active Div */
+
+/* Date Picker Single */
+    const singleDate = (nameInput) => {
+        $(`input[name=${nameInput}`).daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            singleDatePicker: true,
+            showDropdowns: true
+        })
+    }
+/* End Date Picker Single */
