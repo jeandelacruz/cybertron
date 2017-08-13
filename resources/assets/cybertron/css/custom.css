@@ -146,3 +146,9 @@
     transform: translateX(-50%) translateY(-50%);
 }
 /* End Center Text */
+
+/* Custom Css */
+p.text-danger {
+    color: #a94442 !important;
+}
+/* End Custom Css */

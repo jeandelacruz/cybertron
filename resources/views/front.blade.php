@@ -1,4 +1,4 @@
-@extends('layout.plataforma')
+@extends('layouts.plataforma')
 @section('title', getenv('APP_NAME'))
 @section('content')
 <!--=== Content Part ===-->

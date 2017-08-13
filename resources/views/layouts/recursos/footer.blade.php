@@ -23,7 +23,7 @@
         </div>
     </div><!--/copyright-->
 </div>
-@include('layout.recursos.modals.modals')
+@include('layouts.recursos.modals.modals')
 <script src="{!! asset('js/app.js?version='.date('YmdHis'))!!}"></script>
 <script src="{!! asset('js/node_modules.js?version='.date('YmdHis'))!!}"></script>
 <script src="{!! asset('js/implement.js?version='.date('YmdHis'))!!}"></script>
