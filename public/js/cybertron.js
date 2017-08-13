@@ -7,42 +7,27 @@ $.ajaxSetup({
 
 /*Login y Logout */
 var loginSistema = function loginSistema() {
-    var username = $('.username').val();
-    var password = $('.password').val();
-    if (username === '' && password === '') return alertaSimple('', 'Favor de llenar todos los campos', 'error');
-    if (username === '') return alertaSimple('', 'Favor de llenar el campo de Username', 'error');
-    if (password === '') return alertaSimple('', 'Favor de llenar el campo de Password', 'error');
+    /*let username = $('.username').val()
+    let password = $('.password').val()
+    if(username === '' && password === '') return alertaSimple('','Favor de llenar todos los campos','error')
+    if(username === '') return alertaSimple('','Favor de llenar el campo de Username','error')
+    if(password === '') return alertaSimple('','Favor de llenar el campo de Password','error')*/
     $.ajax({
-        url: 'ajax/Controller/Login/login.php',
-        type: 'post',
-        data: 'username=' + username + '&password=' + password,
         beforeSend: function beforeSend() {
             $('.btnLogin').html('<i class="fa fa-spin fa-spinner"></i> Cargando');
         },
-        success: function success(data) {
-            $('.btnLogin').html('<i class="fa fa-sign-in"></i> Conectarse');
-            if (data === 'no_existe') return alertaSimple('', 'El usuario y/o contraseña son incorrectos', 'warning');
-            if (data === 'existe') {
-                alertaSimple('', 'Acceso Correcto', 'success', 3000);
-                setTimeout(function () {
-                    window.location.href = 'sistema';
-                }, 3000);
-            }
+        success: function success() {
+            $('#login-form').submit();
         }
     });
 };
 
 var logoutSistema = function logoutSistema() {
     $.ajax({
-        url: 'ajax/Controller/Login/logout.php',
-        type: 'post',
-        data: '',
         beforeSend: function beforeSend() {
             alertaSimple('', 'Te desconectaste con exito', 'success');
-        },
-        success: function success(data) {
             setTimeout(function () {
-                window.location.href = 'login';
+                $('#logout-form').submit();
             }, 2000);
         }
     });

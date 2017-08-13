@@ -12,15 +12,17 @@
 */
 
 Route::get('login', function () {
-    return view('layout/login');
+    return view('layouts/login');
 });
 
-Route::get('/', function () {
-    return view('front');
-});
+Route::get('/', 'ProfileController@index')->name('profile');
 
-Route::get('profile/myProfile'      , ['uses'=>'ProfileController@myProfile']);
+Route::get('profile/myProfile'      , ['uses'=>'ProfileController@myProfile'])->name('myprofile');
 
-Route::get('profile/Settings'       , ['uses'=>'ProfileController@Settings']);
+Route::get('profile/Settings'       , ['uses'=>'ProfileController@Settings'])->name('settingsprofile');
 
-Route::post('profile/saveDatos'     , ['uses'=>'ProfileController@saveDatos']);
+Route::post('profile/saveDatos'     , ['uses'=>'ProfileController@saveDatos'])->name('savedatos');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();

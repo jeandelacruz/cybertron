@@ -1,4 +1,4 @@
-@include('layout.recursos.header')
+@include('layouts.recursos.header')
     <body class="header-fixed header-fixed-space-default">
         <div class="wrapper">
             <!--=== Header ===-->
@@ -14,17 +14,19 @@
                     <div class="topbar">
                         <ul class="loginbar pull-right">
                             <li class="topbar-devider"></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-user"></i> Bienvenido, </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-user"></i> Bienvenido, {{ Auth::user()->username }}</a></li>
                             <li class="topbar-devider"></li>
                             <li class="hoverSelector">
                                 <i class="fa fa-wrench"></i>
                                 <a>Administrar Cuenta</a>
                                 <ul class="languages hoverSelectorBlock">
-                                    <li><a href="javascript:void(0)">
+                                    <li>
+                                        <a class="settingsProfile" href="javascript:void(0)">
                                             <i class="fa fa-cog"></i> Editar Perfil
                                         </a>
                                     </li>
-                                    <li><a href="javascript:void(0)" onclick="logoutSistema()">
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="logoutSistema()">
                                             <i class="fa fa-sign-out"></i> Desconectarse
                                         </a>
                                     </li>
@@ -48,7 +50,7 @@
                         <ul class="nav navbar-nav">
                             <!-- Home -->
                             <li>
-                                <a href="javascript:void(0);">
+                                <a class="myProfile" href="javascript:void(0);">
                                     <i class="fa fa-home"></i> Inicio
                                 </a>
                             </li>
@@ -73,15 +75,18 @@
             <div class="container content height-500">
                 <div class="profile">
                     <div class="row">
-                        @include('layout.recursos.leftsidebar')
+                        @include('layouts.recursos.leftsidebar')
                         @yield('content')
                     </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
             </div><!--/container-->
             <!-- End Content Part -->
         </div><!--/wrapper-->
     </body>
-@include('layout.recursos.footer')
+@include('layouts.recursos.footer')
 <script>
     loadingCss()
     loadingSystem('profile/myProfile')
