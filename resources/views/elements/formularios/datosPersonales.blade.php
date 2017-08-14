@@ -169,6 +169,17 @@
         </div>
     </div>
     <dd></dd>
+    <dt>Fecha de Nacimiento</dt>
+    <dd>
+        <section>
+            <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" placeholder="<?= date('Y-m-d') ?>" name="dateBirthday" v-model="form.dateBirthday">
+                <b class="tooltip tooltip-bottom-right">Ingresa tu fecha de nacimiento</b>
+            </label>
+            <p class="text-danger" v-if="form.errors.has('dateBirthday')" v-text="form.errors.get('dateBirthday')"></p>
+        </section>
+    </dd>
     <hr>
 </dl>
 <button class="btn-u text-right" type="submit" :disabled="form.errors.any()">

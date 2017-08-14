@@ -7,11 +7,11 @@ $.ajaxSetup({
 
 /*Login y Logout */
     const loginSistema = () => {
-        /*let username = $('.username').val()
+        let username = $('.username').val()
         let password = $('.password').val()
         if(username === '' && password === '') return alertaSimple('','Favor de llenar todos los campos','error')
         if(username === '') return alertaSimple('','Favor de llenar el campo de Username','error')
-        if(password === '') return alertaSimple('','Favor de llenar el campo de Password','error')*/
+        if(password === '') return alertaSimple('','Favor de llenar el campo de Password','error')
         $.ajax({
             beforeSend: function(){
                 $('.btnLogin').html('<i class="fa fa-spin fa-spinner"></i> Cargando')
@@ -143,7 +143,14 @@ $.ajaxSetup({
                 format: 'YYYY-MM-DD'
             },
             singleDatePicker: true,
-            showDropdowns: true
+            showDropdowns: true,
+            autoApply: false
+        })
+    }
+
+    const eventsingleDate = (nameInput) => {
+        $(`input[name=${nameInput}`).on('apply.daterangepicker', function(ev, picker) {
+            vmDatosPersonales.form.dateBirthday = picker.startDate.format('YYYY-MM-DD')
         })
     }
 /* End Date Picker Single */
@@ -156,6 +163,14 @@ function objectToArray(object, array, value){
 
 /* First Char UpperCase */
 const CharUpper = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1)
 }
 /* End First Char UpperCase */
+
+/* Capture Event Enter Form Login */
+$('#login-form').keypress(function(e) {
+    if (e.which == 13) {
+        loginSistema()
+    }
+})
+/* End Capture Event Enter Form Login */

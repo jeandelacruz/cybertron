@@ -134,6 +134,7 @@ class ProfileController extends Controller
                 'license_number' => $request->numberLicense,
                 'marital_status' => $request->Marital,
                 'children_number' => $request->numberChildren,
+                'datebirthday' => $request->dateBirthday,
             ]);
             return ['message' => 'Success'];
         }

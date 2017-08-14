@@ -54,4 +54,4 @@
     </div>
 </div>
 <!-- End Profile Content -->
-<script src="{!! asset('js/vueCybertron.js?version='.date('YmdHis'))!!}"></script>
+<script src="{!! asset('js/vueDatosPersonales.js?version='.date('YmdHis'))!!}"></script>

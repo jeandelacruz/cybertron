@@ -121,30 +121,10 @@ var Form = function () {
     return Form;
 }();
 /**
- * Created by jdelacruz on 14/08/2017.
- */
-
-
-var vmProfile = new Vue({
-    el: '#bodyProfile',
-    data: {},
-    mounted: function mounted() {
-        this.loadProfile();
-    },
-
-    methods: {
-        loadProfile: function loadProfile() {
-            axios.post('viewProfile').then(function (response) {
-                console.dir(response);
-            }).catch(function (err) {
-                console.log(err);
-            });
-        }
-    }
-});
-/**
  * Created by jdelacruz on 9/08/2017.
  */
+
+
 var ubigeoID = '';
 var extras = false;
 
@@ -178,7 +158,8 @@ var vmDatosPersonales = new Vue({
             License: '',
             numberLicense: '',
             Marital: '',
-            numberChildren: ''
+            numberChildren: '',
+            dateBirthday: ''
         })
     },
     mounted: function mounted() {
@@ -205,6 +186,7 @@ var vmDatosPersonales = new Vue({
                     _this2.form.numberLicense = profileUser.license_number;
                     _this2.form.Marital = profileUser.marital_status;
                     _this2.form.numberChildren = profileUser.children_number;
+                    _this2.form.dateBirthday = profileUser.datebirthday;
                     ubigeoID = profileUser.ubigeo_id;
                     extras = true;
                     _this2.$nextTick(function () {
@@ -310,3 +292,6 @@ var vmDatosPersonales = new Vue({
         }
     }
 });
+
+singleDate('dateBirthday');
+eventsingleDate('dateBirthday');

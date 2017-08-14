@@ -59,8 +59,13 @@ mix.babel([
 
 mix.babel([
     'resources/assets/cybertron/js/vueClass.js',
+    'resources/assets/cybertron/js/vueFront.js'
+], 'public/js/vueFront.js').version();
+
+mix.babel([
+    'resources/assets/cybertron/js/vueClass.js',
     'resources/assets/cybertron/js/vueDatosPersonales.js'
-], 'public/js/vueCybertron.js').version();
+], 'public/js/vueDatosPersonales.js').version();
 
 mix.combine([
     'node_modules/blazy/blazy.js'

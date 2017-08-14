@@ -4,7 +4,7 @@
 var ubigeoID = ''
 var extras = false
 
-var vueDatosPersonales = new Vue({
+var vmDatosPersonales = new Vue({
     el: '#datosPersonales',
 
     data: {
@@ -34,7 +34,8 @@ var vueDatosPersonales = new Vue({
             License: '',
             numberLicense: '',
             Marital: '',
-            numberChildren: ''
+            numberChildren: '',
+            dateBirthday: ''
         })
     },
     mounted()  {
@@ -59,6 +60,7 @@ var vueDatosPersonales = new Vue({
                         this.form.numberLicense = profileUser.license_number
                         this.form.Marital = profileUser.marital_status
                         this.form.numberChildren = profileUser.children_number
+                        this.form.dateBirthday = profileUser.datebirthday
                         ubigeoID = profileUser.ubigeo_id
                         extras = true
                         this.$nextTick( () => {
@@ -150,3 +152,6 @@ var vueDatosPersonales = new Vue({
         }
     }
 })
+
+singleDate('dateBirthday')
+eventsingleDate('dateBirthday')

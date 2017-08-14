@@ -21,6 +21,7 @@ class CreateUsersInformationTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('ubigeo_id',6)->nullable();
             $table->string('address')->nullable();
+            $table->date('datebirthday')->nullable();
             $table->enum('identity',['dni','extranjeria'])->nullable();
             $table->unsignedBigInteger('identity_number')->nullable();
             $table->enum('license',['-','A-I','A-IIb','AIIIa','AIIIb','AIIIc'])->nullable();
