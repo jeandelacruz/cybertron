@@ -7,6 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $connection   = 'laravel';
+    protected $table        = 'users';
+
     use Notifiable;
 
     /**
@@ -15,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'last_name', 'username', 'email', 'password',
     ];
 
     /**
@@ -61,6 +64,11 @@ class User extends Authenticatable
             return true;
         }
       return false;
+    }
+
+    public function usersInformation(){
+        return $this
+            ->hasOne('App\UserInformation');
     }
 
 }

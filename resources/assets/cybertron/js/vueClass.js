@@ -66,14 +66,15 @@ class Form {
             })
             .catch(error => {
                 this.onFail(error.response.data)
+                $('#topcontrol').click()
                 reject(error.response.data)
             })
         })
     }
 
     onSuccess(data) {
-        alert(data.message)
-        this.reset()
+        alertaSimple('','Tu perfil fue registrado con exito', 'success')
+        //this.reset()
     }
 
     onFail(errors) {

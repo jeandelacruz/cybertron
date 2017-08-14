@@ -40,8 +40,8 @@ return [
 
         'database' => [
             'driver' => 'database',
-            'table' => 'cache',
-            'connection' => null,
+            'table'  => 'cache',
+            'connection' => 'laravel',
         ],
 
         'file' => [
@@ -70,7 +70,7 @@ return [
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
+            'connection' => 'redis_cosapi',
         ],
 
     ],

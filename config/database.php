@@ -40,12 +40,12 @@ return [
         ],
 
         'mysql' => [
-            'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'driver'    => env('LARAVEL_DRIVER', 'sqlite'),
+            'host'      => env('LARAVEL_HOST', 'localhost'),
+            'port'      => env('LARAVEL_PORT', '3306'),
+            'database'  => env('LARAVEL_DATABASE', 'forge'),
+            'username'  => env('LARAVEL_USERNAME', 'forge'),
+            'password'  => env('LARAVEL_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -78,6 +78,30 @@ return [
             'prefix' => '',
         ],
 
+        'laravel' => [
+            'driver'    => env('LARAVEL_DRIVER', 'sqlite'),
+            'host'      => env('LARAVEL_HOST', 'localhost'),
+            'database'  => env('LARAVEL_DATABASE', 'forge'),
+            'username'  => env('LARAVEL_USERNAME', 'forge'),
+            'password'  => env('LARAVEL_PASSWORD', ''),
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ],
+
+        'sapia' => [
+            'driver'    => env('SAPIA_DRIVER', 'sqlite'),
+            'host'      => env('SAPIA_HOST', 'localhost'),
+            'database'  => env('SAPIA_DATABASE', 'forge'),
+            'username'  => env('SAPIA_USERNAME', 'forge'),
+            'password'  => env('SAPIA_PASSWORD', ''),
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ],
+
     ],
 
     /*
@@ -108,10 +132,12 @@ return [
 
         'client' => 'predis',
 
-        'default' => [
-            'host' => env('REDIS_HOST', '127.0.0.1'),
+        'cluster' => false,
+
+        'redis_cosapi' => [
+            'host'     => env('REDIS_HOST', 'localhost'),
             'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', 6379),
+            'port'     => env('REDIS_PORT', 6379),
             'database' => 0,
         ],
 

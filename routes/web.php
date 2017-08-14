@@ -11,18 +11,18 @@
 |
 */
 
-Route::get('login', function () {
-    return view('layouts/login');
-});
+Route::get('/',                     'ProfileController@index')->name('profile');
 
-Route::get('/', 'ProfileController@index')->name('profile');
-
-Route::get('profile/myProfile'      , ['uses'=>'ProfileController@myProfile'])->name('myprofile');
-
-Route::get('profile/Settings'       , ['uses'=>'ProfileController@Settings'])->name('settingsprofile');
-
-Route::post('profile/saveDatos'     , ['uses'=>'ProfileController@saveDatos'])->name('savedatos');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home',                 'HomeController@index')->name('home');
 
 Auth::routes();
+
+// Rutas del Perfil
+Route::get('profile/myProfile',     'ProfileController@myProfile')->name('myprofile');
+Route::get('profile/Settings',      'ProfileController@Settings')->name('settingsprofile');
+Route::post('viewProfile',          'ProfileController@viewProfile');
+Route::post('viewUbigeo',           'ProfileController@viewUbigeo');
+Route::post('viewDepartamento',     'ProfileController@viewDepartamento');
+Route::post('viewProvincia',        'ProfileController@viewProvincia');
+Route::post('viewDistrito',         'ProfileController@viewDistrito');
+Route::post('profile/saveDatos',    'ProfileController@saveDatos')->name('savedatos');

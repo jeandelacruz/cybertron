@@ -147,3 +147,15 @@ $.ajaxSetup({
         })
     }
 /* End Date Picker Single */
+
+/* For Each Ubigeos */
+function objectToArray(object, array, value){
+    object.forEach((item, index) => array.push(item[value]))
+}
+/* End For Each Ubigeos */
+
+/* First Char UpperCase */
+const CharUpper = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+/* End First Char UpperCase */

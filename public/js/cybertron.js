@@ -137,3 +137,17 @@ var singleDate = function singleDate(nameInput) {
     });
 };
 /* End Date Picker Single */
+
+/* For Each Ubigeos */
+function objectToArray(object, array, value) {
+    object.forEach(function (item, index) {
+        return array.push(item[value]);
+    });
+}
+/* End For Each Ubigeos */
+
+/* First Char UpperCase */
+var CharUpper = function CharUpper(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+/* End First Char UpperCase */

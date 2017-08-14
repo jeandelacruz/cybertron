@@ -34,21 +34,21 @@
         <section class="col-md-4">
             <label class="label text-bold">Departamento</label>
             <label class="input">
-                <v-select placeholder="Choose Role Here !"></v-select>
+                <v-select id="nomDepartamento" :on-change="loadProvincia" :value.sync="selectedD" :options="departamento" placeholder="Choose here..!!"></v-select>
             </label>
             <p class="text-danger" v-if="form.errors.has('Departamento')" v-text="form.errors.get('Departamento')"></p>
         </section>
         <section class="col-md-4">
             <label class="label text-bold">Provincia</label>
             <label class="input">
-                <v-select placeholder="Choose Role Here !"></v-select>
+                <v-select id="nomProvincia" :on-change="loadDistrito" :value.sync="selectedP" :options="provincia" placeholder="Choose here..!!"></v-select>
             </label>
             <p class="text-danger" v-if="form.errors.has('Provincia')" v-text="form.errors.get('Provincia')"></p>
         </section>
         <section class="col-md-4">
             <label class="label text-bold">Distrito</label>
             <label class="input">
-                <v-select placeholder="Choose Role Here !"></v-select>
+                <v-select id="nomDistrito" :on-change="getDistrito" :value.sync="selectedDi" :options="distrito" placeholder="Choose here..!!"></v-select>
             </label>
             <p class="text-danger" v-if="form.errors.has('Distrito')" v-text="form.errors.get('Distrito')"></p>
         </section>
@@ -97,7 +97,7 @@
             <label class="input">
                 <i class="icon-append fa fa-envelope"></i>
                 <input type="text" placeholder="test@sapia.com.pe" name="Email" v-model="form.Email">
-                <b class="tooltip tooltip-bottom-right">Ingresa tu numero de celular</b>
+                <b class="tooltip tooltip-bottom-right">Ingresa tu correo personal</b>
             </label>
             <p class="text-danger" v-if="form.errors.has('Email')" v-text="form.errors.get('Email')"></p>
         </section>
@@ -110,7 +110,7 @@
         <div class="col-md-6">
             <label class="label text-bold">Tipo Documento</label>
             <label class="input">
-                <v-select placeholder="Choose Role Here !"></v-select>
+                <v-select :on-change="getDocument" :options="['Dni','Extranjeria']" :value.sync="typeDocument" placeholder="Choose Type Document Here !"></v-select>
             </label>
             <p class="text-danger" v-if="form.errors.has('typeDocument')" v-text="form.errors.get('typeDocument')"></p>
         </div>
@@ -131,7 +131,7 @@
         <div class="col-md-6">
             <label class="label text-bold">Tipo Brevete</label>
             <label class="input">
-                <v-select placeholder="Choose Role Here !"></v-select>
+                <v-select :on-change="getLicense" :options="['-','A-I','A-IIb','AIIIa','AIIIb','AIIIc']" :value.sync="typeLicense" placeholder="Choose Type License !"></v-select>
             </label>
             <p class="text-danger" v-if="form.errors.has('typeLicense')" v-text="form.errors.get('typeLicense')"></p>
         </div>
@@ -152,7 +152,7 @@
         <div class="col-md-6">
             <label class="label text-bold">Estado Civil</label>
             <label class="input">
-                <v-select placeholder="Choose Role Here !"></v-select>
+                <v-select :on-change="getMarital" :options="['Soltero','Casado','Divorciado','Viudo']" :value.sync="maritalStatus" placeholder="Choose Marital Status Here !"></v-select>
             </label>
             <p class="text-danger" v-if="form.errors.has('civilStatus')" v-text="form.errors.get('civilStatus')"></p>
         </div>
