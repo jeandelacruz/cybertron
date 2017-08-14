@@ -147,7 +147,10 @@ var vmDatosPersonales = new Vue({
         },
         onSubmit() {
             this.form.post('/profile/saveDatos')
-                .then(response => this.loadData())
+                .then(response => {
+                    this.loadData()
+                    vmProfile.loadProfile()
+                })
                 .catch(error => alertaSimple('','Hubo un error, favor de comunicarse con los especialistas','error'))
         }
     }

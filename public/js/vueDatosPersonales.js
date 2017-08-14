@@ -285,7 +285,8 @@ var vmDatosPersonales = new Vue({
             var _this7 = this;
 
             this.form.post('/profile/saveDatos').then(function (response) {
-                return _this7.loadData();
+                _this7.loadData();
+                vmProfile.loadProfile();
             }).catch(function (error) {
                 return alertaSimple('', 'Hubo un error, favor de comunicarse con los especialistas', 'error');
             });

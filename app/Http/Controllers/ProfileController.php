@@ -120,22 +120,30 @@ class ProfileController extends Controller
                 $ubigeo = '10000';
             }
 
+            User::where('id', Auth::id())
+                ->update([
+                    'name'          => $request->Names,
+                    'last_name'     => $request->lastName,
+                    'email'         => $request->Email
+                ]);
+
             UserInformation::updateOrInsert([
                 'user_id' => Auth::id()
             ], [
-                'phone_home' => $request->numberTelephone,
-                'phone_mobile' => $request->numberMobile,
-                'email' => $request->Email,
-                'ubigeo_id' => $ubigeo,
-                'address' => $request->nameAddress,
-                'identity' => $request->Document,
-                'identity_number' => $request->numberDocument,
-                'license' => $request->License,
-                'license_number' => $request->numberLicense,
-                'marital_status' => $request->Marital,
-                'children_number' => $request->numberChildren,
-                'datebirthday' => $request->dateBirthday,
+                'phone_home'        => $request->numberTelephone,
+                'phone_mobile'      => $request->numberMobile,
+                'email'             => $request->Email,
+                'ubigeo_id'         => $ubigeo,
+                'address'           => $request->nameAddress,
+                'identity'          => $request->Document,
+                'identity_number'   => $request->numberDocument,
+                'license'           => $request->License,
+                'license_number'    => $request->numberLicense,
+                'marital_status'    => $request->Marital,
+                'children_number'   => $request->numberChildren,
+                'datebirthday'      => $request->dateBirthday
             ]);
+
             return ['message' => 'Success'];
         }
         return ['message' => 'Error'];
