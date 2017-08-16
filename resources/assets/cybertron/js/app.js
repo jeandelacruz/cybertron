@@ -276,7 +276,9 @@ var Unify = function () {
 			$('.mCustomScrollbar').mCustomScrollbar({
 				theme:"minimal",
 				scrollInertia: 200,
-				scrollEasing: "linear"
+				scrollEasing: "linear",
+				autoHideScrollbar: true,
+				scrollButtons: true
 			});
 		},
 

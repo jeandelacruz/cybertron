@@ -7,6 +7,7 @@ use App\User;
 use App\UserInformation;
 use App\UsersStudies;
 use App\UsersCertificate;
+use App\UsersExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -131,6 +132,16 @@ class ProfileController extends Controller
         return $resultado;
     }
 
+    public function viewExperiencias(Request $request){
+        if ($request->isMethod('post')) {
+            $resultado = UsersExperience::Select()
+                ->where('user_id', Auth::id())
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
     // Rutas de Formulario
     public function formDatosAcademicos(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
@@ -141,6 +152,12 @@ class ProfileController extends Controller
     public function formCertificaciones(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
         if($response) return view('elements/formularios/formCertificacion');
+        return view('errors/permission');
+    }
+
+    public function formExperiencia(Request $request){
+        $response = $request->user()->authorizeRoles(['user', 'admin']);
+        if($response) return view('elements/formularios/formExperiencia');
         return view('errors/permission');
     }
 
@@ -226,6 +243,30 @@ class ProfileController extends Controller
                 'user_id'               => Auth::id(),
                 'name_institute'        => $request->nameInstitution,
                 'name_certificate'      => $request->nameCertification,
+                'date_begin'            => $request->dateBegin,
+                'date_finish'           => $request->dateFinish
+            ]);
+
+            return ['message' => 'Success'];
+        }
+        return ['message' => 'Error'];
+    }
+
+    public function saveExperiencia(Request $request){
+        if ($request->isMethod('post')) {
+            $this->validate(request(), [
+                'namePuesto'        => 'required',
+                'nameEmpresa'       => 'required',
+                'reviewPuesto'      => 'required',
+                'dateBegin'         => 'required',
+                'dateFinish'        => 'required'
+            ]);
+
+            UsersExperience::create([
+                'user_id'               => Auth::id(),
+                'name_job'              => $request->namePuesto,
+                'name_business'         => $request->nameEmpresa,
+                'review_business'       => $request->reviewPuesto,
                 'date_begin'            => $request->dateBegin,
                 'date_finish'           => $request->dateFinish
             ]);

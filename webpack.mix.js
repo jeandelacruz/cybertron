@@ -28,7 +28,8 @@ mix.styles([
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/css/sky-forms.css',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css',
     'resources/assets/cybertron/plugins/img-hover/imagehover.css',
-    'node_modules/daterangepicker/daterangepicker.css'
+    'node_modules/daterangepicker/daterangepicker.css',
+    'node_modules/datatables.net-bs/css/dataTables.bootstrap.css'
 ], 'public/css/implement.css').version();
 
 mix.styles([
@@ -74,6 +75,11 @@ mix.babel([
 ], 'public/js/vueCertificacion.js').version();
 
 mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmExperiencia.js',
+    'resources/assets/cybertron/js/vue/vmExperiencia.js'
+], 'public/js/vueExperiencia.js').version();
+
+mix.babel([
     'resources/assets/cybertron/js/vue/class/vmAcademicos.js',
     'resources/assets/cybertron/js/vue/form/vmAcademicos.js'
 ], 'public/js/formDatosAcademicos.js').version();
@@ -82,6 +88,11 @@ mix.babel([
     'resources/assets/cybertron/js/vue/class/vmCertificacion.js',
     'resources/assets/cybertron/js/vue/form/vmCertificacion.js'
 ], 'public/js/formCertificacion.js').version();
+
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmExperiencia.js',
+    'resources/assets/cybertron/js/vue/form/vmExperiencia.js'
+], 'public/js/formExperiencia.js').version();
 
 mix.babel([
     'resources/assets/cybertron/js/app.js',
@@ -96,7 +107,8 @@ mix.babel([
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js',
-    'resources/assets/cybertron/js/routes.js'
+    'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+    'resources/assets/cybertron/js/routes.js',
 ], 'public/js/implement.js').version();
 
 mix.copy('resources/assets/favicon.ico', 'public/favicon.ico');

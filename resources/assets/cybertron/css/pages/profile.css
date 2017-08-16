@@ -17,7 +17,7 @@
 
 /*Scrollbar*/
 .mCustomScrollbar {
-	height: 320px; 
+	height: 400px;
 }
 
 /*Panel Title Box*/
@@ -198,6 +198,7 @@
 /*Table*/
 .profile .table {
 	background: #fff;
+	font-size: 12px !important;
 }
 
 .profile .table th {

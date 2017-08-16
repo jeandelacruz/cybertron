@@ -42,7 +42,7 @@
             <div id="tabexperienciaLaboral" class="profile-edit tab-pane fade">
                 <h2 class="heading-md">Admnistra tu experiencia laboral</h2>
                 <span>
-                    <a class="pull-right" href="javascript:void(0)">
+                    <a class="pull-right" href="" onclick="bodyModal('div.bodyaddExperiencia','formExperiencia')" data-toggle="modal" data-target=".modaladdExperience">
                         <i class="fa fa-plus fa-2x"></i>
                     </a>
                 </span>
@@ -54,3 +54,8 @@
     </div>
 </div>
 <!-- End Profile Content -->
+<script>
+    $(function() {
+        Unify.initScrollBar()
+    })
+</script>

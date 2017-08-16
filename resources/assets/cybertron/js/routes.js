@@ -2,8 +2,9 @@
  * Created by jdelacruz on 8/08/2017.
  */
 /* Routes Menu */
-$('a.TC').click(function() {
-    loadingSystem('profile/myProfile')
+$('a.viewUsers').click(function() {
+    loadingSystem('system/viewUsers')
+    activeDiv('li.list-group-item', '-')
 })
 /* End Routes Menu */
 

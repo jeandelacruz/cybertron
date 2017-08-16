@@ -7,3 +7,8 @@
 <div class="modal fade modaladdCertification" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg bodyaddCertification"></div>
 </div>
+
+<!-- Modal Add Experiencia -->
+<div class="modal fade modaladdExperience" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg bodyaddExperiencia"></div>
+</div>

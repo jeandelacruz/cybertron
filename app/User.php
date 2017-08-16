@@ -76,4 +76,9 @@ class User extends Authenticatable
             ->hasOne('App\UsersStudies');
     }
 
+    public function usersExperience(){
+        return $this
+            ->hasOne('App\UsersExperience');
+    }
+
 }

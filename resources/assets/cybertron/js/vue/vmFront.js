@@ -4,12 +4,12 @@
 var vmProfile = new Vue({
     el:'#bodyProfile',
     data: {
-        nameComplete: '',
-        typeDocument: '',
-        numberDocument: '',
-        roleUser: '',
-        dateBirthday: '',
-        daysBirthday: ''
+        nameComplete: '-',
+        typeDocument: '-',
+        numberDocument: '-',
+        roleUser: '-',
+        dateBirthday: '-',
+        daysBirthday: '-'
     },
     mounted() {
         this.loadProfile()

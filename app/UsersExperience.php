@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UsersExperience extends Model
 {
     protected $connection   = 'laravel';
-    protected $table        = 'users_experience';
+    protected $table        = 'users_experiences';
     protected $primaryKey   = 'id';
     public    $timestamps   = false;
 

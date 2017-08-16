@@ -3,6 +3,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
+ * Created by jdelacruz on 16/08/2017.
+ */
+/**
  * Created by jdelacruz on 9/08/2017.
  */
 var Errors = function () {
@@ -97,7 +100,7 @@ var Form = function () {
             return new Promise(function (resolve, reject) {
                 axios[requestType](url, _this.data()).then(function (response) {
                     resolve(response.data);
-                    $('.modaladdStudy').modal('toggle');
+                    $('.modaladdExperience').modal('toggle');
                 }).catch(function (error) {
                     _this.onFail(error.response.data);
                     reject(error.response.data);
@@ -114,39 +117,31 @@ var Form = function () {
     return Form;
 }();
 /**
- * Created by jdelacruz on 14/08/2017.
+ * Created by jdelacruz on 16/08/2017.
  */
 
 
-var vmFormDatosAcademicos = new Vue({
-    el: '#formAcademico',
+var vmFormExperiencia = new Vue({
+    el: '#formExperiencia',
     data: {
-        selectedInstitute: null,
-        selectedAcademy: null,
         form: new Form({
-            typeInstitute: '',
-            nameInstitution: '',
-            situationAcademy: '',
-            nameCareer: '',
+            namePuesto: '',
+            nameEmpresa: '',
+            reviewPuesto: '',
             dateBegin: '',
             dateFinish: ''
         })
     },
     methods: {
-        getTypeInstitute: function getTypeInstitute(typeInstitute) {
-            this.form.typeInstitute = typeInstitute;
-        },
-        getSituationAcademy: function getSituationAcademy(situationAcademy) {
-            this.form.situationAcademy = situationAcademy;
-        },
         onSubmit: function onSubmit() {
-            $('.btnAcademicos').html('<i class="fa fa-spin fa-spinner"></i> Cargando');
-            this.form.post('/profile/saveAcademico').then(function (response) {
-                $('.btnAcademicos').html('<i class="fa fa-save"></i> Guardar Cambios');
-                vmDatosAcademicos.loadData();
-                alertaSimple('', 'Tús Datos Personales se editaron correctamente', 'success');
+            $('.btnExperiencia').html('<i class="fa fa-spin fa-spinner"></i> Cargando');
+            this.form.post('/profile/saveExperiencia').then(function (response) {
+                console.log(response);
+                $('.btnExperiencia').html('<i class="fa fa-save"></i> Guardar Cambios');
+                vmExperiencia.loadData();
+                alertaSimple('', 'Tu Experiencia laboral se registro correctamente', 'success');
             }).catch(function (error) {
-                $('.btnAcademicos').html('<i class="fa fa-save"></i> Guardar Cambios');
+                $('.btnExperiencia').html('<i class="fa fa-save"></i> Guardar Cambios');
                 alertaSimple('', 'No completaste los campos correctamente o</br>Ha ocurrido un problema<br>Comunicarse con los especialistas', 'error', '4000');
             });
         }
@@ -155,10 +150,10 @@ var vmFormDatosAcademicos = new Vue({
 
 singleDate('dateBegin');
 $('.dateBegin').on('apply.daterangepicker', function (ev, picker) {
-    vmFormDatosAcademicos.form.dateBegin = picker.startDate.format('YYYY-MM-DD');
+    vmFormExperiencia.form.dateBegin = picker.startDate.format('YYYY-MM-DD');
 });
 
 singleDate('dateFinish');
 $('.dateFinish').on('apply.daterangepicker', function (ev, picker) {
-    vmFormDatosAcademicos.form.dateFinish = picker.startDate.format('YYYY-MM-DD');
+    vmFormExperiencia.form.dateFinish = picker.startDate.format('YYYY-MM-DD');
 });

@@ -60,7 +60,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="javascript:void(0);"><i class="fa fa-eye"></i> Visualizar a todos los Usuarios</a>
+                                        <a href="javascript:void(0);" class="viewUsers"><i class="fa fa-eye"></i> Visualizar a todos los Usuarios</a>
                                     </li>
                                 </ul>
                             </li>
