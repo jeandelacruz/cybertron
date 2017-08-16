@@ -28,22 +28,18 @@ mix.styles([
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/css/sky-forms.css',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css',
     'resources/assets/cybertron/plugins/img-hover/imagehover.css',
-    'node_modules/sweetalert2/dist/sweetalert2.css',
-    'node_modules/font-awesome/css/font-awesome.css',
     'node_modules/daterangepicker/daterangepicker.css'
 ], 'public/css/implement.css').version();
 
 mix.styles([
-    'resources/assets/cybertron/css/pages/page_log_reg_v2.css'
+    'resources/assets/cybertron/css/pages/page_log_reg_v2.css',
+    'resources/assets/cybertron/css/custom.css'
 ], 'public/css/login.css').version();
 
 mix.styles([
     'resources/assets/cybertron/css/theme-colors/default.css',
     'resources/assets/cybertron/css/theme-skins/dark.css',
-    'resources/assets/cybertron/css/custom.css'
-], 'public/css/theme.css').version();
-
-mix.styles([
+    'resources/assets/cybertron/css/custom.css',
     'resources/assets/cybertron/css/headers/header-default.css',
     'resources/assets/cybertron/css/footers/footer-v1.css',
     'resources/assets/cybertron/css/pages/profile.css'
@@ -58,18 +54,34 @@ mix.babel([
 ], 'public/js/cybertron.js').version();
 
 mix.babel([
-    'resources/assets/cybertron/js/vueClass.js',
-    'resources/assets/cybertron/js/vueFront.js'
+    'resources/assets/cybertron/js/vue/class/vmFront.js',
+    'resources/assets/cybertron/js/vue/vmFront.js'
 ], 'public/js/vueFront.js').version();
 
 mix.babel([
-    'resources/assets/cybertron/js/vueClass.js',
-    'resources/assets/cybertron/js/vueDatosPersonales.js'
+    'resources/assets/cybertron/js/vue/class/vmPersonales.js',
+    'resources/assets/cybertron/js/vue/vmPersonales.js'
 ], 'public/js/vueDatosPersonales.js').version();
 
-mix.combine([
-    'node_modules/blazy/blazy.js'
-], 'public/js/node_modules.js').version();
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmAcademicos.js',
+    'resources/assets/cybertron/js/vue/vmAcademicos.js'
+], 'public/js/vueDatosAcademicos.js').version();
+
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmCertificacion.js',
+    'resources/assets/cybertron/js/vue/vmCertificacion.js'
+], 'public/js/vueCertificacion.js').version();
+
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmAcademicos.js',
+    'resources/assets/cybertron/js/vue/form/vmAcademicos.js'
+], 'public/js/formDatosAcademicos.js').version();
+
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmCertificacion.js',
+    'resources/assets/cybertron/js/vue/form/vmCertificacion.js'
+], 'public/js/formCertificacion.js').version();
 
 mix.babel([
     'resources/assets/cybertron/js/app.js',
@@ -88,10 +100,6 @@ mix.babel([
 ], 'public/js/implement.js').version();
 
 mix.copy('resources/assets/favicon.ico', 'public/favicon.ico');
-
-mix.copyDirectory([
-    'node_modules/font-awesome/fonts'
-],'public/fonts');
 
 mix.copyDirectory([
     'resources/assets/cybertron/plugins/line-icons/fonts'

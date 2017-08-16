@@ -11,5 +11,4 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('css/global.css')!!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/implement.css')!!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/login.css')!!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('css/theme.css')!!}">
 </head>

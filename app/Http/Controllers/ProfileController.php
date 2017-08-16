@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Ubigeos;
 use App\User;
 use App\UserInformation;
+use App\UsersStudies;
+use App\UsersCertificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +17,7 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
+    // Rutas por controlador
     public function index(Request $request)
     {
         $response = $request->user()->authorizeRoles(['user', 'admin']);
@@ -23,19 +26,22 @@ class ProfileController extends Controller
 
     public function myProfile(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
-        if($response) return view('elements/profile');
+        if($response) return view('elements/myProfile/profile');
         return view('errors/permission');
     }
 
     public function Settings(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
-        if($response) return view('elements/settings');
+        if($response) return view('elements/Settings/settings');
     }
 
+
+    // Acciones en las rutas
     public function viewProfile(Request $request){
         if ($request->isMethod('post')) {
             $resultado = User::Select()
                 ->with('usersInformation')
+                ->with('roles')
                 ->where('id', Auth::id())
                 ->get()
                 ->toArray();
@@ -105,11 +111,45 @@ class ProfileController extends Controller
         return $resultado;
     }
 
+    public function viewDatosAcademicos(Request $request){
+        if ($request->isMethod('post')) {
+            $resultado = UsersStudies::Select()
+                ->where('user_id', Auth::id())
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function viewCertificaciones(Request $request){
+        if ($request->isMethod('post')) {
+            $resultado = UsersCertificate::Select()
+                ->where('user_id', Auth::id())
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    // Rutas de Formulario
+    public function formDatosAcademicos(Request $request){
+        $response = $request->user()->authorizeRoles(['user', 'admin']);
+        if($response) return view('elements/formularios/formAcademico');
+        return view('errors/permission');
+    }
+
+    public function formCertificaciones(Request $request){
+        $response = $request->user()->authorizeRoles(['user', 'admin']);
+        if($response) return view('elements/formularios/formCertificacion');
+        return view('errors/permission');
+    }
+
+    // Acciones de Formulario
     public function saveDatos(Request $request){
         if ($request->isMethod('post')) {
             $this->validate(request(), [
-                'Names' => 'required',
-                'lastName' => 'required'
+                'Names'     => 'required',
+                'lastName'  => 'required'
             ]);
 
             $idUbigeo = $this->getUbigeo($request->Departamento,$request->Provincia,$request->Distrito);
@@ -142,6 +182,52 @@ class ProfileController extends Controller
                 'marital_status'    => $request->Marital,
                 'children_number'   => $request->numberChildren,
                 'datebirthday'      => $request->dateBirthday
+            ]);
+
+            return ['message' => 'Success'];
+        }
+        return ['message' => 'Error'];
+    }
+
+    public function saveAcademico(Request $request){
+        if ($request->isMethod('post')) {
+            $this->validate(request(), [
+                'nameInstitution'   => 'required',
+                'nameCareer'        => 'required',
+                'dateBegin'         => 'required',
+                'dateFinish'        => 'required'
+            ]);
+
+            UsersStudies::create([
+                'user_id'               => Auth::id(),
+                'type_institute'        => $request->typeInstitute,
+                'situation_academy'     => $request->situationAcademy,
+                'name_institute'        => $request->nameInstitution,
+                'name_career'           => $request->nameCareer,
+                'date_begin'            => $request->dateBegin,
+                'date_finish'           => $request->dateFinish
+            ]);
+
+            return ['message' => 'Success'];
+        }
+        return ['message' => 'Error'];
+    }
+
+    public function saveCertificacion(Request $request){
+        if ($request->isMethod('post')) {
+            $this->validate(request(), [
+                'nameInstitution'       => 'required',
+                'nameCertification'     => 'required',
+                'dateBegin'             => 'required',
+                'dateFinish'            => 'required'
+            ]);
+
+            UsersCertificate::create([
+                'user_id'               => Auth::id(),
+                'name_institute'        => $request->nameInstitution,
+                'name_certificate'      => $request->nameCertification,
+                'date_begin'            => $request->dateBegin,
+                'date_finish'           => $request->dateFinish
             ]);
 
             return ['message' => 'Success'];

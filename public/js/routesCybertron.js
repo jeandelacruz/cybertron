@@ -1,1 +1,0 @@
-$("a.TC").click(function(){loadingSystem("profile/myProfile")}),$("a.myProfile").click(function(){loadingSystem("profile/myProfile")}),$("a.settingsProfile").click(function(){loadingSystem("profile/Settings")});

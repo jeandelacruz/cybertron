@@ -16,8 +16,8 @@
 
     @if ($errors->has('username') || $errors->has('password'))
         <span>
-            <p class="text-center text-bold text-danger">{{ $errors->first('username') }}</p>
-            <p class="text-center text-bold text-danger">{{ $errors->first('password') }}</p>
+            <p class="text-center text-bold textError">{{ $errors->first('username') }}</p>
+            <p class="text-center text-bold textError">{{ $errors->first('password') }}</p>
         </span>
     @endif
 

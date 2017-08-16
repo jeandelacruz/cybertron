@@ -31,10 +31,17 @@
 }
 
 .profile .panel-heading {
-	color: #585f69;
-	background: #fff;
-	padding: 7px 15px;
-	border-bottom: solid 3px #f7f7f7;
+	/*color: #585f69;
+	background: #fff;*/
+	padding: 2px 15px;
+	/*border-bottom: solid 3px #f7f7f7;*/
+}
+
+.panel-headFix {
+	color: #585f69 !important;
+	background: #fff !important;
+	padding: 7px 15px !important;
+	border-bottom: solid 3px #f7f7f7 !important;
 }
 
 .profile .panel-heading-v2.overflow-h i.pull-right,

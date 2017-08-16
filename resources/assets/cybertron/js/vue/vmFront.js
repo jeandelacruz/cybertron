@@ -7,6 +7,7 @@ var vmProfile = new Vue({
         nameComplete: '',
         typeDocument: '',
         numberDocument: '',
+        roleUser: '',
         dateBirthday: '',
         daysBirthday: ''
     },
@@ -18,9 +19,10 @@ var vmProfile = new Vue({
             axios.post('viewProfile')
                 .then(response => {
                     this.nameComplete = response.data[0].name + ' ' + response.data[0].last_name
+                    this.roleUser = CharUpper(response.data[0].roles[0].name)
                     let profileUser = response.data[0].users_information
                     if(profileUser){
-                        this.typeDocument = CharUpper(profileUser.identity)
+                        this.typeDocument = (profileUser.identity).toUpperCase()
                         this.numberDocument = profileUser.identity_number
                         this.dateBirthday = moment().format('DD/MM')
                         this.daysBirthday = '0'

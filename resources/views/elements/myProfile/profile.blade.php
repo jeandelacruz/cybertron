@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-xs-6 text-right service-in">
                         <small>Cargo</small>
-                        <h4>Analista</h4>
+                        <h4 v-text="roleUser"></h4>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         <!--Profile Post-->
         <div class="col-sm-6">
             <div class="panel panel-profile no-bg">
-                <div class="panel-heading overflow-h">
+                <div class="panel-heading panel-headFix overflow-h">
                     <h2 class="panel-title heading-sm pull-left"><i class="fa fa-users"></i>Directorio</h2>
                     <a href="javascript:void(0)"><i class="fa fa-refresh pull-right"></i></a>
                 </div>
@@ -71,7 +71,7 @@
         <!--Profile Event-->
         <div class="col-sm-6 md-margin-bottom-20">
             <div class="panel panel-profile no-bg">
-                <div class="panel-heading overflow-h">
+                <div class="panel-heading panel-headFix overflow-h">
                     <h2 class="panel-title heading-sm pull-left"><i class="fa fa-twitter"></i>Notificaciones</h2>
                     <a href="javascript:void(0)"><i class="fa fa-refresh pull-right"></i></a>
                 </div>

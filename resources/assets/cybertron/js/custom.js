@@ -123,7 +123,16 @@ $.ajaxSetup({
 
 /* Function Modal */
     const bodyModal = (nameRoute, routeLoad) => {
-        $(nameRoute).html('<h1 class="text-center text-primary"><i class="fa fa-gear fa-spin"></i> Cargando</h1>').promise().done(function() {
+        $(nameRoute).html('' +
+            '<div class="modal-content">' +
+                '<div class="modal-body">' +
+                    '<div class="progress">' +
+                        '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="1000" aria-valuemin="0" aria-valuemax="100" style="width:100%">' +
+                            'Cargando...' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>').promise().done(function() {
             $(nameRoute).load(routeLoad, function() { })
         })
     }
@@ -148,9 +157,9 @@ $.ajaxSetup({
         })
     }
 
-    const eventsingleDate = (nameInput) => {
-        $(`input[name=${nameInput}`).on('apply.daterangepicker', function(ev, picker) {
-            vmDatosPersonales.form.dateBirthday = picker.startDate.format('YYYY-MM-DD')
+    const eventsingleDate = (nameInput, loadValue) => {
+        $('input[name=' + +']').on('apply.daterangepicker', function(ev, picker) {
+            loadValue = picker.startDate.format('YYYY-MM-DD')
         })
     }
 /* End Date Picker Single */

@@ -148,7 +148,7 @@
 /* End Center Text */
 
 /* Custom Css */
-p.text-danger {
+span > p.textError {
     color: #a94442 !important;
 }
 /* End Custom Css */

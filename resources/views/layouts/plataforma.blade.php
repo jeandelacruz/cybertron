@@ -87,6 +87,7 @@
         </div><!--/wrapper-->
     </body>
 @include('layouts.recursos.footer')
+@include('layouts.recursos.modals')
 <script>
     loadingCss()
     loadingSystem('profile/myProfile')

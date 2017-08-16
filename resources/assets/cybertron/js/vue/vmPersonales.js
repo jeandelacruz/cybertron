@@ -131,7 +131,7 @@ var vmDatosPersonales = new Vue({
         },
         loadExtra: function(){
             if(extras){
-                this.typeDocument = CharUpper(this.form.Document)
+                this.typeDocument = (this.form.Document).toUpperCase()
                 this.typeLicense = this.form.License
                 this.maritalStatus = CharUpper(this.form.Marital)
             }
@@ -146,15 +146,23 @@ var vmDatosPersonales = new Vue({
             this.form.Marital = (typeMarital).toLowerCase()
         },
         onSubmit() {
+            $('.btnPersonales').html('<i class="fa fa-spin fa-spinner"></i> Cargando')
             this.form.post('/profile/saveDatos')
                 .then(response => {
                     this.loadData()
                     vmProfile.loadProfile()
+                    $('.btnPersonales').html('<i class="fa fa-save"></i> Guardar Cambios')
+                    alertaSimple('','Tús Datos Personales se editaron correctamente','success')
                 })
-                .catch(error => alertaSimple('','Hubo un error, favor de comunicarse con los especialistas','error'))
+                .catch(error => {
+                    $('.btnPersonales').html('<i class="fa fa-save"></i> Guardar Cambios')
+                    alertaSimple('','No completaste los campos correctamente o</br>Ha ocurrido un problema<br>Comunicarse con los especialistas','error','4000')
+                })
         }
     }
 })
 
 singleDate('dateBirthday')
-eventsingleDate('dateBirthday')
+$('input[name=dateBirthday]').on('apply.daterangepicker', function (ev, picker) {
+    vmDatosPersonales.form.dateBirthday = picker.startDate.format('YYYY-MM-DD')
+})

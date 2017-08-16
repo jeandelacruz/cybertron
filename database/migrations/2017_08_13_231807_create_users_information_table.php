@@ -26,7 +26,7 @@ class CreateUsersInformationTable extends Migration
             $table->unsignedBigInteger('identity_number')->nullable();
             $table->enum('license',['-','A-I','A-IIb','AIIIa','AIIIb','AIIIc'])->nullable();
             $table->unsignedBigInteger('license_number')->nullable();
-            $table->enum('marital_status',['soltero','casado','divorciado','viudo'])->nullable();
+            $table->enum('marital_status',['soltero','casado','conviviente','divorciado','viudo'])->nullable();
             $table->unsignedBigInteger('children_number')->nullable();
             $table->foreign('user_id')
                 ->references('id')

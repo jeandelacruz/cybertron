@@ -13,7 +13,6 @@ window.daterangepicker = require('daterangepicker');
 
 try {
     window.$ = window.jQuery = require('jquery');
-
     require('bootstrap-sass');
 } catch (e) {}
 

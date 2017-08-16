@@ -1,4 +1,7 @@
 /**
+ * Created by jdelacruz on 15/08/2017.
+ */
+/**
  * Created by jdelacruz on 9/08/2017.
  */
 class Errors {
@@ -61,20 +64,14 @@ class Form {
         return new Promise((resolve, reject) => {
             axios[requestType](url, this.data())
             .then(response => {
-                this.onSuccess(response.data)
                 resolve(response.data)
+                $('.modaladdCertification').modal('toggle')
             })
             .catch(error => {
-                this.onFail(error.response.data)
-                $('#topcontrol').click()
-                reject(error.response.data)
+                    this.onFail(error.response.data)
+                    reject(error.response.data)
             })
         })
-    }
-
-    onSuccess(data) {
-        alertaSimple('','Tu perfil fue registrado con exito', 'success')
-        //this.reset()
     }
 
     onFail(errors) {
