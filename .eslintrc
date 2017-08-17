@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6":     true,
+    "browser": true,
+    "node":    true,
+    "mocha":   true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "strict": 0, // controls location of Use Strict Directives. 0: required by `babel-eslint`
+    "no-var": 2,
+    "no-console": 0,
+    "semi": [2, "never"] // require or disallow use of semicolons instead of ASI
+  }
+}
