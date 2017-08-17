@@ -73,12 +73,12 @@ class User extends Authenticatable
 
     public function usersStudies(){
         return $this
-            ->hasOne('App\UsersStudies');
+            ->hasMany('App\UsersStudies');
     }
 
     public function usersExperience(){
         return $this
-            ->hasOne('App\UsersExperience');
+            ->hasMany('App\UsersExperience');
     }
 
 }

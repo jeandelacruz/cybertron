@@ -222,8 +222,8 @@ const columnsDatatable = (route) => {
             {data: 'name', name: 'name'},
             {data: 'last_name', name: 'last_name'},
             {data: 'username', name: 'username'},
-            {data: 'roles.0.name', name: 'rol'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'roles', name: 'roles'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}
         ]
     }
     return columns
@@ -234,9 +234,13 @@ const dataTables = (nombreDIV, routes) => {
     $(`#${nombreDIV}`).dataTable().fnDestroy()
     //Creacion del DataTable
     $(`#${nombreDIV}`).DataTable({
+        'deferRender': true,
         'processing': true,
         'serverSide': true,
         'ajax': routes,
+        'paging': true,
+        'pageLength': 50,
+        'lengthMenu': [50, 100, 200, 300, 400, 500],
         'language': dataTables_lang_spanish(),
         'columns': columnsDatatable(nombreDIV)
     })

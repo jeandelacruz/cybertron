@@ -50,7 +50,7 @@
     <hr>
 
     <div class="row margin-bottom-20">
-        <!--Profile Post-->
+        <!--Profile Post
         <div class="col-sm-6">
             <div class="panel panel-profile no-bg">
                 <div class="panel-heading panel-headFix overflow-h">
@@ -65,10 +65,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--End Profile Post-->
 
-        <!--Profile Event-->
+        <!--Profile Event
         <div class="col-sm-6 md-margin-bottom-20">
             <div class="panel panel-profile no-bg">
                 <div class="panel-heading panel-headFix overflow-h">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--End Profile Event-->
     </div><!--/end row-->
 </div>

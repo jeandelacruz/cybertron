@@ -224,3 +224,16 @@ span > p.textError {
     color: #a94442 !important;
 }
 /* End Custom Css */
+
+/* Tamaño de botones */
+.btnFix {
+    padding: 3px 5px !important;
+    font-size: 12px !important;
+}
+/* End Tamaño de botones */
+
+/* Custom text Color */
+.text-white {
+    color: #ffffff !important;
+}
+/* End Custom text Color */

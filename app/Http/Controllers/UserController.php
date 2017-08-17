@@ -27,14 +27,21 @@ class UserController extends Controller
 
     public function listUsers(Request $request){
         if ($request->isMethod('get')) {
-            $user = User::with('roles')
+            $user = User::Select()
+                        ->with('roles')
                         ->with('usersStudies')
-                        ->with('usersInformation')
-                        ->select('users.*');
+                        ->with('usersInformation');
 
             return Datatables::of($user)
+                ->addColumn('roles', function ($user) {
+                    return $user->roles[0]->name;
+                })
                 ->addColumn('action', function ($user) {
-                    return '<a href="#edit-' . $user->id . '" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                    return '<div class="btn-group">
+                                <a class="btn btn-xs btnFix btn-success" href="#edit-' . $user->id . '"><i class="fa fa-eye"></i> Visualizar</a>
+                                <a class="btn btn-xs btnFix btn-primary" href="#edit-' . $user->id . '"><i class="fa fa-edit"></i> Editar</a>
+                                <a class="btn btn-xs btnFix btn-danger" href="#edit-' . $user->id . '"><i class="fa fa-warning"></i> Cesar</a>
+                            </div>';
                 })
                 ->make(true);
         }

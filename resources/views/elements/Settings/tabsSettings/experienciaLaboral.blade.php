@@ -2,7 +2,7 @@
     <div v-if="experience.length == 0">
         <div class="alert alert-info text-center">
             <div class="row">
-                <h2 class="text-info"><i class="fa fa-frown-o"></i> Aún no cuentas con certificaciones </h2>
+                <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con Experiencia Laboral </h2>
                 <a class="btn btn-primary btn-sm" onclick="bodyModal('div.bodyaddExperiencia','formExperiencia')" data-toggle="modal" data-target=".modaladdExperience">
                     <i class="fa fa-plus"></i> Agregalos Aqui !
                 </a>

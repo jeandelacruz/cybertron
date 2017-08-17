@@ -3503,6 +3503,19 @@ span > p.textError {
     color: #a94442 !important;
 }
 /* End Custom Css */
+
+/* Tamaño de botones */
+.btnFix {
+    padding: 3px 5px !important;
+    font-size: 12px !important;
+}
+/* End Tamaño de botones */
+
+/* Custom text Color */
+.text-white {
+    color: #ffffff !important;
+}
+/* End Custom text Color */
 /*----------------------------------------------------------------------
 
 [-----*** TABLE OF CONTENT ***-----]
@@ -4877,42 +4890,7 @@ body.header-fixed-space-default {
 
 /*Table*/
 .profile .table {
-	background: #fff;
 	font-size: 12px !important;
-}
-
-.profile .table th {
-	min-width: 100px;
-}
-
-.profile .table td {
-	vertical-align: middle;
-}
-
-.profile .table h3 {
-	margin-top: 0;
-	font-size: 16px;
-	margin-bottom: 5px;
-}
-
-.profile .table a {
-	color: #ffffff;
-}
-
-.profile .table-search-v2 td img {
-	width: 70px;
-	height: 70px;
-	margin: 0 auto;
-	display: block;
-}
-
-.profile .table > thead > tr > th, 
-.profile .table > tbody > tr > th, 
-.profile .table > tfoot > tr > th, 
-.profile .table > thead > tr > td, 
-.profile .table > tbody > tr > td, 
-.profile .table > tfoot > tr > td {
-	padding: 11px;
 }
 
 /*Comment*/

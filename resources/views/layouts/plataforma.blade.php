@@ -54,16 +54,18 @@
                                     <i class="fa fa-home"></i> Inicio
                                 </a>
                             </li>
-                            <li class="dropdown">
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-target="dropdown">
-                                    <i class="fa fa-wrench"></i> Gestionar Sistema
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="javascript:void(0);" class="viewUsers"><i class="fa fa-eye"></i> Visualizar a todos los Usuarios</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @if(Auth::user()->authorizeRoles(['admin']))
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-target="dropdown">
+                                        <i class="fa fa-wrench"></i> Gestionar Sistema
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);" class="viewUsers"><i class="fa fa-eye"></i> Visualizar a todos los Usuarios</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
                             <!-- End Home -->
                         </ul>
                     </div><!--/end container-->

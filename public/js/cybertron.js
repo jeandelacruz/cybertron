@@ -200,7 +200,7 @@ var dataTables_lang_spanish = function dataTables_lang_spanish() {
 var columnsDatatable = function columnsDatatable(route) {
     var columns = '';
     if (route === 'listUsers') {
-        columns = [{ data: 'id', name: 'id' }, { data: 'name', name: 'name' }, { data: 'last_name', name: 'last_name' }, { data: 'username', name: 'username' }, { data: 'roles.0.name', name: 'rol' }, { data: 'action', name: 'action', orderable: false, searchable: false }];
+        columns = [{ data: 'id', name: 'id' }, { data: 'name', name: 'name' }, { data: 'last_name', name: 'last_name' }, { data: 'username', name: 'username' }, { data: 'roles', name: 'roles' }, { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center" }];
     }
     return columns;
 };
@@ -210,9 +210,13 @@ var dataTables = function dataTables(nombreDIV, routes) {
     $('#' + nombreDIV).dataTable().fnDestroy();
     //Creacion del DataTable
     $('#' + nombreDIV).DataTable({
+        'deferRender': true,
         'processing': true,
         'serverSide': true,
         'ajax': routes,
+        'paging': true,
+        'pageLength': 50,
+        'lengthMenu': [50, 100, 200, 300, 400, 500],
         'language': dataTables_lang_spanish(),
         'columns': columnsDatatable(nombreDIV)
     });
