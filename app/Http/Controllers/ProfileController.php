@@ -19,8 +19,7 @@ class ProfileController extends Controller
     }
 
     // Rutas por controlador
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
         if($response) return view('front');
     }
