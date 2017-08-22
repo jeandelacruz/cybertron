@@ -1,6 +1,6 @@
 <!--Left Sidebar-->
 <div class="col-md-3 md-margin-bottom-40">
-    <div class="margin-bottom-20">
+    <div class="margin-bottom-20 centerImage">
         <figure class="imghvr-fade img-circle">
             <img class="img-responsive profile-img img-circle" src="/assets/img/avatars/default.jpg" alt="">
             <figcaption>

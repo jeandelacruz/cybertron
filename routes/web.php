@@ -31,17 +31,42 @@ Route::post('viewDistrito',                     'ProfileController@viewDistrito'
 Route::post('viewDatosAcademicos',              'ProfileController@viewDatosAcademicos');
 Route::post('viewCertificaciones',              'ProfileController@viewCertificaciones');
 Route::post('viewExperiencias',                 'ProfileController@viewExperiencias');
+Route::post('viewJobs',                         'UserController@viewJobs');
+Route::post('listUsers',                        'UserController@user_list_query');
+Route::post('bioUser',                          'UserController@bioUser');
 
 // Rutas de Formularios Modal
 Route::get('formDatosAcademicos',               'ProfileController@formDatosAcademicos');
 Route::get('formCertificaciones',               'ProfileController@formCertificaciones');
 Route::get('formExperiencia',                   'ProfileController@formExperiencia');
+Route::get('formUser',                          'UserController@formUser');
+
+// Rutas para editar Formularios Modal
+Route::post('formDatosAcademicosUpdate',        'ProfileController@formDatosAcademicos');
+Route::post('formCertificacionesUpdate',        'ProfileController@formCertificaciones');
+Route::post('formExperienceUpdate',             'ProfileController@formExperiencia');
+Route::post('formUserUpdate',                   'UserController@formUser');
+Route::post('formPassUpdate',                   'UserController@formUserPass');
+
+// Rutas que extrae la data a actualizar
+Route::get('updateAcademico',                   'ProfileController@updateAcademico');
+Route::get('updateCertificado',                 'ProfileController@updateCertificado');
+Route::get('updateExperience',                  'ProfileController@updateExperience');
+Route::get('updateUser',                        'UserController@updateUser');
 
 // Rutas Acciones
 Route::post('profile/saveDatos',                'ProfileController@saveDatos')->name('savedatos');
 Route::post('profile/saveAcademico',            'ProfileController@saveAcademico')->name('saveacademico');
 Route::post('profile/saveCertificacion',        'ProfileController@saveCertificacion')->name('savecertificacion');
 Route::post('profile/saveExperiencia',          'ProfileController@saveExperiencia')->name('saveexperiencia');
+Route::post('user/saveUser',                    'UserController@saveUser')->name('saveuser');
+Route::post('user/changeStatus',                'UserController@changeStatus')->name('changestatus');
 
 // Rutas Datatables
 Route::get('tableUsers',                        'UserController@listUsers')->name('datatable.viewusers');
+
+// Rutas para Ver Usuario
+Route::post('user/viewProfile',                'UserController@viewProfile')->name('viewprofileuser');
+Route::post('user/viewDatosAcademicos',        'UserController@viewDatosAcademicos')->name('viewdatosacademicosuser');
+Route::post('user/viewCertificaciones',        'UserController@viewCertificaciones')->name('viewdatoscertificacionesuser');
+Route::post('user/viewExperiencias',           'UserController@viewExperiencias')->name('viewdatosexperienceuser');

@@ -1,5 +1,5 @@
 /**
- * Created by jdelacruz on 16/08/2017.
+ * Created by jdelacruz on 22/08/2017.
  */
 class Errors {
     constructor() { this.errors = {} }
@@ -60,14 +60,13 @@ class Form {
     submit(requestType, url) {
         return new Promise((resolve, reject) => {
             axios[requestType](url, this.data())
-            .then(response => {
-                resolve(response.data)
-                $('.modaladdExperience').modal('toggle')
-            })
-            .catch(error => {
-                    this.onFail(error.response.data)
-                reject(error.response.data)
-            })
+                .then(response => {
+                    resolve(response.data)
+                })
+                .catch(error => {
+                        this.onFail(error.response.data)
+                    reject(error.response.data)
+                })
         })
     }
 

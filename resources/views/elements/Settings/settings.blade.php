@@ -18,7 +18,7 @@
             <div id="tabdatosAcademicos" class="profile-edit tab-pane fade">
                 <h2 class="heading-md">Administra tus Datos Academicos</h2>
                 <span>
-                    <a class="pull-right" href="" onclick="bodyModal('div.bodyaddStudy','formDatosAcademicos')" data-toggle="modal" data-target=".modaladdStudy">
+                    <a class="pull-right" href="" onclick="bodyModal('div.bodyStudy','formDatosAcademicos')" data-toggle="modal" data-target=".modalStudy">
                         <i class="fa fa-plus fa-2x"></i>
                     </a>
                 </span>
@@ -30,7 +30,7 @@
             <div id="tabCertificaciones" class="profile-edit tab-pane fade">
                 <h2 class="heading-md">Administra tus Certificados</h2>
                 <span>
-                    <a class="pull-right" href="" onclick="bodyModal('div.bodyaddCertification','formCertificaciones')" data-toggle="modal" data-target=".modaladdCertification">
+                    <a class="pull-right" href="" onclick="bodyModal('div.bodyCertification','formCertificaciones')" data-toggle="modal" data-target=".modalCertification">
                         <i class="fa fa-plus fa-2x"></i>
                     </a>
                 </span>
@@ -42,7 +42,7 @@
             <div id="tabexperienciaLaboral" class="profile-edit tab-pane fade">
                 <h2 class="heading-md">Admnistra tu experiencia laboral</h2>
                 <span>
-                    <a class="pull-right" href="" onclick="bodyModal('div.bodyaddExperiencia','formExperiencia')" data-toggle="modal" data-target=".modaladdExperience">
+                    <a class="pull-right" href="" onclick="bodyModal('div.bodyExperience','formExperiencia')" data-toggle="modal" data-target=".modalExperience">
                         <i class="fa fa-plus fa-2x"></i>
                     </a>
                 </span>

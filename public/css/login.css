@@ -237,3 +237,14 @@ span > p.textError {
     color: #ffffff !important;
 }
 /* End Custom text Color */
+
+/* Avatar Image Center */
+.centerImage {
+    height: 250px;
+    left: 50%;
+    margin-left: -125px;
+    position: inherit;
+    top: 50%;
+    width: 250px;
+}
+/* End Avatar Image Center */

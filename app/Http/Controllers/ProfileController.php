@@ -11,7 +11,7 @@ use App\UsersExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class ProfileController extends CybertronController
 {
 
     public function __construct(){
@@ -42,7 +42,8 @@ class ProfileController extends Controller
             $resultado = User::Select()
                 ->with('usersInformation')
                 ->with('roles')
-                ->where('id', Auth::id())
+                ->where('users.id', Auth::id())
+                ->join('users_jobs', 'users.id_job', '=', 'users_jobs.id')
                 ->get()
                 ->toArray();
         }
@@ -141,22 +142,85 @@ class ProfileController extends Controller
         return $resultado;
     }
 
+    public function updateAcademico(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersStudies::Select()
+                ->where('id', $request->idAcademico)
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function updateCertificado(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersCertificate::Select()
+                ->where('id', $request->idCertificado)
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function updateExperience(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersExperience::Select()
+                ->where('id', $request->idExperience)
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
     // Rutas de Formulario
     public function formDatosAcademicos(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
-        if($response) return view('elements/formularios/formAcademico');
+        if($response) {
+            if($request->valueId == null){
+                return view('elements/formularios/formAcademico')->with(array(
+                    'updateForm'    => false
+                ));
+            }else{
+                return view('elements/formularios/formAcademico')->with(array(
+                    'updateForm'    => true,
+                    'id'            =>  $request->valueId
+                ));
+            }
+        }
         return view('errors/permission');
     }
 
     public function formCertificaciones(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
-        if($response) return view('elements/formularios/formCertificacion');
+        if($response) {
+            if($request->valueId == null){
+                return view('elements/formularios/formCertificacion')->with(array(
+                    'updateForm'    => false
+                ));
+            }else{
+                return view('elements/formularios/formCertificacion')->with(array(
+                    'updateForm'    => true,
+                    'id'            =>  $request->valueId
+                ));
+            }
+        }
         return view('errors/permission');
     }
 
     public function formExperiencia(Request $request){
         $response = $request->user()->authorizeRoles(['user', 'admin']);
-        if($response) return view('elements/formularios/formExperiencia');
+        if($response) {
+            if($request->valueId == null){
+                return view('elements/formularios/formExperiencia')->with(array(
+                    'updateForm'    => false
+                ));
+            }else{
+                return view('elements/formularios/formExperiencia')->with(array(
+                    'updateForm'    => true,
+                    'id'            =>  $request->valueId
+                ));
+            }
+        }
         return view('errors/permission');
     }
 
@@ -165,7 +229,8 @@ class ProfileController extends Controller
         if ($request->isMethod('post')) {
             $this->validate(request(), [
                 'Names'     => 'required',
-                'lastName'  => 'required'
+                'FirstlastName'  => 'required',
+                'SecondlastName'  => 'required'
             ]);
 
             $idUbigeo = $this->getUbigeo($request->Departamento,$request->Provincia,$request->Distrito);
@@ -178,9 +243,10 @@ class ProfileController extends Controller
 
             User::where('id', Auth::id())
                 ->update([
-                    'name'          => $request->Names,
-                    'last_name'     => $request->lastName,
-                    'email'         => $request->Email
+                    'name'                  => strtoupper($request->Names),
+                    'first_last_name'       => strtoupper($request->FirstlastName),
+                    'second_last_name'      => strtoupper($request->SecondlastName),
+                    'email'                 => $request->Email
                 ]);
 
             UserInformation::updateOrInsert([
@@ -188,9 +254,8 @@ class ProfileController extends Controller
             ], [
                 'phone_home'        => $request->numberTelephone,
                 'phone_mobile'      => $request->numberMobile,
-                'email'             => $request->Email,
                 'ubigeo_id'         => $ubigeo,
-                'address'           => $request->nameAddress,
+                'address'           => strtoupper($request->nameAddress),
                 'identity'          => $request->Document,
                 'identity_number'   => $request->numberDocument,
                 'license'           => $request->License,
@@ -214,12 +279,14 @@ class ProfileController extends Controller
                 'dateFinish'        => 'required'
             ]);
 
-            UsersStudies::create([
+            UsersStudies::updateOrInsert([
+                'id' => $request->idAcademico
+            ], [
                 'user_id'               => Auth::id(),
-                'type_institute'        => $request->typeInstitute,
-                'situation_academy'     => $request->situationAcademy,
-                'name_institute'        => $request->nameInstitution,
-                'name_career'           => $request->nameCareer,
+                'type_institute'        => strtolower($request->typeInstitute),
+                'situation_academy'     => strtolower($request->situationAcademy),
+                'name_institute'        => strtoupper($request->nameInstitution),
+                'name_career'           => strtoupper($request->nameCareer),
                 'date_begin'            => $request->dateBegin,
                 'date_finish'           => $request->dateFinish
             ]);
@@ -238,12 +305,14 @@ class ProfileController extends Controller
                 'dateFinish'            => 'required'
             ]);
 
-            UsersCertificate::create([
-                'user_id'               => Auth::id(),
-                'name_institute'        => $request->nameInstitution,
-                'name_certificate'      => $request->nameCertification,
-                'date_begin'            => $request->dateBegin,
-                'date_finish'           => $request->dateFinish
+            UsersCertificate::updateOrInsert([
+                'id' => $request->idCertificado
+            ], [
+                'user_id'                   => Auth::id(),
+                'name_institute'            => strtoupper($request->nameInstitution),
+                'name_certificate'          => strtoupper($request->nameCertification),
+                'date_begin'                => $request->dateBegin,
+                'date_finish'               => $request->dateFinish
             ]);
 
             return ['message' => 'Success'];
@@ -261,10 +330,12 @@ class ProfileController extends Controller
                 'dateFinish'        => 'required'
             ]);
 
-            UsersExperience::create([
+            UsersExperience::updateOrInsert([
+                'id' => $request->idExperience
+            ], [
                 'user_id'               => Auth::id(),
-                'name_job'              => $request->namePuesto,
-                'name_business'         => $request->nameEmpresa,
+                'name_job'              => strtoupper($request->namePuesto),
+                'name_business'         => strtoupper($request->nameEmpresa),
                 'review_business'       => $request->reviewPuesto,
                 'date_begin'            => $request->dateBegin,
                 'date_finish'           => $request->dateFinish

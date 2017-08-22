@@ -13,11 +13,15 @@
                 <div class="row margin-bottom-20">
                     <div class="col-xs-6 service-in">
                         <small v-text="typeDocument"></small>
-                        <h4 class="counter" v-text="numberDocument"></h4>
                     </div>
                     <div class="col-xs-6 text-right service-in">
+                        <h4 class="counter" v-text="numberDocument"></h4>
+                    </div>
+                    <div class="col-xs-6 service-in">
                         <small>Cargo</small>
-                        <h4 v-text="roleUser"></h4>
+                    </div>
+                    <div class="col-xs-6 text-right service-in">
+                        <h4 class="tooltips" v-text="roleUser.substring(0, 19) + '...'" data-toggle="tooltip" data-placement="bottom" title="" :data-original-title="roleUser"></h4>
                     </div>
                 </div>
             </div>
@@ -50,47 +54,64 @@
     <hr>
 
     <div class="row margin-bottom-20">
-        <!--Profile Post
-        <div class="col-sm-6">
+        <!--Profile Post-->
+        <div class="col-sm-12">
             <div class="panel panel-profile no-bg">
                 <div class="panel-heading panel-headFix overflow-h">
                     <h2 class="panel-title heading-sm pull-left"><i class="fa fa-users"></i>Directorio</h2>
-                    <a href="javascript:void(0)"><i class="fa fa-refresh pull-right"></i></a>
+                    <a style="cursor: pointer;" v-on:click="loadUser()"><i class="fa fa-refresh pull-right"></i></a>
                 </div>
                 <div id="scrollbar" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
-                    <div class="profile-event">
-                        <div class="alert alert-info fade in text-center">
-                            <h4>En Desarrollo</h4>
+                    <div class="row">
+                        <div v-for="(item, index) in listUser">
+                            <div class="col-sm-12">
+                            <div class="profile-blog blog-border">
+                                <img class="rounded-x" src="/assets/img/avatars/default.jpg" alt="">
+                                <div class="overflow-h">
+                                    <div class="col-sm-12">
+                                        <strong v-text="nameUserList[index]"></strong>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="fa fa-envelope text-primary"></i> <span> @{{ item.email  }} </span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div v-if="item.users_information === null">
+                                            <i class="fa fa-mobile text-primary"></i> <span> - </span>
+                                        </div>
+                                        <div v-else-if="countphoneMobil[index]">
+                                            <i class="fa fa-mobile text-primary"></i> <span> @{{ item.users_information.phone_mobile }} </span>
+                                        </div>
+                                        <div v-else>
+                                            <i class="fa fa-mobile text-primary"></i> <span> - </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div v-if="item.users_information === null">
+                                            <i class="fa fa-phone text-primary"></i> <span> - </span>
+                                        </div>
+                                        <div v-else-if="countPhone[index]">
+                                            <i class="fa fa-phone text-primary"></i> <span> @{{ item.users_information.phone_home }} </span>
+                                        </div>
+                                        <div v-else>
+                                            <i class="fa fa-phone text-primary"></i> <span> - </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!--End Profile Post-->
-
-        <!--Profile Event
-        <div class="col-sm-6 md-margin-bottom-20">
-            <div class="panel panel-profile no-bg">
-                <div class="panel-heading panel-headFix overflow-h">
-                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-twitter"></i>Notificaciones</h2>
-                    <a href="javascript:void(0)"><i class="fa fa-refresh pull-right"></i></a>
-                </div>
-                <div id="scrollbar2" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
-                    <div class="profile-event">
-                        <div class="alert alert-info fade in text-center">
-                            <h4>En Desarrollo</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--End Profile Event-->
     </div><!--/end row-->
 </div>
 <!-- End Profile Content -->
 <script src="{!! asset('js/vueFront.js?version='.date('YmdHis'))!!}"></script>
 <script>
     $(function() {
+        $('.tooltips').tooltip()
         Unify.initScrollBar()
     })
 </script>

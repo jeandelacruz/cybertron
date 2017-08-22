@@ -21,7 +21,8 @@ var vmDatosPersonales = new Vue({
         oldProvincia: '',
         form: new Form({
             Names: '',
-            lastName: '',
+            FirstlastName: '',
+            SecondlastName: '',
             Departamento: '',
             Provincia: '',
             Distrito: '',
@@ -45,15 +46,16 @@ var vmDatosPersonales = new Vue({
         loadData(){
             axios.post('viewProfile')
                 .then(response => {
-                    this.form.Names = response.data[0].name
-                    this.form.lastName = response.data[0].last_name
+                    this.form.Names = CharUpper(response.data[0].name)
+                    this.form.FirstlastName = CharUpper(response.data[0].first_last_name)
+                    this.form.SecondlastName = CharUpper(response.data[0].second_last_name)
+                    this.form.Email = response.data[0].email
                     this.loadDepartamento()
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.form.nameAddress = profileUser.address
                         this.form.numberTelephone = profileUser.phone_home
                         this.form.numberMobile = profileUser.phone_mobile
-                        this.form.Email = profileUser.email
                         this.form.Document = profileUser.identity
                         this.form.numberDocument = profileUser.identity_number
                         this.form.License = profileUser.license
@@ -162,7 +164,7 @@ var vmDatosPersonales = new Vue({
     }
 })
 
-singleDate('dateBirthday')
+singleDate('dateBirthday', 'up')
 $('input[name=dateBirthday]').on('apply.daterangepicker', function (ev, picker) {
     vmDatosPersonales.form.dateBirthday = picker.startDate.format('YYYY-MM-DD')
 })

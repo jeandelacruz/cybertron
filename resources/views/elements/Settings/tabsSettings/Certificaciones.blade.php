@@ -3,7 +3,7 @@
         <div class="alert alert-info text-center">
             <div class="row">
                 <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con certificaciones </h2>
-                <a class="btn btn-primary btn-sm" onclick="bodyModal('div.bodyaddCertification','formCertificaciones')" data-toggle="modal" data-target=".modaladdCertification">
+                <a class="btn btn-primary btn-sm" onclick="bodyModal('div.bodyCertification','formCertificaciones')" data-toggle="modal" data-target=".modalCertification">
                     <i class="fa fa-plus"></i> Agregalos Aqui !
                 </a>
             </div>
@@ -22,14 +22,14 @@
                         </div>
                         <div class="col-md-7">
                             <dt class="text-primary">Certificado</dt>
-                            <dd class="text-bold">@{{ item.name_certificate }}</dd>
+                            <dd class="text-bold" v-text="nameCertificate[index]"></dd>
                             <dt class="text-primary">Fecha de Inicio</dt>
-                            <dd class="text-bold">@{{ item.date_begin }}</dd>
+                            <dd class="text-bold" v-text="dateBegin[index]"></dd>
                             <dt class="text-primary">Fecha de Fin</dt>
-                            <dd class="text-bold">@{{ item.date_finish }}</dd>
+                            <dd class="text-bold" v-text="dateFinish[index]"></dd>
                         </div>
                         <div class="col-md-1">
-                            <i class="fa fa-edit fa-2x text-primary"></i>
+                            <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate()" data-toggle="modal" data-target=".modalCertification"></i>
                         </div>
                     </dl>
                 </div>

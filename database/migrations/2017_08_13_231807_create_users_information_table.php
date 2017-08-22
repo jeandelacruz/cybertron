@@ -18,7 +18,6 @@ class CreateUsersInformationTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('phone_home',8)->nullable();
             $table->string('phone_mobile',9)->nullable();
-            $table->string('email')->unique()->nullable();
             $table->string('ubigeo_id',6)->nullable();
             $table->string('address')->nullable();
             $table->date('datebirthday')->nullable();

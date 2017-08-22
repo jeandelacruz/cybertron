@@ -77,7 +77,12 @@ mix.babel([
 mix.babel([
     'resources/assets/cybertron/js/vue/class/vmExperiencia.js',
     'resources/assets/cybertron/js/vue/vmExperiencia.js'
-], 'public/js/vueExperiencia.js').version();
+], 'public/js/vueExperiencia.js').version()
+
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmbioUser.js',
+    'resources/assets/cybertron/js/vue/vmbioUser.js'
+], 'public/js/vuebioUser.js').version();
 
 mix.babel([
     'resources/assets/cybertron/js/vue/class/vmAcademicos.js',
@@ -93,6 +98,11 @@ mix.babel([
     'resources/assets/cybertron/js/vue/class/vmExperiencia.js',
     'resources/assets/cybertron/js/vue/form/vmExperiencia.js'
 ], 'public/js/formExperiencia.js').version();
+
+mix.babel([
+    'resources/assets/cybertron/js/vue/class/vmUser.js',
+    'resources/assets/cybertron/js/vue/form/vmUser.js'
+], 'public/js/formUser.js').version();
 
 mix.babel([
     'resources/assets/cybertron/js/app.js',

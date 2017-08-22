@@ -3,7 +3,7 @@
         <div class="alert alert-info text-center">
             <div class="row">
                 <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con Experiencia Laboral </h2>
-                <a class="btn btn-primary btn-sm" onclick="bodyModal('div.bodyaddExperiencia','formExperiencia')" data-toggle="modal" data-target=".modaladdExperience">
+                <a class="btn btn-primary btn-sm" onclick="bodyModal('div.bodyExperience','formExperiencia')" data-toggle="modal" data-target=".modalExperience">
                     <i class="fa fa-plus"></i> Agregalos Aqui !
                 </a>
             </div>
@@ -19,18 +19,18 @@
                     <dl class="dl-horizontal">
                         <div class="col-md-4 text-center">
                             <dt class="text-primary">Empresa</dt>
-                            <dd class="text-bold">@{{ item.name_business }}</dd>
+                            <dd class="text-bold" v-text="nameBusiness[index]"></dd>
                             <dt class="text-primary">Puesto Laboral</dt>
-                            <dd class="text-bold">@{{ item.name_job }}</dd>
+                            <dd class="text-bold" v-text="nameJob[index]"></dd>
                         </div>
                         <div class="col-md-7 text-center">
                             <dt class="text-primary">Desde</dt>
-                            <dd class="text-bold">@{{ item.date_begin }}</dd>
+                            <dd class="text-bold" v-text="dateBegin[index]"></dd>
                             <dt class="text-primary">Hasta</dt>
-                            <dd class="text-bold">@{{ item.date_finish }}</dd>
+                            <dd class="text-bold" v-text="dateFinish[index]"></dd>
                         </div>
                         <div class="col-md-1">
-                            <i class="fa fa-edit fa-2x text-primary"></i>
+                            <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate()" data-toggle="modal" data-target=".modalExperience"></i>
                         </div>
                         <div class="col-md-12">
                             <dl class="dl-horizontal"><dd></dd></dl>

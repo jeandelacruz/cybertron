@@ -12,7 +12,13 @@
                 <div class="col-md-6">
                     <ul class="footer-socials list-inline">
                         <li>
-                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sitema CP Beta">
+                            <?php
+                                $hostname =explode('.sapia.pe',gethostname());
+                                echo  $hostname[0];
+                            ?>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sistema Cybertron 1.1">
                                 <i class="fa fa-adn"></i>
                             </a>
                         </li>

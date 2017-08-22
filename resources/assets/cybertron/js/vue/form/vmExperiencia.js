@@ -9,7 +9,8 @@ var vmFormExperiencia = new Vue({
             nameEmpresa: '',
             reviewPuesto: '',
             dateBegin: '',
-            dateFinish: ''
+            dateFinish: '',
+            idExperience: ''
         })
     },
     methods: {
@@ -17,15 +18,29 @@ var vmFormExperiencia = new Vue({
             $('.btnExperiencia').html('<i class="fa fa-spin fa-spinner"></i> Cargando')
             this.form.post('/profile/saveExperiencia')
                 .then(response => {
-                    console.log(response)
                     $('.btnExperiencia').html('<i class="fa fa-save"></i> Guardar Cambios')
                     vmExperiencia.loadData()
-                    alertaSimple('','Tu Experiencia laboral se registro correctamente','success')
+                    alertaSimple('','Tú Experiencia laboral se edito correctamente','success')
                 })
                 .catch(error => {
                     $('.btnExperiencia').html('<i class="fa fa-save"></i> Guardar Cambios')
                     alertaSimple('','No completaste los campos correctamente o</br>Ha ocurrido un problema<br>Comunicarse con los especialistas','error','4000')
                 })
+        },
+        loadExperience() {
+            axios.get('/updateExperience', {
+                params: {
+                    idExperience: this.form.idExperience
+                }
+            })
+            .then(response => {
+                this.form.namePuesto = CharUpper(response.data[0].name_job)
+                this.form.nameEmpresa = CharUpper(response.data[0].name_business)
+                this.form.reviewPuesto = response.data[0].review_business
+                this.form.dateBegin = response.data[0].date_begin
+                this.form.dateFinish = response.data[0].date_finish
+            })
+            .catch(error => console.log(error))
         }
     }
 })

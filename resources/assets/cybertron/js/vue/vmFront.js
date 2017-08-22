@@ -9,17 +9,52 @@ var vmProfile = new Vue({
         numberDocument: '-',
         roleUser: '-',
         dateBirthday: '-',
-        daysBirthday: '-'
+        daysBirthday: '-',
+        listUser: []
     },
     mounted() {
         this.loadProfile()
+        this.loadUser()
+    },
+    computed: {
+        nameUserList() {
+            return this.listUser.map(function(item) {
+                return CharUpper(item.name + ' ' + item.first_last_name + ' ' + item.second_last_name)
+            })
+        },
+        countphoneMobil() {
+            return this.listUser.map(function(item) {
+                if(item.users_information === null){
+                    return false
+                }else{
+                    if(item.users_information.phone_mobile === null){
+                        return false
+                    }else{
+                        return true
+                    }
+                }
+            })
+        },
+        countPhone() {
+            return this.listUser.map(function(item) {
+                if(item.users_information === null){
+                    return false
+                }else{
+                    if(item.users_information.phone_home === null){
+                        return false
+                    }else{
+                        return true
+                    }
+                }
+            })
+        }
     },
     methods: {
         loadProfile(){
             axios.post('viewProfile')
                 .then(response => {
-                    this.nameComplete = response.data[0].name + ' ' + response.data[0].last_name
-                    this.roleUser = CharUpper(response.data[0].roles[0].name)
+                    this.nameComplete = CharUpper(response.data[0].name + ' ' + response.data[0].first_last_name + ' ' + response.data[0].second_last_name)
+                    this.roleUser = CharUpper(response.data[0].name_job)
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.typeDocument = (profileUser.identity).toUpperCase()
@@ -33,6 +68,11 @@ var vmProfile = new Vue({
                     }
                 })
                 .catch(err => { console.log(err) })
+        },
+        loadUser(){
+            axios.post('/listUsers')
+                .then(response => this.listUser = response.data)
+                .catch(error => console.log(error))
         }
     }
 })

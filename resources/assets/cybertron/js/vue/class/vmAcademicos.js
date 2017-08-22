@@ -62,7 +62,7 @@ class Form {
             axios[requestType](url, this.data())
             .then(response => {
                 resolve(response.data)
-                $('.modaladdStudy').modal('toggle')
+                $('.modalStudy').modal('toggle')
             })
             .catch(error => {
                 this.onFail(error.response.data)

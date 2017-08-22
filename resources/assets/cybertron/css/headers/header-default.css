@@ -1027,7 +1027,7 @@ body.header-fixed-space-default {
 
 /*z-index fixed in v1.9 for layer slider arrows*/
 .header-fixed .header.header-fixed-shrink {
-	z-index: 10100;
+	z-index: 1040;
 	border-bottom: none;
 	box-shadow: 0 0 3px #bbb;
 	background: rgba(255,255,255, 0.96);

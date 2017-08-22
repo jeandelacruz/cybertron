@@ -1,9 +1,6 @@
 /**
  * Created by jdelacruz on 15/08/2017.
  */
-/**
- * Created by jdelacruz on 9/08/2017.
- */
 class Errors {
     constructor() { this.errors = {} }
 
@@ -65,7 +62,7 @@ class Form {
             axios[requestType](url, this.data())
             .then(response => {
                 resolve(response.data)
-                $('.modaladdCertification').modal('toggle')
+                $('.modalCertification').modal('toggle')
             })
             .catch(error => {
                     this.onFail(error.response.data)
