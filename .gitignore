@@ -10,6 +10,7 @@ bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
+storage/*
 public/storage
 public/hot
 storage/*.key
@@ -24,7 +25,10 @@ Homestead.json
 
 # Carpeta Public
 public/assets/*
+public/css/cybertron.css
+public/css/login.css
 public/css/*
 public/fonts/*
 public/js/*
+public/js/cybertron.js
 public/mix-manifest.json
