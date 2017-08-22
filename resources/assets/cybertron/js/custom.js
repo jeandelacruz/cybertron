@@ -310,7 +310,10 @@ const dataTables = (nombreDIV, routes) => {
         'deferRender': true,
         'processing': true,
         'serverSide': true,
-        'ajax': routes,
+        'ajax': {
+            url: routes,
+            type: 'POST'
+        },
         'paging': true,
         'pageLength': 50,
         'lengthMenu': [50, 100, 200, 300, 400, 500],

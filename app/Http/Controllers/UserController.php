@@ -162,7 +162,7 @@ class UserController extends CybertronController
     }
 
     public function listUsers(Request $request){
-        if ($request->isMethod('get')) {
+        if ($request->isMethod('post')) {
             $query_user_list        = $this->user_list_query();
             $builderview            = $this->builderview($query_user_list);
             $outgoingcollection     = $this->outgoingcollection($builderview);

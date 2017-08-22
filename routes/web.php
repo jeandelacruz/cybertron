@@ -63,7 +63,7 @@ Route::post('user/saveUser',                    'UserController@saveUser')->name
 Route::post('user/changeStatus',                'UserController@changeStatus')->name('changestatus');
 
 // Rutas Datatables
-Route::get('tableUsers',                        'UserController@listUsers')->name('datatable.viewusers');
+Route::post('tableUsers',                        'UserController@listUsers')->name('datatable.viewusers');
 
 // Rutas para Ver Usuario
 Route::post('user/viewProfile',                'UserController@viewProfile')->name('viewprofileuser');
