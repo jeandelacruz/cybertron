@@ -39,7 +39,7 @@ var vmExperiencia = new Vue({
         },
         onUpdate() {
             return this.experience.map(function(item) {
-                return updateModal('div.bodyExperience','formDatosAcademicosUpdate', item.id)
+                return updateModal('div.bodyExperience','formExperienceUpdate', item.id)
             })
         }
     }

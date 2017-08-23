@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\UsersJob;
+use Cybertron\UsersJob;
 
 class UserJobTableSeeder extends Seeder
 {

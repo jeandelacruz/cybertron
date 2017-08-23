@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-        <h4 id="myLargeModalLabel3" class="modal-title">Agregar Experiencia Laboral</h4>
+        <h4 id="myLargeModalLabel3" class="modal-title">{{ $updateForm === true ? "Editar" : "Agregar" }} Experiencia Laboral</h4>
     </div>
     <div class="modal-body">
         <form id="formExperiencia" @submit.prevent="onSubmit" class="sky-form" @keydown="form.errors.clear($event.target.name)">
