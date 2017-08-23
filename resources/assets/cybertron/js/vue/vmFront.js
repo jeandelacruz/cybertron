@@ -19,7 +19,13 @@ var vmProfile = new Vue({
     computed: {
         nameUserList() {
             return this.listUser.map(function(item) {
-                return CharUpper(item.name + ' ' + item.first_last_name + ' ' + item.second_last_name)
+                let Name  = ''
+                let firstLastname = ''
+                let secondLastname = ''
+                if(item.name === null || item.name === ''){ Name = '-' }else{ Name = CharUpper(item.name) }
+                if(item.first_last_name === null || item.first_last_name === ''){ firstLastname = '-' }else{ firstLastname = CharUpper(item.first_last_name) }
+                if(item.second_last_name === null || item.second_last_name === ''){ secondLastname = '-' }else{ secondLastname = CharUpper(item.second_last_name) }
+                return Name + ' ' + firstLastname + ' ' + secondLastname
             })
         },
         countphoneMobil() {
@@ -60,7 +66,7 @@ var vmProfile = new Vue({
         loadProfile(){
             axios.post('viewProfile')
                 .then(response => {
-                    this.nameComplete = CharUpper(response.data[0].name + ' ' + response.data[0].first_last_name + ' ' + response.data[0].second_last_name)
+                    this.nameComplete = CharUpper(response.data[0].name) + ' ' + CharUpper(response.data[0].first_last_name) + ' ' + CharUpper(response.data[0].second_last_name)
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.typeDocument = (profileUser.identity).toUpperCase()

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Cybertron\Http\Controllers\Auth;
 
-use App\Http\Controllers\CybertronController;
+use Cybertron\Http\Controllers\CybertronController;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends CybertronController

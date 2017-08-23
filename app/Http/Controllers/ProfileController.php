@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Cybertron\Http\Controllers;
 
-use App\Ubigeos;
-use App\User;
-use App\UserInformation;
-use App\UsersStudies;
-use App\UsersCertificate;
-use App\UsersExperience;
+use Cybertron\Ubigeos;
+use Cybertron\User;
+use Cybertron\UserInformation;
+use Cybertron\UsersStudies;
+use Cybertron\UsersCertificate;
+use Cybertron\UsersExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProfileController extends CybertronController
 {
@@ -253,9 +254,9 @@ class ProfileController extends CybertronController
 
             User::where('id', Auth::id())
                 ->update([
-                    'name'                  => strtoupper($request->Names),
-                    'first_last_name'       => strtoupper($request->FirstlastName),
-                    'second_last_name'      => strtoupper($request->SecondlastName),
+                    'name'                  => Str::upper($request->Names),
+                    'first_last_name'       => Str::upper($request->FirstlastName),
+                    'second_last_name'      => Str::upper($request->SecondlastName),
                     'email'                 => $request->Email
                 ]);
 
@@ -265,7 +266,7 @@ class ProfileController extends CybertronController
                 'phone_home'        => $request->numberTelephone,
                 'phone_mobile'      => $request->numberMobile,
                 'ubigeo_id'         => $ubigeo,
-                'address'           => strtoupper($request->nameAddress),
+                'address'           => Str::upper($request->nameAddress),
                 'identity'          => $request->Document,
                 'identity_number'   => $request->numberDocument,
                 'license'           => $request->License,
@@ -293,10 +294,10 @@ class ProfileController extends CybertronController
                 'id' => $request->idAcademico
             ], [
                 'user_id'               => Auth::id(),
-                'type_institute'        => strtolower($request->typeInstitute),
-                'situation_academy'     => strtolower($request->situationAcademy),
-                'name_institute'        => strtoupper($request->nameInstitution),
-                'name_career'           => strtoupper($request->nameCareer),
+                'type_institute'        => Str::lower($request->typeInstitute),
+                'situation_academy'     => Str::lower($request->situationAcademy),
+                'name_institute'        => Str::upper($request->nameInstitution),
+                'name_career'           => Str::upper($request->nameCareer),
                 'date_begin'            => $request->dateBegin,
                 'date_finish'           => $request->dateFinish
             ]);
@@ -319,8 +320,8 @@ class ProfileController extends CybertronController
                 'id' => $request->idCertificado
             ], [
                 'user_id'                   => Auth::id(),
-                'name_institute'            => strtoupper($request->nameInstitution),
-                'name_certificate'          => strtoupper($request->nameCertification),
+                'name_institute'            => Str::upper($request->nameInstitution),
+                'name_certificate'          => Str::upper($request->nameCertification),
                 'date_begin'                => $request->dateBegin,
                 'date_finish'               => $request->dateFinish
             ]);
@@ -344,8 +345,8 @@ class ProfileController extends CybertronController
                 'id' => $request->idExperience
             ], [
                 'user_id'               => Auth::id(),
-                'name_job'              => strtoupper($request->namePuesto),
-                'name_business'         => strtoupper($request->nameEmpresa),
+                'name_job'              => Str::upper($request->namePuesto),
+                'name_business'         => Str::upper($request->nameEmpresa),
                 'review_business'       => $request->reviewPuesto,
                 'date_begin'            => $request->dateBegin,
                 'date_finish'           => $request->dateFinish

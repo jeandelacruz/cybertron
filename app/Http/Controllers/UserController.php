@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Cybertron\Http\Controllers;
 
-use App\User;
-use App\Role;
-use App\UsersJob;
-use App\UsersStudies;
-use App\UsersCertificate;
-use App\UsersExperience;
+use Cybertron\User;
+use Cybertron\Role;
+use Cybertron\UsersJob;
+use Cybertron\UsersStudies;
+use Cybertron\UsersCertificate;
+use Cybertron\UsersExperience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UserController extends CybertronController
 {
@@ -100,9 +101,9 @@ class UserController extends CybertronController
                 ]);
 
                 $user = User::create([
-                    'username'      => strtolower($request->userRed),
-                    'password'      => bcrypt(strtolower($request->userRed)),
-                    'email'         => strtolower($request->userRed).'@sapia.com.pe',
+                    'username'      => Str::lower($request->userRed),
+                    'password'      => bcrypt(Str::lower($request->userRed)),
+                    'email'         => Str::lower($request->userRed).'@sapia.com.pe',
                     'status_id'     => '1',
                     'id_job'        => $id_job[0]['id']
                 ]);
@@ -119,7 +120,7 @@ class UserController extends CybertronController
 
                     User::where('id', $request->idUser)
                         ->update([
-                            'username'  => strtolower($request->userRed),
+                            'username'  => Str::lower($request->userRed),
                             'id_job'    => $id_job[0]['id']
                         ]);
                 }else{
@@ -130,8 +131,8 @@ class UserController extends CybertronController
 
                     User::where('id', $request->idUser)
                         ->update([
-                            'username'  => strtolower($request->userRed),
-                            'password'  => bcrypt(strtolower($request->passUser)),
+                            'username'  => Str::lower($request->userRed),
+                            'password'  => bcrypt(Str::lower($request->passUser)),
                             'id_job'    => $id_job[0]['id']
                         ]);
                 }
@@ -187,8 +188,8 @@ class UserController extends CybertronController
         foreach ($user_list_query as $query) {
             $idList ++;
             $builderview[$posicion]['id']           = $idList;
-            $builderview[$posicion]['name']         = ucwords(strtolower($query['name']));
-            $builderview[$posicion]['last_name']    = ucwords(strtolower($query['first_last_name'].' '.$query['second_last_name']));
+            $builderview[$posicion]['name']         = ucwords(Str::lower($query['name']));
+            $builderview[$posicion]['last_name']    = ucwords(Str::lower($query['first_last_name'].' '.$query['second_last_name']));
             $builderview[$posicion]['username']     = $query['username'];
             $builderview[$posicion]['roles']        = ucwords($query['roles'][0]['name']);
             $builderview[$posicion]['status']       = $query['status_id'];

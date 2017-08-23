@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Cybertron;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function roles(){
         return $this
-                ->belongsToMany('App\Role')
+                ->belongsToMany('Cybertron\Role')
                 ->withTimestamps();
     }
 
@@ -68,17 +68,17 @@ class User extends Authenticatable
 
     public function usersInformation(){
         return $this
-            ->hasOne('App\UserInformation');
+            ->hasOne('Cybertron\UserInformation');
     }
 
     public function usersStudies(){
         return $this
-            ->hasMany('App\UsersStudies');
+            ->hasMany('Cybertron\UsersStudies');
     }
 
     public function usersExperience(){
         return $this
-            ->hasMany('App\UsersExperience');
+            ->hasMany('Cybertron\UsersExperience');
     }
 
 }

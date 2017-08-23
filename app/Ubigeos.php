@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Cybertron;
 
 use Illuminate\Database\Eloquent\Model;
 
