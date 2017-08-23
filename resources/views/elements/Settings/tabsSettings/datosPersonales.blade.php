@@ -1,6 +1,5 @@
 <div id="datosPersonales">
     <form class="sky-form" id="formDatosPersonales" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
-    {{ csrf_field() }}
     <dl class="dl-horizontal">
         <div class="headline">
             <h3>Identificación</h3>

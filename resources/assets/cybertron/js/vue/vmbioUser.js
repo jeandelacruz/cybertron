@@ -26,10 +26,8 @@ var vmBio = new Vue({
         loadProfile(){
             axios.post('/user/viewProfile', {
                 idUser: this.idUser
-            })
-            .then(response => {
+            }).then(response => {
                 this.nameComplete = CharUpper(response.data[0].name + ' ' + response.data[0].first_last_name + ' ' + response.data[0].second_last_name)
-                this.roleUser = CharUpper(response.data[0].name_job)
                 this.Email = response.data[0].email
                 let profileUser = response.data[0].users_information
                 if(profileUser){
@@ -51,8 +49,13 @@ var vmBio = new Vue({
                         this.daysBirthday = validateBirthday(profileUser.datebirthday)
                     }
                 }
-            })
-            .catch(err => { console.log(err) })
+            }).catch(err => console.log(err))
+
+            axios.post('/user/viewJob', {
+                idUser: this.idUser
+            }).then(response => {
+                this.roleUser = CharUpper(response.data[0].name_job)
+            }).catch(err => console.log(err))
         }
     }
 })
@@ -86,7 +89,7 @@ var vmBioDatosAcademicos = new Vue({
     },
     methods: {
         loadAcademy() {
-            axios.post('/viewDatosAcademicos', {
+            axios.post('/user/viewDatosAcademicos', {
                     idUser: vmBio.idUser
                 })
                 .then(response => this.academy = response.data)
@@ -119,7 +122,9 @@ var vmBioCertificaciones = new Vue({
     },
     methods: {
         loadCertificaciones() {
-            axios.post('/user/viewCertificaciones')
+            axios.post('/user/viewCertificaciones', {
+                    idUser: vmBio.idUser
+                })
                 .then(response => this.certificate = response.data)
                 .catch(error => console.log(error))
         }
@@ -155,7 +160,9 @@ var vmBioExperiencia = new Vue({
     },
     methods: {
         loadExperience() {
-            axios.post('/user/viewExperiencias')
+            axios.post('/user/viewExperiencias', {
+                    idUser: vmBio.idUser
+                })
                 .then(response => this.experience = response.data)
                 .catch(error => console.log(error))
         }

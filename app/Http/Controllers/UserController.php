@@ -231,6 +231,16 @@ class UserController extends CybertronController
             $resultado = User::Select()
                 ->with('usersInformation')
                 ->with('roles')
+                ->where('id', $request->idUser)
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function viewUserJob(Request $request){
+        if ($request->isMethod('post')) {
+            $resultado = User::Select()
                 ->where('users.id', $request->idUser)
                 ->join('users_jobs', 'users.id_job', '=', 'users_jobs.id')
                 ->get()

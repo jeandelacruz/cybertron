@@ -21,7 +21,7 @@
                         <small>Cargo</small>
                     </div>
                     <div class="col-xs-6 text-right service-in">
-                        <h4 class="tooltips" v-text="roleUser.substring(0, 19) + '...'" data-toggle="tooltip" data-placement="bottom" title="" :data-original-title="roleUser"></h4>
+                        <h4 class="tooltips" v-text="UserRole" data-toggle="tooltip" data-placement="bottom" title="" :data-original-title="UserRole"></h4>
                     </div>
                 </div>
             </div>

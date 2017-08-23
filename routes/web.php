@@ -31,6 +31,7 @@ Route::post('viewDistrito',                     'ProfileController@viewDistrito'
 Route::post('viewDatosAcademicos',              'ProfileController@viewDatosAcademicos');
 Route::post('viewCertificaciones',              'ProfileController@viewCertificaciones');
 Route::post('viewExperiencias',                 'ProfileController@viewExperiencias');
+Route::post('viewProfileJob',                   'ProfileController@viewProfileJob');
 Route::post('viewJobs',                         'UserController@viewJobs');
 Route::post('listUsers',                        'UserController@user_list_query');
 Route::post('bioUser',                          'UserController@bioUser');
@@ -67,6 +68,7 @@ Route::post('tableUsers',                        'UserController@listUsers')->na
 
 // Rutas para Ver Usuario
 Route::post('user/viewProfile',                'UserController@viewProfile')->name('viewprofileuser');
+Route::post('user/viewJob',                    'UserController@viewUserJob')->name('viewjobuser');
 Route::post('user/viewDatosAcademicos',        'UserController@viewDatosAcademicos')->name('viewdatosacademicosuser');
 Route::post('user/viewCertificaciones',        'UserController@viewCertificaciones')->name('viewdatoscertificacionesuser');
 Route::post('user/viewExperiencias',           'UserController@viewExperiencias')->name('viewdatosexperienceuser');

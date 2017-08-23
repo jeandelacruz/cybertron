@@ -1,4 +1,4 @@
-<div id="datosCertificaciones">
+<div id="datosCertificaciones" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
     <div v-if="certificate.length == 0">
         <div class="alert alert-info text-center">
             <div class="row">

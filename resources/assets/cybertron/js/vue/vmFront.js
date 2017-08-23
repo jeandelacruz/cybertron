@@ -47,6 +47,13 @@ var vmProfile = new Vue({
                     }
                 }
             })
+        },
+        UserRole() {
+            if((this.roleUser).length > 19){
+                return this.roleUser.substring(0, 19) + '...'
+            }else{
+                return this.roleUser
+            }
         }
     },
     methods: {
@@ -54,7 +61,6 @@ var vmProfile = new Vue({
             axios.post('viewProfile')
                 .then(response => {
                     this.nameComplete = CharUpper(response.data[0].name + ' ' + response.data[0].first_last_name + ' ' + response.data[0].second_last_name)
-                    this.roleUser = CharUpper(response.data[0].name_job)
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.typeDocument = (profileUser.identity).toUpperCase()
@@ -67,7 +73,13 @@ var vmProfile = new Vue({
                         }
                     }
                 })
-                .catch(err => { console.log(err) })
+                .catch(err => console.log(err))
+
+            axios.post('viewProfileJob')
+                .then(response => {
+                    this.roleUser = CharUpper(response.data[0].name_job)
+                })
+                .catch(err => console.log(err))
         },
         loadUser(){
             axios.post('/listUsers')

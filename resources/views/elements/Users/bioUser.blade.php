@@ -99,7 +99,7 @@
                     <div class="headline">
                         <h2>Certificaciones</h2>
                     </div>
-                    <div id="datosBioCertificaciones">
+                    <div id="datosBioCertificaciones" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
                         <div v-if="certificate.length == 0">
                             <div class="alert alert-info text-center">
                                 <div class="row">
@@ -150,7 +150,7 @@
                         </div>
                         <div v-else>
                             <div v-for="(item, index) in experience">
-                                <div class="panel panel-default">
+                                <div class="panel panel-warning">
                                     <div class="panel-heading">
                                         <h1 class="panel-title"><i class="fa fa-building"></i> <span class="text-bold">@{{ item.name_job + ' en : ' + item.name_business }}</span></h1>
                                     </div>
@@ -170,7 +170,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <dl class="dl-horizontal"><dd></dd></dl>
-                                                <div class="panel panel-default">
+                                                <div class="panel panel-warning">
                                                     <div class="panel-heading text-center">
                                                         <span class="panel-title" style="cursor:pointer;" class="accordion-toggle" data-toggle="collapse" :data-parent="'#accordion-'+item.id" :href="'#collapse-'+item.id">
                                                             Funcionalidades y Responsabilidades <i class="fa fa-unsorted"></i>
@@ -200,6 +200,15 @@
 </div>
 <script src="{!! asset('js/vuebioUser.js?version='.date('YmdHis'))!!}"></script>
 <script>
+    $(function() {
+        $('.mCustomScrollbar').mCustomScrollbar({
+            theme:"minimal",
+            setHeight: '190px',
+            scrollEasing: "linear",
+            autoHideScrollbar: true,
+            scrollButtons: true
+        })
+    })
     vmBio.idUser =  {{ $id }}
     vmBio.loadProfile()
     vmBioDatosAcademicos.loadAcademy()

@@ -41,6 +41,7 @@ var vmDatosPersonales = new Vue({
     },
     mounted()  {
         this.loadData()
+        this.loadDepartamento()
     },
     methods: {
         loadData(){
@@ -50,7 +51,6 @@ var vmDatosPersonales = new Vue({
                     this.form.FirstlastName = CharUpper(response.data[0].first_last_name)
                     this.form.SecondlastName = CharUpper(response.data[0].second_last_name)
                     this.form.Email = response.data[0].email
-                    this.loadDepartamento()
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.form.nameAddress = profileUser.address

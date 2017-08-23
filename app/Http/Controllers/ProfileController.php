@@ -42,6 +42,16 @@ class ProfileController extends CybertronController
             $resultado = User::Select()
                 ->with('usersInformation')
                 ->with('roles')
+                ->where('id', Auth::id())
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function viewProfileJob(Request $request){
+        if ($request->isMethod('post')) {
+            $resultado = User::Select()
                 ->where('users.id', Auth::id())
                 ->join('users_jobs', 'users.id_job', '=', 'users_jobs.id')
                 ->get()
