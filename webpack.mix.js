@@ -122,6 +122,8 @@ mix.babel([
 ], 'public/js/implement.js').version();
 
 mix.copy('resources/assets/favicon.ico', 'public/favicon.ico');
+mix.copy('resources/cybertron/.htaccess', 'public/.htaccess');
+mix.copy('resources/cybertron/index.php', 'public/index.php');
 
 mix.copyDirectory([
     'resources/assets/cybertron/plugins/line-icons/fonts'

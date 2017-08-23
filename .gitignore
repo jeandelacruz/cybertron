@@ -24,11 +24,4 @@ Homestead.json
 .rocketeer/
 
 # Carpeta Public
-public/assets/*
-public/css/cybertron.css
-public/css/login.css
-public/css/*
-public/fonts/*
-public/js/*
-public/js/cybertron.js
-public/mix-manifest.json
+public/
