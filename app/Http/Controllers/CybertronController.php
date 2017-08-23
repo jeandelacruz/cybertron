@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Cybertron\Http\Controllers;
 
 use Yajra\Datatables\Datatables;
 

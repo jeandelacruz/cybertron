@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Cybertron\Http\Controllers\Auth;
 
-use App\User;
-use App\Role;
-use App\Http\Controllers\CybertronController;
+use Cybertron\User;
+use Cybertron\Role;
+use Cybertron\Http\Controllers\CybertronController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -59,7 +59,7 @@ class RegisterController extends CybertronController
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Cybertron\User
      */
     protected function create(array $data)
     {

@@ -60,7 +60,7 @@ var vmProfile = new Vue({
         loadProfile(){
             axios.post('viewProfile')
                 .then(response => {
-                    this.nameComplete = CharUpper(response.data[0].name + ' ' + response.data[0].first_last_name + ' ' + response.data[0].second_last_name)
+                    this.nameComplete = CharUpper(response.data[0].name) + ' ' + CharUpper(response.data[0].first_last_name) + ' ' + CharUpper(response.data[0].second_last_name)
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.typeDocument = (profileUser.identity).toUpperCase()
