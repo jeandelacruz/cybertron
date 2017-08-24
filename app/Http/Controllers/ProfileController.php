@@ -39,7 +39,7 @@ class ProfileController extends CybertronController
 
     // Acciones en las rutas
     public function viewProfile(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = User::Select()
                 ->with('usersInformation')
                 ->with('roles')
@@ -51,7 +51,7 @@ class ProfileController extends CybertronController
     }
 
     public function viewProfileJob(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = User::Select()
                 ->where('users.id', Auth::id())
                 ->join('users_jobs', 'users.id_job', '=', 'users_jobs.id')
@@ -124,7 +124,7 @@ class ProfileController extends CybertronController
     }
 
     public function viewDatosAcademicos(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersStudies::Select()
                 ->where('user_id', Auth::id())
                 ->get()
@@ -134,7 +134,7 @@ class ProfileController extends CybertronController
     }
 
     public function viewCertificaciones(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersCertificate::Select()
                 ->where('user_id', Auth::id())
                 ->get()
@@ -144,7 +144,7 @@ class ProfileController extends CybertronController
     }
 
     public function viewExperiencias(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersExperience::Select()
                 ->where('user_id', Auth::id())
                 ->get()

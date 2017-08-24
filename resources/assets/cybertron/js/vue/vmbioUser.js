@@ -24,8 +24,10 @@ var vmBio = new Vue({
     },
     methods: {
         loadProfile(){
-            axios.post('/user/viewProfile', {
-                idUser: this.idUser
+            axios.get('/user/viewProfile', {
+                params: {
+                    idUser: this.idUser
+                }
             }).then(response => {
                 this.nameComplete = CharUpper(response.data[0].name + ' ' + response.data[0].first_last_name + ' ' + response.data[0].second_last_name)
                 this.Email = response.data[0].email
@@ -51,8 +53,10 @@ var vmBio = new Vue({
                 }
             }).catch(err => console.log(err))
 
-            axios.post('/user/viewJob', {
-                idUser: this.idUser
+            axios.get('/user/viewJob', {
+                params: {
+                    idUser: this.idUser
+                }
             }).then(response => {
                 this.roleUser = CharUpper(response.data[0].name_job)
             }).catch(err => console.log(err))
@@ -89,8 +93,10 @@ var vmBioDatosAcademicos = new Vue({
     },
     methods: {
         loadAcademy() {
-            axios.post('/user/viewDatosAcademicos', {
-                    idUser: vmBio.idUser
+            axios.get('/user/viewDatosAcademicos', {
+                    params: {
+                        idUser: vmBio.idUser
+                    }
                 })
                 .then(response => this.academy = response.data)
                 .catch(error => console.log(error))
@@ -122,8 +128,10 @@ var vmBioCertificaciones = new Vue({
     },
     methods: {
         loadCertificaciones() {
-            axios.post('/user/viewCertificaciones', {
-                    idUser: vmBio.idUser
+            axios.get('/user/viewCertificaciones', {
+                    params: {
+                        idUser: vmBio.idUser
+                    }
                 })
                 .then(response => this.certificate = response.data)
                 .catch(error => console.log(error))
@@ -160,8 +168,10 @@ var vmBioExperiencia = new Vue({
     },
     methods: {
         loadExperience() {
-            axios.post('/user/viewExperiencias', {
-                    idUser: vmBio.idUser
+            axios.get('/user/viewExperiencias', {
+                    params: {
+                        idUser: vmBio.idUser
+                    }
                 })
                 .then(response => this.experience = response.data)
                 .catch(error => console.log(error))

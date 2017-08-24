@@ -65,7 +65,7 @@ class UserController extends CybertronController
     }
 
     public function viewJobs(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersJob::Select()
                 ->orderby('name_job','asc')
                 ->get()
@@ -228,7 +228,7 @@ class UserController extends CybertronController
 
     //Funciones para visualizar a Usuario
     public function viewProfile(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = User::Select()
                 ->with('usersInformation')
                 ->with('roles')
@@ -240,7 +240,7 @@ class UserController extends CybertronController
     }
 
     public function viewUserJob(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = User::Select()
                 ->where('users.id', $request->idUser)
                 ->join('users_jobs', 'users.id_job', '=', 'users_jobs.id')
@@ -251,7 +251,7 @@ class UserController extends CybertronController
     }
 
     public function viewDatosAcademicos(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersStudies::Select()
                 ->where('user_id', $request->idUser)
                 ->get()
@@ -261,7 +261,7 @@ class UserController extends CybertronController
     }
 
     public function viewCertificaciones(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersCertificate::Select()
                 ->where('user_id', $request->idUser)
                 ->get()
@@ -271,7 +271,7 @@ class UserController extends CybertronController
     }
 
     public function viewExperiencias(Request $request){
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('get')) {
             $resultado = UsersExperience::Select()
                 ->where('user_id', $request->idUser)
                 ->get()

@@ -64,7 +64,7 @@ var vmProfile = new Vue({
     },
     methods: {
         loadProfile(){
-            axios.post('viewProfile')
+            axios.get('viewProfile')
                 .then(response => {
                     this.nameComplete = CharUpper(response.data[0].name) + ' ' + CharUpper(response.data[0].first_last_name) + ' ' + CharUpper(response.data[0].second_last_name)
                     let profileUser = response.data[0].users_information
@@ -81,14 +81,14 @@ var vmProfile = new Vue({
                 })
                 .catch(err => console.log(err))
 
-            axios.post('viewProfileJob')
+            axios.get('viewProfileJob')
                 .then(response => {
                     this.roleUser = CharUpper(response.data[0].name_job)
                 })
                 .catch(err => console.log(err))
         },
         loadUser(){
-            axios.post('/listUsers')
+            axios.get('/listUsers')
                 .then(response => this.listUser = response.data)
                 .catch(error => console.log(error))
         }

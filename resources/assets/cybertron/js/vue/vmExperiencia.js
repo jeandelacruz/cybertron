@@ -33,7 +33,7 @@ var vmExperiencia = new Vue({
     },
     methods: {
         loadData() {
-            axios.post('/viewExperiencias')
+            axios.get('/viewExperiencias')
                 .then(response => this.experience = response.data)
                 .catch(error => console.log(error))
         },

@@ -33,7 +33,7 @@ var vmDatosAcademicos = new Vue({
     },
     methods: {
         loadData() {
-            axios.post('/viewDatosAcademicos')
+            axios.get('/viewDatosAcademicos')
                 .then(response => this.academy = response.data)
                 .catch(error => console.log(error))
         },

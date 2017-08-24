@@ -21,7 +21,7 @@ var vmFormUser = new Vue({
             this.form.typeUser = typeUser
         },
         typeOptions: function(){
-            axios.post('viewJobs')
+            axios.get('viewJobs')
             .then(response => {
                 let arrayJobs = []
                 let objectSearch = 'name_job'

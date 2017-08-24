@@ -28,7 +28,7 @@ var vmCertificaciones = new Vue({
     },
     methods: {
         loadData() {
-            axios.post('/viewCertificaciones')
+            axios.get('/viewCertificaciones')
                 .then(response => this.certificate = response.data)
                 .catch(error => console.log(error))
         },

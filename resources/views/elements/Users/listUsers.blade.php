@@ -19,5 +19,5 @@
     </thead>
 </table>
 <script>
-    dataTables('listUsers','{{ route('datatable.viewusers') }}')
+    dataTables('listUsers','{{ route('datatable.viewusers') }}','POST')
 </script>

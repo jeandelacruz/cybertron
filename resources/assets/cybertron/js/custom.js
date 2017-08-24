@@ -302,7 +302,7 @@ const columnsDatatable = (route) => {
  * @routes Ruta de donde se tomara los datos
  * @return Estructura el Datatable ah tomarse
  */
-const dataTables = (nombreDIV, routes) => {
+const dataTables = (nombreDIV, routes, method) => {
     //Eliminación del DataTable en caso de que exista
     $(`#${nombreDIV}`).dataTable().fnDestroy()
     //Creacion del DataTable
@@ -312,7 +312,7 @@ const dataTables = (nombreDIV, routes) => {
         'serverSide': true,
         'ajax': {
             url: routes,
-            type: 'POST'
+            type: method
         },
         'paging': true,
         'pageLength': 50,

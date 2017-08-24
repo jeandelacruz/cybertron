@@ -45,7 +45,7 @@ var vmDatosPersonales = new Vue({
     },
     methods: {
         loadData(){
-            axios.post('viewProfile')
+            axios.get('viewProfile')
                 .then(response => {
                     this.form.Names = CharUpper(response.data[0].name)
                     this.form.FirstlastName = CharUpper(response.data[0].first_last_name)
