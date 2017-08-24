@@ -188,6 +188,7 @@ class UserController extends CybertronController
         foreach ($user_list_query as $query) {
             $idList ++;
             $builderview[$posicion]['id']           = $idList;
+            $builderview[$posicion]['id_user']      = $query['id'];
             $builderview[$posicion]['name']         = ucwords(Str::lower($query['name']));
             $builderview[$posicion]['last_name']    = ucwords(Str::lower($query['first_last_name'].' '.$query['second_last_name']));
             $builderview[$posicion]['username']     = $query['username'];
@@ -215,10 +216,10 @@ class UserController extends CybertronController
                 'roles'         => $view['roles'],
                 'status'        => ($view['status'] == 1 ? 'Activo' : 'Cesado'),
                 'action'        => '<div class="btn-group">
-                                        <a class="btn btn-primary btnFix" onclick='.'updateModal("div.bodyviewUser","bioUser",'.$view["id"].')'.' data-toggle="modal" data-target=".modalviewUser"><i class="fa fa-eye"></i></a>
-                                        <a class="btn btn-warning btnFix" onclick='.'updateModal("div.bodyUser","formUserUpdate",'.$view["id"].')'.' data-toggle="modal" data-target=".modalUser"><i class="fa fa-edit"></i></a>
-                                        <a class="btn btn-default btnFix" onclick='.'updateModal("div.bodyUser","formPassUpdate",'.$view["id"].')'.' data-toggle="modal" data-target=".modalUser"><i class="fa fa-key"></i></a>
-                                        <a class="btn btn-danger btnFix" onclick="changeStatus('.$view['id'].','.$view['status'].')"><i class="fa fa-ban"></i></a>
+                                        <a class="btn btn-primary btnFix" onclick='.'updateModal("div.bodyviewUser","bioUser",'.$view["id_user"].')'.' data-toggle="modal" data-target=".modalviewUser"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-warning btnFix" onclick='.'updateModal("div.bodyUser","formUserUpdate",'.$view["id_user"].')'.' data-toggle="modal" data-target=".modalUser"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-default btnFix" onclick='.'updateModal("div.bodyUser","formPassUpdate",'.$view["id_user"].')'.' data-toggle="modal" data-target=".modalUser"><i class="fa fa-key"></i></a>
+                                        <a class="btn btn-danger btnFix" onclick="changeStatus('.$view['id_user'].','.$view['status'].')"><i class="fa fa-ban"></i></a>
                                     </div>',
             ]);
 

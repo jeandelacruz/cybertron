@@ -315,8 +315,8 @@ const dataTables = (nombreDIV, routes) => {
             type: 'POST'
         },
         'paging': true,
-        'pageLength': 50,
-        'lengthMenu': [50, 100, 200, 300, 400, 500],
+        'pageLength': 10,
+        'lengthMenu': [10, 20, 40, 50, 100, 200, 300, 400, 500],
         'language': dataTables_lang_spanish(),
         'columns': columnsDatatable(nombreDIV)
     })
