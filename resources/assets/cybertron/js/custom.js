@@ -302,7 +302,7 @@ const columnsDatatable = (route) => {
  * @routes Ruta de donde se tomara los datos
  * @return Estructura el Datatable ah tomarse
  */
-const dataTables = (nombreDIV, routes, method) => {
+const dataTables = (nombreDIV, routes) => {
     //Eliminación del DataTable en caso de que exista
     $(`#${nombreDIV}`).dataTable().fnDestroy()
     //Creacion del DataTable
@@ -312,7 +312,7 @@ const dataTables = (nombreDIV, routes, method) => {
         'serverSide': true,
         'ajax': {
             url: routes,
-            type: method
+            type: 'POST'
         },
         'paging': true,
         'pageLength': 50,
@@ -363,7 +363,7 @@ const BlockCopyPaste = (e) => {
  */
 const filterNumber = (e) => {
     let key = window.Event ? e.which : e.keyCode
-    return (key >= 48 && key <= 57 || key === 8 || key === 9)
+    return (key >= 48 && key <= 57 || key === 8 || key === 9 || key === 46 || key === 190)
 }
 
 /**

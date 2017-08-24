@@ -275,7 +275,7 @@ var Unify = function () {
 		initScrollBar: function () {
 			$('.mCustomScrollbar').mCustomScrollbar({
 				theme:"minimal",
-				setHeight: '220px',
+				setHeight: '420px',
 				scrollEasing: "linear",
 				autoHideScrollbar: true,
 				scrollButtons: true

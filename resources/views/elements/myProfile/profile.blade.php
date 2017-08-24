@@ -1,5 +1,5 @@
 <!-- Profile Content -->
-<div id="bodyProfile" class="profile-body">
+<div id="bodyProfile">
     <!--Service Block v3-->
     <div class="row margin-bottom-10">
         <div class="col-sm-6 sm-margin-bottom-20">
