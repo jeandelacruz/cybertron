@@ -179,19 +179,19 @@ span > p.textError {
 
 /* Fix PlaceHolder */
 ::-moz-placeholder {
-    opacity: 0.2 !important;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+    opacity: 0.5 !important;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 :-moz-placeholder {
-    opacity: 0.2 !important;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+    opacity: 0.5 !important;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 :-ms-input-placeholder {
-    opacity: 0.2 !important;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+    opacity: 0.5 !important;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 ::-webkit-input-placeholder {
-    opacity: 0.2 !important;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+    opacity: 0.5 !important;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 /* End Fix PlaceHolder */

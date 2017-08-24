@@ -62,8 +62,8 @@ a:hover {
 /*Boxed Layout
 ------------------------------------*/
 .wrapper {
-    background-image: url(../assets/img/patterns/12.png) !important;
-    background-color: #fff;
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255) 0%,rgba(255, 255, 255, 0.49) 100%), url(../assets/img/patterns/breadcrumbs.png) !important;
+    background-color: #ffffff;
 }
 
 .boxed-layout {

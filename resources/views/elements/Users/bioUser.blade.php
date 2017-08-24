@@ -203,7 +203,7 @@
     $(function() {
         $('.mCustomScrollbar').mCustomScrollbar({
             theme:"minimal",
-            setHeight: '190px',
+            setHeight: '380px',
             scrollEasing: "linear",
             autoHideScrollbar: true,
             scrollButtons: true
