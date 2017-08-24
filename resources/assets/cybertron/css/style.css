@@ -62,7 +62,8 @@ a:hover {
 /*Boxed Layout
 ------------------------------------*/
 .wrapper {
-	background: #fff;
+    background-image: url(../assets/img/patterns/12.png) !important;
+    background-color: #fff;
 }
 
 .boxed-layout {

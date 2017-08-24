@@ -11,29 +11,27 @@
 |
 */
 
-Route::get('/',                     'ProfileController@index')->name('profile');
-
-Route::get('/home',                 'HomeController@index')->name('home');
-
+Route::get('/',                                 'ProfileController@index')->name('profile');
+Route::get('/home',                             'HomeController@index')->name('home');
 Auth::routes();
 
 // Rutas Gestion del Sistema
-Route::get('system/viewUsers',                 'UserController@ViewUsers')->name('viewusers');
+Route::get('system/viewUsers',                  'UserController@ViewUsers')->name('viewusers');
 
 // Rutas del Perfil
 Route::get('profile/myProfile',                 'ProfileController@myProfile')->name('myprofile');
 Route::get('profile/Settings',                  'ProfileController@Settings')->name('settingsprofile');
-Route::get('viewProfile',                      'ProfileController@viewProfile');
+Route::get('viewProfile',                       'ProfileController@viewProfile');
 Route::post('viewUbigeo',                       'ProfileController@viewUbigeo');
 Route::post('viewDepartamento',                 'ProfileController@viewDepartamento');
 Route::post('viewProvincia',                    'ProfileController@viewProvincia');
 Route::post('viewDistrito',                     'ProfileController@viewDistrito');
-Route::get('viewDatosAcademicos',              'ProfileController@viewDatosAcademicos');
-Route::get('viewCertificaciones',              'ProfileController@viewCertificaciones');
-Route::get('viewExperiencias',                 'ProfileController@viewExperiencias');
-Route::get('viewProfileJob',                   'ProfileController@viewProfileJob');
-Route::get('viewJobs',                         'UserController@viewJobs');
-Route::get('listUsers',                        'UserController@user_list_query');
+Route::get('viewDatosAcademicos',               'ProfileController@viewDatosAcademicos');
+Route::get('viewCertificaciones',               'ProfileController@viewCertificaciones');
+Route::get('viewExperiencias',                  'ProfileController@viewExperiencias');
+Route::get('viewProfileJob',                    'ProfileController@viewProfileJob');
+Route::get('viewJobs',                          'UserController@viewJobs');
+Route::get('listUsers',                         'UserController@user_list_query');
 Route::post('bioUser',                          'UserController@bioUser');
 
 // Rutas de Formularios Modal
@@ -64,11 +62,11 @@ Route::post('user/saveUser',                    'UserController@saveUser')->name
 Route::post('user/changeStatus',                'UserController@changeStatus')->name('changestatus');
 
 // Rutas Datatables
-Route::post('tableUsers',                        'UserController@listUsers')->name('datatable.viewusers');
+Route::post('tableUsers',                       'UserController@listUsers')->name('datatable.viewusers');
 
 // Rutas para Ver Usuario
-Route::get('user/viewProfile',                'UserController@viewProfile')->name('viewprofileuser');
-Route::get('user/viewJob',                    'UserController@viewUserJob')->name('viewjobuser');
-Route::get('user/viewDatosAcademicos',        'UserController@viewDatosAcademicos')->name('viewdatosacademicosuser');
-Route::get('user/viewCertificaciones',        'UserController@viewCertificaciones')->name('viewdatoscertificacionesuser');
-Route::get('user/viewExperiencias',           'UserController@viewExperiencias')->name('viewdatosexperienceuser');
+Route::get('user/viewProfile',                  'UserController@viewProfile')->name('viewprofileuser');
+Route::get('user/viewJob',                      'UserController@viewUserJob')->name('viewjobuser');
+Route::get('user/viewDatosAcademicos',          'UserController@viewDatosAcademicos')->name('viewdatosacademicosuser');
+Route::get('user/viewCertificaciones',          'UserController@viewCertificaciones')->name('viewdatoscertificacionesuser');
+Route::get('user/viewExperiencias',             'UserController@viewExperiencias')->name('viewdatosexperienceuser');
