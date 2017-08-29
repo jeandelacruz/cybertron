@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Lima',
 
     /*
     |--------------------------------------------------------------------------
@@ -179,6 +179,9 @@ return [
 
         /* Datatables */
         Yajra\Datatables\DatatablesServiceProvider::class,
+
+        /* LogViewer */
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
     ],
 

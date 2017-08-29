@@ -189,10 +189,10 @@ const singleDate = (nameInput, drops = 'down') => {
             format: 'YYYY-MM-DD'
         },
         singleDatePicker: true,
+        autoUpdateInput: false,
         showDropdowns: true,
         opens: "left",
-        drops: drops,
-        autoApply: false
+        drops: drops
     })
 }
 
