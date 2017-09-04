@@ -10,50 +10,62 @@
         </div>
     </div>
     <div v-else>
-        <div v-for="(item, index) in experience">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h1 class="panel-title"><i class="fa fa-building"></i> <span class="text-bold">@{{ item.name_job + ' en : ' + item.name_business }}</span></h1>
+        <div v-if="!showExperience" class="row margin-bottom-10">
+            <div class="service-block-v8">
+                <i class="fa fa-gear fa-spin text-primary"></i>
+                <div class="service-block-desc">
+                    <h3>Cargando tus Experiencias</h3>
                 </div>
-                <div class="panel-body">
-                    <dl class="dl-horizontal">
-                        <div class="col-md-4 text-center">
-                            <dt class="text-primary">Empresa</dt>
-                            <dd class="text-bold" v-text="nameBusiness[index]"></dd>
-                            <dt class="text-primary">Puesto Laboral</dt>
-                            <dd class="text-bold" v-text="nameJob[index]"></dd>
+            </div>
+        </div>
+        <div v-if="showExperience">
+            <transition-group name="fade" mode="out-in">
+                <div v-for="(item, index) in experience" :key="item.id">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h1 class="panel-title"><i class="fa fa-building"></i> <span class="text-bold">@{{ item.name_job + ' en : ' + item.name_business }}</span></h1>
                         </div>
-                        <div class="col-md-7 text-center">
-                            <dt class="text-primary">Desde</dt>
-                            <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                            <dt class="text-primary">Hasta</dt>
-                            <dd class="text-bold" v-text="dateFinish[index]"></dd>
-                        </div>
-                        <div class="col-md-1">
-                            <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate()" data-toggle="modal" data-target=".modalExperience"></i>
-                        </div>
-                        <div class="col-md-12">
-                            <dl class="dl-horizontal"><dd></dd></dl>
-                            <div class="panel panel-warning">
-                                <div class="panel-heading text-center">
-                                    <span class="panel-title" style="cursor:pointer;" class="accordion-toggle" data-toggle="collapse" :data-parent="'#accordion-'+item.id" :href="'#collapse-'+item.id">
-                                        Funcionalidades y Responsabilidades <i class="fa fa-unsorted"></i>
-                                    </span>
+                        <div class="panel-body">
+                            <dl class="dl-horizontal">
+                                <div class="col-md-6 text-center">
+                                    <dt class="text-primary">Empresa</dt>
+                                    <dd class="text-bold" v-text="nameBusiness[index]"></dd>
+                                    <dt class="text-primary">Puesto Laboral</dt>
+                                    <dd class="text-bold" v-text="nameJob[index]"></dd>
                                 </div>
-                                <div :id="'collapse-'+item.id" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="row text-center">
-                                            <div class="col-md-12">
-                                                @{{ item.review_business }}
+                                <div class="col-md-5 text-center">
+                                    <dt class="text-primary">Desde</dt>
+                                    <dd class="text-bold" v-text="dateBegin[index]"></dd>
+                                    <dt class="text-primary">Hasta</dt>
+                                    <dd class="text-bold" v-text="dateFinish[index]"></dd>
+                                </div>
+                                <div class="col-md-1">
+                                    <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalExperience"></i>
+                                </div>
+                                <div class="col-md-12">
+                                    <dl class="dl-horizontal"><dd></dd></dl>
+                                    <div class="panel panel-warning">
+                                        <div class="panel-heading text-center">
+                                            <span class="panel-title" style="cursor:pointer;" class="accordion-toggle" data-toggle="collapse" :data-parent="'#accordion-'+item.id" :href="'#collapse-'+item.id">
+                                                Funcionalidades y Responsabilidades <i class="fa fa-unsorted"></i>
+                                            </span>
+                                        </div>
+                                        <div :id="'collapse-'+item.id" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="row text-center">
+                                                    <div class="col-md-12">
+                                                        @{{ item.review_business }}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </dl>
                         </div>
-                    </dl>
+                    </div>
                 </div>
-            </div>
+            </transition-group>
         </div>
     </div>
 </div>

@@ -277,6 +277,7 @@ var Unify = function () {
 				theme:"minimal",
 				setHeight: '420px',
 				scrollEasing: "linear",
+                scrollInertia: 200,
 				autoHideScrollbar: true,
 				scrollButtons: true
 			});

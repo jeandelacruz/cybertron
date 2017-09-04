@@ -4,7 +4,8 @@
 var vmDatosAcademicos = new Vue({
     el: '#datosAcademicos',
     data: {
-        academy: []
+        academy: [],
+        showAcademy: false
     },
     mounted(){
         this.loadData()
@@ -34,13 +35,18 @@ var vmDatosAcademicos = new Vue({
     methods: {
         loadData() {
             axios.get('/viewDatosAcademicos')
-                .then(response => this.academy = response.data)
+                .then(response => {
+                    this.academy = response.data
+                    this.showAcademy = true
+                })
                 .catch(error => console.log(error))
         },
-        onUpdate() {
-            return this.academy.map(function(item) {
-                return updateModal('div.bodyStudy','formDatosAcademicosUpdate', item.id)
-            })
+        onUpdate(idItem) {
+            return updateModal('div.bodyStudy','formDatosAcademicosUpdate', idItem)
+        },
+        refreshData() {
+            this.showAcademy = false
+            this.loadData()
         }
     }
 })

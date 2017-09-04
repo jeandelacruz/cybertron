@@ -37,7 +37,8 @@ var vmDatosPersonales = new Vue({
             Marital: '',
             numberChildren: '',
             dateBirthday: ''
-        })
+        }),
+        showPersonales: false
     },
     mounted()  {
         this.loadData()
@@ -137,6 +138,7 @@ var vmDatosPersonales = new Vue({
                 this.typeLicense = this.form.License
                 this.maritalStatus = CharUpper(this.form.Marital)
             }
+            this.showPersonales = true
         },
         getDocument: function(typeDocument){
             this.form.Document = (typeDocument).toLowerCase()

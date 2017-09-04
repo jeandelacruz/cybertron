@@ -4,7 +4,8 @@
 var vmCertificaciones = new Vue({
     el: '#datosCertificaciones',
     data: {
-        certificate: []
+        certificate: [],
+        showCertificate: false
     },
     mounted(){
         this.loadData()
@@ -29,13 +30,18 @@ var vmCertificaciones = new Vue({
     methods: {
         loadData() {
             axios.get('/viewCertificaciones')
-                .then(response => this.certificate = response.data)
+                .then(response => {
+                    this.certificate = response.data
+                    this.showCertificate = true
+                })
                 .catch(error => console.log(error))
         },
-        onUpdate() {
-            return this.certificate.map(function(item) {
-                return updateModal('div.bodyCertification','formCertificacionesUpdate', item.id)
-            })
+        onUpdate(idItem) {
+            return updateModal('div.bodyCertification','formCertificacionesUpdate', idItem)
+        },
+        refreshData() {
+            this.showCertificate = false
+            this.loadData()
         }
     }
 })

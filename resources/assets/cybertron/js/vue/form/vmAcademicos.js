@@ -14,21 +14,32 @@ var vmFormDatosAcademicos = new Vue({
             dateBegin: '',
             dateFinish: '',
             idAcademico: ''
-        })
+        }),
+        showdateFinish: true,
+        completeInstitute: [],
+        completeCareer: []
     },
     methods: {
         getTypeInstitute: function(typeInstitute) {
             this.form.typeInstitute = typeInstitute
+            this.nameInstitute()
+            this.nameCareers()
         },
         getSituationAcademy: function(situationAcademy) {
             this.form.situationAcademy = situationAcademy
+            if(situationAcademy === 'Cursando') {
+                this.showdateFinish = false
+                this.form.dateFinish = moment().format("DD-MM-YYYY")
+            }else{
+                this.showdateFinish = true
+            }
         },
         onSubmit() {
             $('.btnAcademicos').html('<i class="fa fa-spin fa-spinner"></i> Cargando')
             this.form.post('/profile/saveAcademico')
             .then(response => {
                 $('.btnAcademicos').html('<i class="fa fa-save"></i> Guardar Cambios')
-                vmDatosAcademicos.loadData()
+                vmDatosAcademicos.refreshData()
                 alertaSimple('','Tús Datos Academicos se editaron correctamente','success')
             })
             .catch(error => {
@@ -37,6 +48,7 @@ var vmFormDatosAcademicos = new Vue({
             })
         },
         loadAcademico() {
+            alertaAjax('<i class="fa fa-gears fa-spin"></i> Cargando datos...')
             axios.get('/updateAcademico', {
                     params: {
                         idAcademico: this.form.idAcademico
@@ -45,10 +57,39 @@ var vmFormDatosAcademicos = new Vue({
                 .then(response => {
                     this.selectedTypeinstitute = CharUpper(response.data[0].type_institute)
                     this.selectedSituationacademy = CharUpper(response.data[0].situation_academy)
-                    this.form.nameInstitution = CharUpper(response.data[0].name_institute)
-                    this.form.nameCareer = CharUpper(response.data[0].name_career)
+                    this.form.nameInstitution = response.data[0].name_institute
+                    this.form.nameCareer = response.data[0].name_career
                     this.form.dateBegin = response.data[0].date_begin
                     this.form.dateFinish = response.data[0].date_finish
+                    swal.close()
+                })
+                .catch(error => console.log(error))
+        },
+        nameInstitute() {
+            axios.get('/getNameInstitutesAcademy', {
+                    params: {
+                        typeInstitute: this.form.typeInstitute
+                    }
+                })
+                .then(response => {
+                    let arraynameInstitute = []
+                    let objectSearch = 'name_institute'
+                    objectToArray(response.data, arraynameInstitute, objectSearch)
+                    this.completeInstitute = arraynameInstitute
+                })
+                .catch(error => console.log(error))
+        },
+        nameCareers() {
+            axios.get('/getNameCareers', {
+                    params: {
+                        typeInstitute: this.form.typeInstitute
+                    }
+                })
+                .then(response => {
+                    let arraynameCareer = []
+                    let objectSearch = 'name_career'
+                    objectToArray(response.data, arraynameCareer, objectSearch)
+                    this.completeCareer = arraynameCareer
                 })
                 .catch(error => console.log(error))
         }

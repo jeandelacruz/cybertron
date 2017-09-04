@@ -10,30 +10,42 @@
         </div>
     </div>
     <div v-else>
-        <div v-for="(item, index) in certificate">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
-                </div>
-                <div class="panel-body">
-                    <dl class="dl-horizontal">
-                        <div class="col-md-4 text-center">
-                            <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
-                        </div>
-                        <div class="col-md-7">
-                            <dt class="text-primary">Certificado</dt>
-                            <dd class="text-bold" v-text="nameCertificate[index]"></dd>
-                            <dt class="text-primary">Fecha de Inicio</dt>
-                            <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                            <dt class="text-primary">Fecha de Fin</dt>
-                            <dd class="text-bold" v-text="dateFinish[index]"></dd>
-                        </div>
-                        <div class="col-md-1">
-                            <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate()" data-toggle="modal" data-target=".modalCertification"></i>
-                        </div>
-                    </dl>
+        <div v-if="!showCertificate" class="row margin-bottom-10">
+            <div class="service-block-v8">
+                <i class="fa fa-gear fa-spin text-primary"></i>
+                <div class="service-block-desc">
+                    <h3>Cargando tus Certificados</h3>
                 </div>
             </div>
+        </div>
+        <div v-if="showCertificate">
+            <transition-group name="fade" mode="out-in">
+                <div v-for="(item, index) in certificate" :key="item.id">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
+                        </div>
+                        <div class="panel-body">
+                            <dl class="dl-horizontal">
+                                <div class="col-md-4 text-center">
+                                    <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
+                                </div>
+                                <div class="col-md-7">
+                                    <dt class="text-primary">Certificado</dt>
+                                    <dd class="text-bold" v-text="nameCertificate[index]"></dd>
+                                    <dt class="text-primary">Fecha de Inicio</dt>
+                                    <dd class="text-bold" v-text="dateBegin[index]"></dd>
+                                    <dt class="text-primary">Fecha de Fin</dt>
+                                    <dd class="text-bold" v-text="dateFinish[index]"></dd>
+                                </div>
+                                <div class="col-md-1">
+                                    <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalCertification"></i>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </transition-group>
         </div>
     </div>
 </div>

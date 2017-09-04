@@ -4,10 +4,11 @@
 var vmExperiencia = new Vue({
     el: '#datosExperiencia',
     data: {
-        experience: []
+        experience: [],
+        showExperience: false
     },
     mounted(){
-    this.loadData()
+        this.loadData()
     },
     computed: {
         nameBusiness() {
@@ -34,13 +35,18 @@ var vmExperiencia = new Vue({
     methods: {
         loadData() {
             axios.get('/viewExperiencias')
-                .then(response => this.experience = response.data)
+                .then(response => {
+                    this.experience = response.data
+                    this.showExperience = true
+                })
                 .catch(error => console.log(error))
         },
-        onUpdate() {
-            return this.experience.map(function(item) {
-                return updateModal('div.bodyExperience','formExperienceUpdate', item.id)
-            })
+        onUpdate(idItem) {
+            return updateModal('div.bodyExperience','formExperienceUpdate', idItem)
+        },
+        refreshData() {
+            this.showExperience = false
+            this.loadData()
         }
     }
 })

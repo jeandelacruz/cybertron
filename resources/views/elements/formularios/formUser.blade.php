@@ -33,7 +33,7 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label class="label text-bold">Cargo de Usuario</label>
-                            <v-select id="typeRol" :on-change="getTypeUser" :value.sync="selectType" :options="UserType" placeholder="Choose here..!!"></v-select>
+                            <v-select id="typeRol" :on-change="getTypeUser" :value.sync="selectType" :options="UserType" placeholder="Seleccione Aqui..!!"></v-select>
                             <p class="text-danger" v-if="form.errors.has('typeUser')" v-text="form.errors.get('typeUser')"></p>
                         </div>
                     </div>

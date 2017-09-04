@@ -60,7 +60,7 @@
                         <div v-if="academy.length == 0">
                             <div class="alert alert-info text-center">
                                 <div class="row">
-                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con datos academicos </h2>
+                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con datos academicos Registrados </h2>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                         <div v-if="certificate.length == 0">
                             <div class="alert alert-info text-center">
                                 <div class="row">
-                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con certificaciones </h2>
+                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Certificaciones Ingresadas </h2>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                         <div v-if="experience.length == 0">
                             <div class="alert alert-info text-center">
                                 <div class="row">
-                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con Experiencia Laboral </h2>
+                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Experiencia Laboral Registradas </h2>
                                 </div>
                             </div>
                         </div>
@@ -156,13 +156,13 @@
                                     </div>
                                     <div class="panel-body">
                                         <dl class="dl-horizontal">
-                                            <div class="col-md-4 text-center">
+                                            <div class="col-md-6 text-center">
                                                 <dt class="text-primary">Empresa</dt>
                                                 <dd class="text-bold" v-text="nameBusiness[index]"></dd>
                                                 <dt class="text-primary">Puesto Laboral</dt>
                                                 <dd class="text-bold" v-text="nameJob[index]"></dd>
                                             </div>
-                                            <div class="col-md-7 text-center">
+                                            <div class="col-md-6 text-center">
                                                 <dt class="text-primary">Desde</dt>
                                                 <dd class="text-bold" v-text="dateBegin[index]"></dd>
                                                 <dt class="text-primary">Hasta</dt>
@@ -200,15 +200,6 @@
 </div>
 <script src="{!! asset('js/vuebioUser.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    $(function() {
-        $('.mCustomScrollbar').mCustomScrollbar({
-            theme:"minimal",
-            setHeight: '380px',
-            scrollEasing: "linear",
-            autoHideScrollbar: true,
-            scrollButtons: true
-        })
-    })
     vmBio.idUser =  {{ $id }}
     vmBio.loadProfile()
     vmBioDatosAcademicos.loadAcademy()

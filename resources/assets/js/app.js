@@ -18,6 +18,7 @@ window.VueSelect = require('vue-select');
 
 /* Vue.component('example', require('./components/Example.vue')); */
 Vue.component('v-select', VueSelect.VueSelect)
+Vue.component('autocomplete', require('./components/Autocomplete.vue'))
 
 /*const app = new Vue({
     el: '#app'

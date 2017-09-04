@@ -11,7 +11,9 @@ var vmFormExperiencia = new Vue({
             dateBegin: '',
             dateFinish: '',
             idExperience: ''
-        })
+        }),
+        completeJob: [],
+        completeBusiness: []
     },
     methods: {
         onSubmit() {
@@ -19,7 +21,7 @@ var vmFormExperiencia = new Vue({
             this.form.post('/profile/saveExperiencia')
                 .then(response => {
                     $('.btnExperiencia').html('<i class="fa fa-save"></i> Guardar Cambios')
-                    vmExperiencia.loadData()
+                    vmExperiencia.refreshData()
                     alertaSimple('','Tú Experiencia laboral se edito correctamente','success')
                 })
                 .catch(error => {
@@ -28,19 +30,41 @@ var vmFormExperiencia = new Vue({
                 })
         },
         loadExperience() {
+            alertaAjax('<i class="fa fa-gears fa-spin"></i> Cargando datos...')
             axios.get('/updateExperience', {
                 params: {
                     idExperience: this.form.idExperience
                 }
             })
             .then(response => {
-                this.form.namePuesto = CharUpper(response.data[0].name_job)
-                this.form.nameEmpresa = CharUpper(response.data[0].name_business)
+                this.form.namePuesto = response.data[0].name_job
+                this.form.nameEmpresa = response.data[0].name_business
                 this.form.reviewPuesto = response.data[0].review_business
                 this.form.dateBegin = response.data[0].date_begin
                 this.form.dateFinish = response.data[0].date_finish
+                swal.close()
             })
             .catch(error => console.log(error))
+        },
+        nameInstitute() {
+            axios.get('/getNamePuesto')
+                .then(response => {
+                    let arraynameJob = []
+                    let objectSearch = 'name_job'
+                    objectToArray(response.data, arraynameJob, objectSearch)
+                    this.completeJob = arraynameJob
+                })
+                .catch(error => console.log(error))
+        },
+        nameBusiness() {
+            axios.get('/getNameEmpresa')
+                .then(response => {
+                    let arraynameBusiness = []
+                    let objectSearch = 'name_business'
+                    objectToArray(response.data, arraynameBusiness, objectSearch)
+                    this.completeBusiness = arraynameBusiness
+                })
+                .catch(error => console.log(error))
         }
     }
 })

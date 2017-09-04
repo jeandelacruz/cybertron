@@ -11,8 +11,7 @@
                     <label class="label text-bold">¿Que puesto de trabajo tuviste?</label>
                     <label class="input">
                         <i class="icon-append fa fa-joomla"></i>
-                        <input type="text" name="namePuesto" placeholder="Analista HelpDesk, etc" v-model="form.namePuesto" onkeypress="return filterLetter(event)" onkeydown="return BlockCopyPaste(event)">
-                        <b class="tooltip tooltip-bottom-right">Ingrese el puesto que tenia</b>
+                        <autocomplete :suggestions="completeJob" v-model="form.namePuesto" onkeydown="return BlockCopyPaste(event)"></autocomplete>
                     </label>
                     <p class="text-danger" v-if="form.errors.has('namePuesto')" v-text="form.errors.get('namePuesto')"></p>
                 </section>
@@ -22,8 +21,7 @@
                     <label class="label text-bold">¿En que empresa?</label>
                     <label class="input">
                         <i class="icon-append fa fa-building"></i>
-                        <input type="text" name="nameEmpresa" placeholder="Ej: Administracion,etc" v-model="form.nameEmpresa" onkeypress="return filterLetter(event)" onkeydown="return BlockCopyPaste(event)">
-                        <b class="tooltip tooltip-bottom-right">Ingrese el nombre del Certificado, ejemplo : ITIL, etc</b>
+                        <autocomplete :suggestions="completeBusiness" v-model="form.nameEmpresa" onkeydown="return BlockCopyPaste(event)"></autocomplete>
                     </label>
                     <p class="text-danger" v-if="form.errors.has('nameEmpresa')" v-text="form.errors.get('nameEmpresa')"></p>
                 </section>
@@ -33,7 +31,7 @@
                     <label class="label text-bold">Funcionalidades y Responsabilidades</label>
                     <label class="textarea">
                         <i class="icon-append fa fa-comment"></i>
-                        <textarea rows="4" name="reviewPuesto" v-model="form.reviewPuesto"></textarea>
+                        <textarea rows="6" name="reviewPuesto" v-model="form.reviewPuesto"></textarea>
                         <b class="tooltip tooltip-bottom-right">Ingrese una reseña de su puesto</b>
                     </label>
                     <p class="text-danger" v-if="form.errors.has('reviewPuesto')" v-text="form.errors.get('reviewPuesto')"></p>
@@ -70,11 +68,15 @@
 </div>
 <script src="{!! asset('js/formExperiencia.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    formEnter('formExperiencia',true)
     @if($updateForm == true)
+        vmFormExperiencia.form.idExperience = ''
         vmFormExperiencia.form.idExperience =  {{  $id }}
+        vmFormExperiencia.nameInstitute()
+        vmFormExperiencia.nameBusiness()
         vmFormExperiencia.loadExperience()
     @else
         vmFormExperiencia.form.idExperience = ''
+        vmFormExperiencia.nameInstitute()
+        vmFormExperiencia.nameBusiness()
     @endif
 </script>

@@ -53,6 +53,14 @@ Route::get('updateCertificado',                 'ProfileController@updateCertifi
 Route::get('updateExperience',                  'ProfileController@updateExperience');
 Route::get('updateUser',                        'UserController@updateUser');
 
+// Rutas que extrae data para los componentes
+Route::get('getNameInstitutesAcademy',          'ProfileController@getNameInstitutesAcademy');
+Route::get('getNameCareers',                    'ProfileController@getNameCareers');
+Route::get('getNameInstitutesCertificate',      'ProfileController@getNameInstitutesCertificate');
+Route::get('getNameCertificate',                'ProfileController@getNameCertificate');
+Route::get('getNamePuesto',                     'ProfileController@getNamePuesto');
+Route::get('getNameEmpresa',                    'ProfileController@getNameEmpresa');
+
 // Rutas Acciones
 Route::post('profile/saveDatos',                'ProfileController@saveDatos')->name('savedatos');
 Route::post('profile/saveAcademico',            'ProfileController@saveAcademico')->name('saveacademico');

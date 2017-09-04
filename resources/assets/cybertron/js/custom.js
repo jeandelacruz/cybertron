@@ -82,19 +82,8 @@ const alertaSimple = (titleAlerta = '',textoAlerta,tipoAalerta,tiempoAlerta = 20
  * @return Crea el loading interactivo en el cuero del contenido
  */
 const loadingCss = () => {
-    $('div.loading').html('<div class="sk-fading-circle">' +
-        '<div class="sk-circle1 sk-circle"></div>' +
-        '<div class="sk-circle2 sk-circle"></div>' +
-        '<div class="sk-circle3 sk-circle"></div>' +
-        '<div class="sk-circle4 sk-circle"></div>' +
-        '<div class="sk-circle5 sk-circle"></div>' +
-        '<div class="sk-circle6 sk-circle"></div>' +
-        '<div class="sk-circle7 sk-circle"></div>' +
-        '<div class="sk-circle8 sk-circle"></div>' +
-        '<div class="sk-circle9 sk-circle"></div>' +
-        '<div class="sk-circle10 sk-circle"></div>' +
-        '<div class="sk-circle11 sk-circle"></div>' +
-        '<div class="sk-circle12 sk-circle"></div>' +
+    $('div.loading').html('<div class="cssload-container">' +
+        '<div class="cssload-crazy-arrow"></div>' +
         '</div>')
 }
 
@@ -127,14 +116,8 @@ const loadingSystem = (routeLoad) => {
  */
 const bodyModal = (nameRoute, routeLoad) => {
     $(nameRoute).html('' +
-        '<div class="modal-content">' +
-            '<div class="modal-body">' +
-                '<div class="progress">' +
-                    '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="1000" aria-valuemin="0" aria-valuemax="100" style="width:100%">' +
-                        'Cargando...' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
+        '<div class="cssload-container">' +
+            '<div class="cssload-crazy-arrow"></div>' +
         '</div>').promise().done(function() {
         $(nameRoute).load(routeLoad, function() { })
     })
@@ -150,14 +133,8 @@ const bodyModal = (nameRoute, routeLoad) => {
  */
 const updateModal = (nameRoute, routeLoad, valID) => {
     $(nameRoute).html('' +
-        '<div class="modal-content">' +
-            '<div class="modal-body">' +
-                '<div class="progress">' +
-                    '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="1000" aria-valuemin="0" aria-valuemax="100" style="width:100%">' +
-                        'Cargando...' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
+        '<div class="cssload-container">' +
+            '<div class="cssload-crazy-arrow"></div>' +
         '</div>').promise().done(function() {
         $(nameRoute).load(routeLoad, {valueId: valID}, function() { })
     })
@@ -385,3 +362,57 @@ const changeStatus = (idUser, statusUser) => {
             alertaSimple('','No completaste los campos correctamente o</br>Ha ocurrido un problema<br>Comunicarse con los especialistas','error','4000')
         })
 }
+
+/**
+ * Created by jdealcruz2712 on 31/08/2017.
+ *
+ * [CustomScrollBar description]
+ * @return Retorna el evento para mostrar un scrollbar unico
+ */
+const CustomScrollBar = () => {
+    $('.mCustomScrollbar').mCustomScrollbar({
+        theme: "minimal",
+        setHeight: '420px',
+        scrollEasing: "linear",
+        scrollInertia: 200,
+        autoHideScrollbar: true,
+        scrollButtons: true
+    })
+}
+
+/**
+ * Created by jdealcruz2712 on 02/09/2017.
+ *
+ * [CustomTooltips description]
+ * @return Retorna el evento tooltips
+ */
+const CustomTooltips = () => {
+    $('.tooltips').tooltip()
+    $('.tooltips-show').tooltip('show')
+    $('.tooltips-hide').tooltip('hide')
+    $('.tooltips-toggle').tooltip('toggle')
+    $('.tooltips-destroy').tooltip('destroy')
+}
+
+/**
+ * Created by jdealcruz2712 on 03/09/2017.
+ *
+ * [alertaAjax description]
+ * @textoAlerta Texto que mostrara la alerta
+ * @return Retorna una alerta al cargar data de Vuejs en un modal
+ */
+const alertaAjax = (textoAlerta) => {
+    swal({
+        html: textoAlerta,
+        type: 'info',
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false
+    }).then(
+        function () {},
+        function (dismiss) { }
+    )
+}
+

@@ -5,6 +5,7 @@ namespace Cybertron\Http\Controllers;
 use Cybertron\Ubigeos;
 use Cybertron\User;
 use Cybertron\UserInformation;
+use Cybertron\UsersJob;
 use Cybertron\UsersStudies;
 use Cybertron\UsersCertificate;
 use Cybertron\UsersExperience;
@@ -177,6 +178,90 @@ class ProfileController extends CybertronController
         if ($request->isMethod('get')) {
             $resultado = UsersExperience::Select()
                 ->where('id', $request->idExperience)
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function getNameInstitutesAcademy(Request $request){
+        if ($request->isMethod('get')) {
+            if($request->typeInstitute == null){
+                $resultado = UsersStudies::Select('name_institute')
+                    ->groupBy('name_institute')
+                    ->orderby('name_institute','asc')
+                    ->get()
+                    ->toArray();
+            }else{
+                $resultado = UsersStudies::Select('name_institute')
+                    ->where('type_institute', $request->typeInstitute)
+                    ->groupBy('name_institute')
+                    ->orderby('name_institute','asc')
+                    ->get()
+                    ->toArray();
+            }
+        }
+        return $resultado;
+    }
+
+    public function getNameCareers(Request $request){
+        if ($request->isMethod('get')) {
+            if($request->typeInstitute == null){
+                $resultado = UsersStudies::Select('name_career')
+                    ->groupBy('name_career')
+                    ->orderby('name_career','asc')
+                    ->get()
+                    ->toArray();
+            }else{
+                $resultado = UsersStudies::Select('name_career')
+                    ->where('type_institute', $request->typeInstitute)
+                    ->groupBy('name_career')
+                    ->orderby('name_career','asc')
+                    ->get()
+                    ->toArray();
+            }
+        }
+        return $resultado;
+    }
+
+    public function getNameInstitutesCertificate(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersCertificate::Select('name_institute')
+                ->groupBy('name_institute')
+                ->orderby('name_institute','asc')
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function getNameCertificate(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersCertificate::Select('name_certificate')
+                ->groupBy('name_certificate')
+                ->orderby('name_certificate','asc')
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function getNamePuesto(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersExperience::Select('name_job')
+                ->groupBy('name_job')
+                ->orderby('name_job','asc')
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function getNameEmpresa(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = UsersExperience::Select('name_business')
+                ->groupBy('name_business')
+                ->orderby('name_business','asc')
                 ->get()
                 ->toArray();
         }

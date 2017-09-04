@@ -24,6 +24,7 @@ var vmBio = new Vue({
     },
     methods: {
         loadProfile(){
+            alertaAjax('<i class="fa fa-gears fa-spin"></i> Cargando datos...')
             axios.get('/user/viewProfile', {
                 params: {
                     idUser: this.idUser
@@ -51,6 +52,10 @@ var vmBio = new Vue({
                         this.daysBirthday = validateBirthday(profileUser.datebirthday)
                     }
                 }
+                setTimeout(function () {
+                    CustomScrollBar();
+                }, 1000)
+                swal.close()
             }).catch(err => console.log(err))
 
             axios.get('/user/viewJob', {

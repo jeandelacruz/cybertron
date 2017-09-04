@@ -10,7 +10,9 @@ var vmProfile = new Vue({
         roleUser: '-',
         dateBirthday: '-',
         daysBirthday: '-',
-        listUser: []
+        listUser: [],
+        showProfile: false,
+        showListuser: false
     },
     mounted() {
         this.loadProfile()
@@ -78,6 +80,8 @@ var vmProfile = new Vue({
                             this.daysBirthday = validateBirthday(profileUser.datebirthday)
                         }
                     }
+                    this.showProfile = true
+                    setTimeout(function() { CustomTooltips() }, 1000)
                 })
                 .catch(err => console.log(err))
 
@@ -89,7 +93,11 @@ var vmProfile = new Vue({
         },
         loadUser(){
             axios.get('/listUsers')
-                .then(response => this.listUser = response.data)
+                .then(response => {
+                    this.listUser = response.data
+                    this.showListuser = true
+                    setTimeout(function() { CustomScrollBar() }, 1000)
+                })
                 .catch(error => console.log(error))
         }
     }

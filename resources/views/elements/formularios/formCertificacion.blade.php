@@ -11,8 +11,7 @@
                     <label class="label text-bold">Nombre de la Institución</label>
                     <label class="input">
                         <i class="icon-append fa fa-institution"></i>
-                        <input type="text" name="nameInstitution" placeholder="Ej: Universidad del Pacifico, etc" v-model="form.nameInstitution" onkeypress="return filterLetter(event)" onkeydown="return BlockCopyPaste(event)">
-                        <b class="tooltip tooltip-bottom-right">Ingrese el nombre de su instituto, ejemplo : Universidad del Pacifico, etc</b>
+                        <autocomplete :suggestions="completeInstitute" v-model="form.nameInstitution" onkeydown="return BlockCopyPaste(event)"></autocomplete>
                     </label>
                     <p class="text-danger" v-if="form.errors.has('nameInstitution')" v-text="form.errors.get('nameInstitution')"></p>
                 </section>
@@ -22,8 +21,7 @@
                     <label class="label text-bold">Nombre del Certificado</label>
                     <label class="input">
                         <i class="icon-append fa fa-graduation-cap"></i>
-                        <input type="text" name="nameCertification" placeholder="Ej: ITIL,etc" v-model="form.nameCertification" onkeypress="return filterLetter(event)" onkeydown="return BlockCopyPaste(event)">
-                        <b class="tooltip tooltip-bottom-right">Ingrese el nombre del Certificado, ejemplo : ITIL, etc</b>
+                        <autocomplete :suggestions="completeCertification" v-model="form.nameCertification" onkeydown="return BlockCopyPaste(event)"></autocomplete>
                     </label>
                     <p class="text-danger" v-if="form.errors.has('nameCertification')" v-text="form.errors.get('nameCertification')"></p>
                 </section>
@@ -61,9 +59,14 @@
 <script>
     formEnter('formCertificacion',true)
     @if($updateForm == true)
-        vmFormCertificaciones.form.idCertificado =  {{  $id }}
+        vmFormCertificaciones.form.idCertificado = ''
+        vmFormCertificaciones.form.idCertificado =  {{ $id }}
+        vmFormCertificaciones.nameInstitute()
+        vmFormCertificaciones.nameCertification()
         vmFormCertificaciones.loadCertificate()
     @else
         vmFormCertificaciones.form.idCertificado = ''
+        vmFormCertificaciones.nameInstitute()
+        vmFormCertificaciones.nameCertification()
     @endif
 </script>

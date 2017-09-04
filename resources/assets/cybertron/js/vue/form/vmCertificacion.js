@@ -10,7 +10,10 @@ var vmFormCertificaciones = new Vue({
             dateBegin: '',
             dateFinish: '',
             idCertificado: ''
-        })
+        }),
+        showdateFinish: true,
+        completeInstitute: [],
+        completeCertification: []
     },
     methods: {
         onSubmit() {
@@ -18,7 +21,7 @@ var vmFormCertificaciones = new Vue({
             this.form.post('/profile/saveCertificacion')
             .then(response => {
                 $('.btnCertificacion').html('<i class="fa fa-save"></i> Guardar Cambios')
-                vmCertificaciones.loadData()
+                vmCertificaciones.refreshData()
                 alertaSimple('','Certificaciones Editados correctamente','success')
             })
             .catch(error => {
@@ -27,18 +30,40 @@ var vmFormCertificaciones = new Vue({
             })
         },
         loadCertificate() {
+            alertaAjax('<i class="fa fa-gears fa-spin"></i> Cargando datos...')
             axios.get('/updateCertificado', {
                 params: {
                     idCertificado: this.form.idCertificado
                 }
             })
             .then(response => {
-                this.form.nameInstitution = CharUpper(response.data[0].name_institute)
-                this.form.nameCertification = CharUpper(response.data[0].name_certificate)
+                this.form.nameInstitution = response.data[0].name_institute
+                this.form.nameCertification = response.data[0].name_certificate
                 this.form.dateBegin = response.data[0].date_begin
                 this.form.dateFinish = response.data[0].date_finish
+                swal.close()
             })
             .catch(error => console.log(error))
+        },
+        nameInstitute() {
+            axios.get('/getNameInstitutesCertificate')
+                .then(response => {
+                    let arraynameInstitute = []
+                    let objectSearch = 'name_institute'
+                    objectToArray(response.data, arraynameInstitute, objectSearch)
+                    this.completeInstitute = arraynameInstitute
+                })
+                .catch(error => console.log(error))
+        },
+        nameCertification() {
+            axios.get('/getNameCertificate')
+                .then(response => {
+                    let arraynameCertification = []
+                    let objectSearch = 'name_certificate'
+                    objectToArray(response.data, arraynameCertification, objectSearch)
+                    this.completeCertification = arraynameCertification
+                })
+                .catch(error => console.log(error))
         }
     }
 })
