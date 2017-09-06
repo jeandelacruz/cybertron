@@ -39,7 +39,9 @@
                                     <dd class="text-bold" v-text="dateFinish[index]"></dd>
                                 </div>
                                 <div class="col-md-1">
-                                    <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalCertification"></i>
+                                    <i style="cursor:pointer;" class="fa fa-edit fa-2x text-success" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalCertification"></i>
+                                    <hr>
+                                    <i style="cursor:pointer;" class="fa fa-upload fa-2x text-success" @click="onUpload(item.id)" data-toggle="modal" data-target=".modalUpload"></i>
                                 </div>
                             </dl>
                         </div>

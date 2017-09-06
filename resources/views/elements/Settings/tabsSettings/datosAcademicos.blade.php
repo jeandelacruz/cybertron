@@ -42,6 +42,8 @@
                                 </div>
                                 <div class="col-md-1">
                                     <i style="cursor:pointer;" class="fa fa-edit fa-2x text-primary" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalStudy"></i>
+                                    <hr>
+                                    <i style="cursor:pointer;" class="fa fa-upload fa-2x text-primary" @click="onUpload(item.id)" data-toggle="modal" data-target=".modalUpload"></i>
                                 </div>
                             </dl>
                         </div>

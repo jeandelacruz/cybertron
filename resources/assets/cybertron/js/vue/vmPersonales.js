@@ -38,7 +38,8 @@ var vmDatosPersonales = new Vue({
             numberChildren: '',
             dateBirthday: ''
         }),
-        showPersonales: false
+        showPersonales: false,
+        showDocument: false
     },
     mounted()  {
         this.loadData()
@@ -46,6 +47,7 @@ var vmDatosPersonales = new Vue({
     },
     methods: {
         loadData(){
+            setTimeout(function() { CustomTooltips() }, 1000)
             axios.get('viewProfile')
                 .then(response => {
                     this.form.Names = CharUpper(response.data[0].name)
@@ -58,7 +60,10 @@ var vmDatosPersonales = new Vue({
                         this.form.numberTelephone = profileUser.phone_home
                         this.form.numberMobile = profileUser.phone_mobile
                         this.form.Document = profileUser.identity
-                        this.form.numberDocument = profileUser.identity_number
+                        if(profileUser.identity_number){
+                            this.form.numberDocument = profileUser.identity_number
+                            this.showDocument = true
+                        }
                         this.form.License = profileUser.license
                         this.form.numberLicense = profileUser.license_number
                         this.form.Marital = profileUser.marital_status
@@ -71,6 +76,7 @@ var vmDatosPersonales = new Vue({
                             this.loadExtra()
                         })
                     }
+                    this.showPersonales = true
                 })
                 .catch(err => { console.log(err) })
         },
@@ -136,9 +142,12 @@ var vmDatosPersonales = new Vue({
             if(extras){
                 this.typeDocument = (this.form.Document).toUpperCase()
                 this.typeLicense = this.form.License
-                this.maritalStatus = CharUpper(this.form.Marital)
+                if(this.form.Marital === null || this.form.Marital === '') {
+                    this.maritalStatus = ''
+                }else{
+                    this.maritalStatus = CharUpper(this.form.Marital)
+                }
             }
-            this.showPersonales = true
         },
         getDocument: function(typeDocument){
             this.form.Document = (typeDocument).toLowerCase()

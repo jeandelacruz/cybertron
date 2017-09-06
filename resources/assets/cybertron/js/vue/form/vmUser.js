@@ -31,6 +31,7 @@ var vmFormUser = new Vue({
             .catch(err => { console.log(err) })
         },
         loadUser() {
+            alertaAjax('<i class="fa fa-gears fa-spin"></i> Cargando datos...')
             axios.get('/updateUser', {
                 params: {
                     idUser: this.form.idUser
@@ -40,6 +41,7 @@ var vmFormUser = new Vue({
                 this.form.userRed = response.data[0].username
                 this.form.typeUser = response.data[0].name_job
                 this.selectType = response.data[0].name_job
+                swal.close()
             })
             .catch(error => console.log(error))
         },

@@ -56,7 +56,7 @@ text-decoration: none;
 }
 a:hover {
  color: #39a1cd;
- text-decoration: underline;
+ text-decoration: none;
 }
 
 /*Boxed Layout

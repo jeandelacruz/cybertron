@@ -141,6 +141,23 @@ const updateModal = (nameRoute, routeLoad, valID) => {
 }
 
 /**
+ * Created by jdealcruz2712 on 04/09/2017.
+ *
+ * [modalUpload description]
+ * @nameRoute Nombre del cuerpo del modal a donde se cargara la informacion
+ * @routeLoad La ruta que se cargara en el modal
+ * @return Retorna lo que toma de la ruta al modal
+ */
+const modalUpload = (nameRoute, routeLoad, filesPermited, nameUpload, numberFiles) => {
+    $(nameRoute).html('' +
+        '<div class="cssload-container">' +
+            '<div class="cssload-crazy-arrow"></div>' +
+        '</div>').promise().done(function() {
+        $(nameRoute).load(routeLoad, {filesPermited: filesPermited, nameUpload: nameUpload, numberFiles: numberFiles, nameFolder: vmProfile.numberDocument}, function() { })
+    })
+}
+
+/**
  * Created by jdealcruz2712 on 18/08/2017.
  *
  * [activeDiv description]
@@ -415,4 +432,3 @@ const alertaAjax = (textoAlerta) => {
         function (dismiss) { }
     )
 }
-

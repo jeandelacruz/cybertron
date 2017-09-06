@@ -81,4 +81,9 @@ class User extends Authenticatable
             ->hasMany('Cybertron\UsersExperience');
     }
 
+    public function usersRepository(){
+        return $this
+            ->hasMany('Cybertron\UsersRepositories');
+    }
+
 }

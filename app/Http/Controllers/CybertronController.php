@@ -2,6 +2,7 @@
 
 namespace Cybertron\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use Yajra\Datatables\Datatables;
 
 class CybertronController extends Controller
@@ -14,5 +15,23 @@ class CybertronController extends Controller
     {
         return Datatables::of($collection)
             ->make(true);
+    }
+
+    /**
+     * [makeDirectory Función que crea una carpeta]
+     * @param $ubicacion [Ubicación de la carpeta a crear]
+     */
+    protected function makeDirectory($ubicacion)
+    {
+        return File::makeDirectory('storage/'.$ubicacion, 0777, true);
+    }
+
+    /**
+     * [renameDirectory Función que renombra una carpeta (la mueve)]
+     * @param $ubicacion [Ubicación de la carpeta a crear]
+     */
+    protected function renameDirectory($ubicacionAnterior, $ubicacionNueva)
+    {
+        return File::move($ubicacionAnterior,$ubicacionNueva);
     }
 }

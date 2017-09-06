@@ -22,3 +22,8 @@
 <div class="modal fade modalviewUser" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-lg bodyviewUser"></div>
 </div>
+
+<!-- Modal File Upload -->
+<div class="modal fade modalUpload" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog bodyUpload"></div>
+</div>

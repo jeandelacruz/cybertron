@@ -70,7 +70,7 @@
 <script>
     @if($updateForm == true)
         vmFormExperiencia.form.idExperience = ''
-        vmFormExperiencia.form.idExperience =  {{  $id }}
+        vmFormExperiencia.form.idExperience =  {{ $id }}
         vmFormExperiencia.nameInstitute()
         vmFormExperiencia.nameBusiness()
         vmFormExperiencia.loadExperience()

@@ -1,4 +1,19 @@
 <div id="datosPersonales">
+    <h2 class="heading-md">Administra tus Datos Personales</h2>
+    <span>
+        <div v-if="showDocument">
+            <a class="pull-right" href="" onclick="modalUpload('div.bodyUpload','formUpload','.pdf','curriculum_vitae', 1)" data-toggle="modal" data-target=".modalUpload">
+                <i class="fa fa-upload fa-2x text-success"></i>
+            </a>
+        </div>
+        <div v-else>
+            <a class="tooltips pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Debes llenar tu DNI para poder subir tu CV" style="cursor: pointer">
+                <i class="fa fa-upload fa-2x text-danger"></i>
+            </a>
+        </div>
+    </span>
+    <p>A continuación podras ver tus datos que se encuentran ya registrados.</p>
+    <br>
     <div v-if="!showPersonales" class="row margin-bottom-10">
         <div class="service-block-v8">
             <i class="fa fa-gear fa-spin text-primary"></i>

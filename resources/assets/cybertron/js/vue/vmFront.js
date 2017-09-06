@@ -103,6 +103,34 @@ var vmProfile = new Vue({
     }
 })
 
+var vmLeft = new Vue({
+    el: '#leftSidebar',
+    data: {
+        routeAvatar: '/assets/img/user.jpg'
+    },
+    mounted(){
+      this.Repositories()
+    },
+    methods: {
+        refreshAvatar(route) {
+            this.routeAvatar = route
+        },
+        Repositories(){
+            axios.get('/getRepositories', {
+                params: {
+                    nameFile: 'avatar'
+                }
+            })
+            .then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeAvatar = 'storage/' + fileRepositorie['name_folder'] + '/avatar.jpg'
+                }
+            })
+        }
+    }
+})
+
 const validateBirthday = (dateProfile) => {
     let dateStart = moment().format('YYYY-') + moment(dateProfile).format('MM-DD')
     let dateEnd = moment().format('YYYY-MM-DD')

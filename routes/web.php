@@ -78,3 +78,9 @@ Route::get('user/viewJob',                      'UserController@viewUserJob')->n
 Route::get('user/viewDatosAcademicos',          'UserController@viewDatosAcademicos')->name('viewdatosacademicosuser');
 Route::get('user/viewCertificaciones',          'UserController@viewCertificaciones')->name('viewdatoscertificacionesuser');
 Route::get('user/viewExperiencias',             'UserController@viewExperiencias')->name('viewdatosexperienceuser');
+
+// Rutas Upload File
+Route::get('getRepositories',                    'ProfileController@getRepositories');
+Route::post('uploadFile',                        'ProfileController@uploadFile');
+Route::post('formUpload',                        'UserController@formUpload');
+Route::post('formUpload',                        'UserController@formUpload');

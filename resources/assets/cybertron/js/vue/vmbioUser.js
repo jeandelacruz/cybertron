@@ -20,7 +20,9 @@ var vmBio = new Vue({
         dateBorn: '-',
         Ubigeo: '-',
         nameAddress: '-',
-        idUser: '-'
+        idUser: '-',
+        routeAvatar: '/assets/img/user.jpg',
+        routeCV: ''
     },
     methods: {
         loadProfile(){
@@ -58,6 +60,30 @@ var vmBio = new Vue({
                 swal.close()
             }).catch(err => console.log(err))
 
+            axios.get('/getRepositories', {
+                params: {
+                        idUser: this.idUser,
+                        nameFile: 'avatar'
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeAvatar = 'storage/' + fileRepositorie['name_folder'] + '/avatar.jpg'
+                }
+            })
+
+            axios.get('/getRepositories', {
+                params: {
+                    idUser: this.idUser,
+                    nameFile: 'curriculum_vitae'
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeCV = 'storage/' + fileRepositorie['name_folder'] + '/curriculum_vitae.pdf'
+                }
+            })
+
             axios.get('/user/viewJob', {
                 params: {
                     idUser: this.idUser
@@ -72,7 +98,8 @@ var vmBio = new Vue({
 var vmBioDatosAcademicos = new Vue({
     el: '#datosBioAcademicos',
     data: {
-        academy: []
+        academy: [],
+        routeAcademy: ''
     },
     computed: {
         nameCareer() {
@@ -99,12 +126,24 @@ var vmBioDatosAcademicos = new Vue({
     methods: {
         loadAcademy() {
             axios.get('/user/viewDatosAcademicos', {
-                    params: {
-                        idUser: vmBio.idUser
-                    }
-                })
-                .then(response => this.academy = response.data)
-                .catch(error => console.log(error))
+                params: {
+                    idUser: vmBio.idUser
+                }
+            })
+            .then(response => this.academy = response.data)
+            .catch(error => console.log(error))
+
+            axios.get('/getRepositories', {
+                params: {
+                    idUser: vmBio.idUser,
+                    nameFile: 'avatar'
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeAcademy = 'storage/' + fileRepositorie['name_folder']
+                }
+            })
         }
     }
 })
@@ -112,7 +151,8 @@ var vmBioDatosAcademicos = new Vue({
 var vmBioCertificaciones = new Vue({
     el: '#datosBioCertificaciones',
     data: {
-        certificate: []
+        certificate: [],
+        routeCertificado: ''
     },
     computed: {
         nameCertificate() {
@@ -134,12 +174,24 @@ var vmBioCertificaciones = new Vue({
     methods: {
         loadCertificaciones() {
             axios.get('/user/viewCertificaciones', {
-                    params: {
-                        idUser: vmBio.idUser
-                    }
-                })
-                .then(response => this.certificate = response.data)
-                .catch(error => console.log(error))
+                params: {
+                    idUser: vmBio.idUser
+                }
+            })
+            .then(response => this.certificate = response.data)
+            .catch(error => console.log(error))
+
+            axios.get('/getRepositories', {
+                params: {
+                    idUser: vmBio.idUser,
+                    nameFile: 'avatar'
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeCertificado = 'storage/' + fileRepositorie['name_folder']
+                }
+            })
         }
     }
 })
@@ -147,7 +199,8 @@ var vmBioCertificaciones = new Vue({
 var vmBioExperiencia = new Vue({
     el: '#datosBioExperiencia',
     data: {
-        experience: []
+        experience: [],
+        routeExperiencia: ''
     },
     computed: {
         nameBusiness() {
@@ -174,12 +227,24 @@ var vmBioExperiencia = new Vue({
     methods: {
         loadExperience() {
             axios.get('/user/viewExperiencias', {
-                    params: {
-                        idUser: vmBio.idUser
-                    }
-                })
-                .then(response => this.experience = response.data)
-                .catch(error => console.log(error))
+                params: {
+                    idUser: vmBio.idUser
+                }
+            })
+            .then(response => this.experience = response.data)
+            .catch(error => console.log(error))
+
+            axios.get('/getRepositories', {
+                params: {
+                    idUser: vmBio.idUser,
+                    nameFile: 'avatar'
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeExperiencia = 'storage/' + fileRepositorie['name_folder']
+                }
+            })
         }
     }
 })

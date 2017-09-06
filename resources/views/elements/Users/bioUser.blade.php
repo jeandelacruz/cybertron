@@ -8,11 +8,18 @@
             <div id="bioUser" class="profile-bio">
                 <div class="row">
                     <div class="col-md-4">
-                        <img class="img-responsive md-margin-bottom-10" src="assets/img/team/img32-md.jpg" alt="">
+                        <img class="img-responsive md-margin-bottom-10" :src="routeAvatar" alt="">
                     </div>
                     <div class="col-md-8">
-                        <div class="headline">
-                            <h2 v-text="nameComplete"></h2>
+                        <div class="col-md-12">
+                            <div class="headline pull-left">
+                                <h2 v-text="nameComplete"></h2>
+                            </div>
+                            <div class="pull-right">
+                                <a :href="routeCV" target="_blank">
+                                    <span><strong class="text-info"><i class="fa fa-file-pdf-o"></i> Descargar CV</strong></span>
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <span><strong class="text-primary">Cargo:</strong> @{{ roleUser }}</span>
@@ -82,8 +89,13 @@
                                                 <dd class="text-bold" v-text="situationAcademy[index]"></dd>
                                                 <dt class="text-primary">Fecha de Inicio</dt>
                                                 <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                                                <dt class="text-primary">Fecha de Graduación</dt>
-                                                <dd class="text-bold" v-text="dateFinish[index]"></dd>
+                                                <dt class="text-primary" v-if="situationAcademy[index] != 'Cursando'">Fecha de Graduación</dt>
+                                                <dd class="text-bold" v-if="situationAcademy[index] != 'Cursando'" v-text="dateFinish[index]"></dd>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a :href="routeAcademy + '/academico-' + item.id + '.jpg'" download>
+                                                    <i style="cursor:pointer;" class="fa fa-download fa-2x text-primary"></i>
+                                                </a>
                                             </div>
                                         </dl>
                                     </div>
@@ -126,6 +138,11 @@
                                                 <dt class="text-primary">Fecha de Fin</dt>
                                                 <dd class="text-bold" v-text="dateFinish[index]"></dd>
                                             </div>
+                                            <div class="col-md-1">
+                                                <a :href="routeCertificado + '/certificado-' + item.id + '.jpg'" download>
+                                                    <i style="cursor:pointer;" class="fa fa-download fa-2x text-success"></i>
+                                                </a>
+                                            </div>
                                         </dl>
                                     </div>
                                 </div>
@@ -162,11 +179,16 @@
                                                 <dt class="text-primary">Puesto Laboral</dt>
                                                 <dd class="text-bold" v-text="nameJob[index]"></dd>
                                             </div>
-                                            <div class="col-md-6 text-center">
+                                            <div class="col-md-5 text-center">
                                                 <dt class="text-primary">Desde</dt>
                                                 <dd class="text-bold" v-text="dateBegin[index]"></dd>
                                                 <dt class="text-primary">Hasta</dt>
                                                 <dd class="text-bold" v-text="dateFinish[index]"></dd>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a :href="routeExperiencia + '/experiencia-' + item.id + '.jpg'" download>
+                                                    <i style="cursor:pointer;" class="fa fa-download fa-2x text-warning"></i>
+                                                </a>
                                             </div>
                                             <div class="col-md-12">
                                                 <dl class="dl-horizontal"><dd></dd></dl>

@@ -44,6 +44,9 @@ var vmExperiencia = new Vue({
         onUpdate(idItem) {
             return updateModal('div.bodyExperience','formExperienceUpdate', idItem)
         },
+        onUpload(idItem) {
+            return modalUpload('div.bodyUpload','formUpload','image/*','experiencia-'+idItem, 1)
+        },
         refreshData() {
             this.showExperience = false
             this.loadData()

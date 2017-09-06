@@ -10,6 +10,7 @@ use Cybertron\UsersCertificate;
 use Cybertron\UsersExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends CybertronController
 {
@@ -279,5 +280,21 @@ class UserController extends CybertronController
                 ->toArray();
         }
         return $resultado;
+    }
+
+    // Funciones para Subir Archivos
+    public function formUpload(Request $request){
+        $response = $request->user()->authorizeRoles(['user', 'admin']);
+        if($response) {
+            if ($request->isMethod('post')) {
+                return view('elements/formularios/formUpload')->with(array(
+                    'filesPermited'    => $request->filesPermited,
+                    'nameUpload'       => $request->nameUpload,
+                    'numberFiles'      => $request->numberFiles,
+                    'nameFolder'       => $request->nameFolder
+                ));
+            }
+        }
+        return view('errors/permission');
     }
 }

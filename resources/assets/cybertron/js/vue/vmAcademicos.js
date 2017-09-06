@@ -44,6 +44,9 @@ var vmDatosAcademicos = new Vue({
         onUpdate(idItem) {
             return updateModal('div.bodyStudy','formDatosAcademicosUpdate', idItem)
         },
+        onUpload(idItem) {
+            return modalUpload('div.bodyUpload','formUpload','image/*','academico-'+idItem, 1)
+        },
         refreshData() {
             this.showAcademy = false
             this.loadData()

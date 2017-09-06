@@ -1,10 +1,10 @@
 <!--Left Sidebar-->
 <div class="col-md-3 md-margin-bottom-40">
-    <div class="margin-bottom-20 centerImage">
+    <div class="margin-bottom-20 centerImage" id="leftSidebar">
         <figure class="imghvr-fade img-circle">
-            <img class="img-responsive profile-img img-circle" src="/assets/img/avatars/default.jpg" alt="">
+            <img class="img-responsive profile-img img-circle" :src="routeAvatar" alt="">
             <figcaption>
-                <a href="">
+                <a href="" onclick="modalUpload('div.bodyUpload','formUpload','image/*','avatar', 1)" data-toggle="modal" data-target=".modalUpload">
                     <h3 class="ih-flip-x centerText">
                         <i class="fa fa-camera"></i> Cambiar
                     </h3>

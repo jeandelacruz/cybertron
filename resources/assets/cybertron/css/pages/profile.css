@@ -448,7 +448,7 @@
 	padding: 15px 10px 5px 15px;
 }
 
-.profile .profile-bio a {
+.profile .profile-bio a.fixClass {
 	left: 50%;
 	bottom: 20px;
 	margin-left: -60px;

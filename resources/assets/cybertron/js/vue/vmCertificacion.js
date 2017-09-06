@@ -39,6 +39,9 @@ var vmCertificaciones = new Vue({
         onUpdate(idItem) {
             return updateModal('div.bodyCertification','formCertificacionesUpdate', idItem)
         },
+        onUpload(idItem) {
+            return modalUpload('div.bodyUpload','formUpload','image/*','certificado-'+idItem, 1)
+        },
         refreshData() {
             this.showCertificate = false
             this.loadData()
