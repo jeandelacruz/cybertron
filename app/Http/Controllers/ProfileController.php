@@ -459,89 +459,76 @@ class ProfileController extends CybertronController
 
         if(!$file->isValid())
             return response()->json([
-            'error' => 'File is not valid!'
-        ]);
+                'error' => 'File is not valid!'
+            ]);
+
+        $actionUpload = false;
+        $dniNull = true;
+        $extensionFile = $file->getClientOriginalExtension();
 
         switch($file->getClientMimeType()){
             case 'application/pdf':
-                $fileExtension = '.pdf';
-                $file = $file;
                 $actionUpload = true;
                 break;
             case ('image/jpeg' && $request->nameUpload == 'avatar'):
             case ('image/png' && $request->nameUpload == 'avatar'):
             case ('image/bmp' && $request->nameUpload == 'avatar'):
-                $fileExtension = '.jpg';
                 $file = Image::make($file)->fit(450, 450)->encode('jpg');
-                $actionUpload = false;
                 break;
             case 'image/jpeg':
             case 'image/png':
             case 'image/bmp':
-                $fileExtension = '.jpg';
                 $file = Image::make($file)->encode('jpg');
-                $actionUpload = false;
                 break;
         }
 
-        $nameUpload = $request->nameUpload.$fileExtension;
-        $nameDirectory = 'storage/'.Auth::user()->username;
+        $nameFile = $request->nameUpload.'.'.$extensionFile;
 
         if($request->nameFolder == '' || $request->nameFolder == null || $request->nameFolder == '-'){
             $nameFolder = Auth::user()->username;
+            $nameDirectory = 'storage/'.Auth::user()->username;
         }else{
             $nameFolder = $request->nameFolder;
+            $nameDirectory = 'storage/'.$request->nameFolder;
+            $dniNull = false;
         }
-        
+
         UsersRepositories::updateOrInsert([
             'user_id'       => Auth::id(),
             'name_file'     => $request->nameUpload
         ], [
             'user_id'           => Auth::id(),
             'name_folder'       => $nameFolder,
-            'file_extension'    => $fileExtension,
+            'file_extension'    => '.'.$extensionFile,
             'name_file'         => $request->nameUpload
         ]);
 
-        if($request->nameFolder == '' || $request->nameFolder == null || $request->nameFolder == '-'){
-            if(!File::exists($nameDirectory)){
-                $this->makeDirectory(Auth::user()->username);
-            }
-            if($actionUpload){
-                $file->move($nameDirectory, $nameUpload);
-            }else{
-                $file->save($nameDirectory.'/'.$nameUpload);
-            }
+        if(!File::exists($nameDirectory)){
+            $this->makeDirectory($nameDirectory);
         }else{
-            $nameDirectory = 'storage/'.$request->nameFolder;
-            if(File::exists($nameDirectory)){
+            if($dniNull){
+                $this->deleteFile($nameDirectory.'/'.$request->nameUpload,$extensionFile);
                 if($actionUpload){
-                    $file->move($nameDirectory, $nameUpload);
+                    $file->move($nameDirectory, $nameFile);
                 }else{
-                    $file->save($nameDirectory.'/'.$nameUpload);
+                    $file->save($nameDirectory.'/'.$nameFile);
                 }
             }else{
-                $this->renameDirectory($nameDirectory,$nameDirectory);
+                $oldDirectory = 'storage/'.Auth::user()->username;
+                if(!File::exists($nameDirectory)){
+                    $this->renameDirectory($oldDirectory,$nameDirectory);
+                }
+                $this->deleteFile($nameDirectory.'/'.$request->nameUpload,$extensionFile);
                 if($actionUpload){
-                    $file->move($nameDirectory, $nameUpload);
+                    $file->move($nameDirectory, $nameFile);
                 }else{
-                    $file->save($nameDirectory.'/'.$nameUpload);
+                    $file->save($nameDirectory.'/'.$nameFile);
                 }
             }
         }
-
-        return response(json_encode([
-            'code'          => '200',
-            'message'       => 'success',
-            'success'       => 'File Uploaded',
-            'rootPath'      => $nameDirectory.'/'.$nameUpload.'?version='.Carbon::now(),
-            'nameUpload'    => $request->nameUpload
-        ], JSON_UNESCAPED_SLASHES))->header('Content-Type', "application/json");
-
     }
 
-    public function getRepositories(/*$nameFolder, $searchFile, */Request $request){
-        //$searchRepositories = File::exists('storage/'.$nameFolder.'/'.$searchFile);
+    public function getRepositories(Request $request){
         if($request->idUser){
             $idUser = $request->idUser;
         }else{

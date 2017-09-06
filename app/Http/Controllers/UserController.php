@@ -178,6 +178,7 @@ class UserController extends CybertronController
                             ->with('roles')
                             ->with('usersStudies')
                             ->with('usersInformation')
+                            ->orderBy('first_last_name', 'asc')
                             ->get()
                             ->toArray();
         return $user_list_query;

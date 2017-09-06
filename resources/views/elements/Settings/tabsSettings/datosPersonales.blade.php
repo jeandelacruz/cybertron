@@ -3,10 +3,9 @@
     <span>
         <div v-if="showDocument">
             <div class="pull-right">
-                <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Subir Curriculum Vitae" onclick="modalUpload('div.bodyUpload','formUpload','.pdf','curriculum_vitae', 1)" data-toggle="modal" data-target=".modalUpload" style="cursor: pointer">
+                <a onclick="modalUpload('div.bodyUpload','formUpload','.pdf','curriculum_vitae', 1)" data-toggle="modal" data-target=".modalUpload" style="cursor: pointer">
                     <i class="fa fa-upload fa-2x text-success"></i>
-                </a>
-                &nbsp;
+                </a>&nbsp;
                 <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Ver Curriculum Vitae" style="cursor: pointer" :href="routeCV" v-if="routeCV != ''" download>
                     <i class="fa fa-eye fa-2x text-success"></i>
                 </a>
