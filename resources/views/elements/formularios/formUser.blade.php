@@ -37,6 +37,25 @@
                             <p class="text-danger" v-if="form.errors.has('typeUser')" v-text="form.errors.get('typeUser')"></p>
                         </div>
                     </div>
+                    <div class="col-md-12"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label text-bold">Tipo Documento:</label>
+                            <v-select :on-change="getDocument" :options="['DNI','EXTRANJERIA']" :value.sync="typeDocument" placeholder="Choose Type Document Here !"></v-select>
+                            <p class="text-danger" v-if="form.errors.has('typeDocument')" v-text="form.errors.get('typeDocument')"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <section>
+                            <label class="label text-bold">N° Documento</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-lock"></i>
+                                <input type="text" placeholder="99887766" name="numberDocument" v-model="form.numberDocument" onkeypress="return filterNumber(event)" onkeydown="return BlockCopyPaste(event)">
+                                <b class="tooltip tooltip-bottom-right">Ingresa el numero de tu documento</b>
+                            </label>
+                            <p class="text-danger" v-if="form.errors.has('numberDocument')" v-text="form.errors.get('numberDocument')"></p>
+                        </section>
+                    </div>
                 @endif
             </fieldset>
             <div class="modal-footer">
@@ -47,7 +66,7 @@
 </div>
 <script src="{!! asset('js/formUser.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    formEnter('formUser',true)
+    formEnter('formUser')
     @if($updateForm == true)
         vmFormUser.form.idUser =  {{ $id }}
         vmFormUser.loadUser()

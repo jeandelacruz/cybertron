@@ -16,7 +16,7 @@
                                 <h2 v-text="nameComplete"></h2>
                             </div>
                             <div class="pull-right">
-                                <a :href="routeCV" target="_blank">
+                                <a :href="routeCV" target="_blank" v-if="routeCV != ''">
                                     <span><strong class="text-info"><i class="fa fa-file-pdf-o"></i> Descargar CV</strong></span>
                                 </a>
                             </div>
@@ -63,7 +63,7 @@
                     <div class="headline">
                         <h2>Datos Academicos</h2>
                     </div>
-                    <div id="datosBioAcademicos" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
+                    <div id="datosBioAcademicos" class="scrollAcademy" data-mcs-theme="minimal-dark">
                         <div v-if="academy.length == 0">
                             <div class="alert alert-info text-center">
                                 <div class="row">
@@ -93,9 +93,16 @@
                                                 <dd class="text-bold" v-if="situationAcademy[index] != 'Cursando'" v-text="dateFinish[index]"></dd>
                                             </div>
                                             <div class="col-md-1">
-                                                <a @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
-                                                    <i style="cursor:pointer;" class="fa fa-download fa-2x text-primary"></i>
-                                                </a>
+                                                <div v-if="viewAcademy">
+                                                    <a @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
+                                                        <i style="cursor:pointer;" class="fa fa-download fa-2x text-primary"></i>
+                                                    </a>
+                                                </div>
+                                                <div v-else>
+                                                    <a @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
+                                                        <i style="cursor:pointer;" class="fa fa-search fa-2x color-darker"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </dl>
                                     </div>
@@ -111,39 +118,48 @@
                     <div class="headline">
                         <h2>Certificaciones</h2>
                     </div>
-                    <div id="datosBioCertificaciones" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-                        <div v-if="certificate.length == 0">
-                            <div class="alert alert-info text-center">
-                                <div class="row">
-                                    <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Certificaciones Ingresadas </h2>
+                    <div id="datosBioCertificaciones">
+                        <div class="scrollCertificaciones" data-mcs-theme="minimal-dark">
+                            <div v-if="certificate.length == 0">
+                                <div class="alert alert-info text-center">
+                                    <div class="row">
+                                        <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Certificaciones Ingresadas </h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div v-else>
-                            <div v-for="(item, index) in certificate">
-                                <div class="panel panel-success">
-                                    <div class="panel-heading">
-                                        <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
-                                    </div>
-                                    <div class="panel-body">
-                                        <dl class="dl-horizontal">
-                                            <div class="col-md-4 text-center">
-                                                <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
-                                            </div>
-                                            <div class="col-md-7">
-                                                <dt class="text-primary">Certificado</dt>
-                                                <dd class="text-bold" v-text="nameCertificate[index]"></dd>
-                                                <dt class="text-primary">Fecha de Inicio</dt>
-                                                <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                                                <dt class="text-primary">Fecha de Fin</dt>
-                                                <dd class="text-bold" v-text="dateFinish[index]"></dd>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <a @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
-                                                    <i style="cursor:pointer;" class="fa fa-download fa-2x text-success"></i>
-                                                </a>
-                                            </div>
-                                        </dl>
+                            <div v-else>
+                                <div v-for="(item, index) in certificate">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
+                                        </div>
+                                        <div class="panel-body">
+                                            <dl class="dl-horizontal">
+                                                <div class="col-md-4 text-center">
+                                                    <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <dt class="text-primary">Certificado</dt>
+                                                    <dd class="text-bold" v-text="nameCertificate[index]"></dd>
+                                                    <dt class="text-primary">Fecha de Inicio</dt>
+                                                    <dd class="text-bold" v-text="dateBegin[index]"></dd>
+                                                    <dt class="text-primary">Fecha de Fin</dt>
+                                                    <dd class="text-bold" v-text="dateFinish[index]"></dd>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div v-if="viewCertificado">
+                                                        <a @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
+                                                            <i style="cursor:pointer;" class="fa fa-download fa-2x text-success"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div v-else>
+                                                        <a @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
+                                                            <i style="cursor:pointer;" class="fa fa-search fa-2x color-darker"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </dl>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +173,7 @@
                     <div class="headline">
                         <h2>Experiencia Laboral</h2>
                     </div>
-                    <div id="datosBioExperiencia" class="mCustomScrollbar" data-mcs-theme="minimal-dark">
+                    <div id="datosBioExperiencia" class="scrollExperiencia" data-mcs-theme="minimal-dark">
                         <div v-if="experience.length == 0">
                             <div class="alert alert-info text-center">
                                 <div class="row">
@@ -186,9 +202,16 @@
                                                 <dd class="text-bold" v-text="dateFinish[index]"></dd>
                                             </div>
                                             <div class="col-md-1">
-                                                <a @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
-                                                    <i style="cursor:pointer;" class="fa fa-download fa-2x text-warning"></i>
-                                                </a>
+                                                <div v-if="viewExperiencia">
+                                                    <a @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
+                                                        <i style="cursor:pointer;" class="fa fa-download fa-2x text-warning"></i>
+                                                    </a>
+                                                </div>
+                                                <div v-else>
+                                                    <a @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
+                                                        <i style="cursor:pointer;" class="fa fa-search fa-2x color-darker"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <dl class="dl-horizontal"><dd></dd></dl>
@@ -227,4 +250,9 @@
     vmBioDatosAcademicos.loadAcademy()
     vmBioCertificaciones.loadCertificaciones()
     vmBioExperiencia.loadExperience()
+    setTimeout(function() {
+        vmBioDatosAcademicos.count()
+        vmBioCertificaciones.count()
+        vmBioExperiencia.count()
+    }, 1000)
 </script>

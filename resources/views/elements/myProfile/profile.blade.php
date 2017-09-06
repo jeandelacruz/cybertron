@@ -84,7 +84,7 @@
                     <div class="row">
                         <transition-group name="fade" enter-active-class="fadeIn" leave-active-class="">
                             <div v-for="(item, index) in listUser" tag="ul" :key="item.id" v-if="showListuser">
-                                <div class="col-sm-12">
+                                <div class="col-sm-12" v-if="countPhone[index]">
                                     <div class="profile-blog blog-border">
                                         <img class="rounded-x" src="/assets/img/avatars/default.jpg" alt="">
                                         <div class="overflow-h">

@@ -52,16 +52,20 @@ var vmDatosPersonales = new Vue({
             setTimeout(function() { CustomTooltips() }, 1000)
             axios.get('viewProfile')
                 .then(response => {
-                    this.form.Names = CharUpper(response.data[0].name)
-                    this.form.FirstlastName = CharUpper(response.data[0].first_last_name)
-                    this.form.SecondlastName = CharUpper(response.data[0].second_last_name)
+                    if(response.data[0].name){
+                        this.form.Names = CharUpper(response.data[0].name)
+                        this.form.FirstlastName = CharUpper(response.data[0].first_last_name)
+                        this.form.SecondlastName = CharUpper(response.data[0].second_last_name)
+                    }
                     this.form.Email = response.data[0].email
                     let profileUser = response.data[0].users_information
                     if(profileUser){
                         this.form.nameAddress = profileUser.address
                         this.form.numberTelephone = profileUser.phone_home
                         this.form.numberMobile = profileUser.phone_mobile
-                        this.form.Document = profileUser.identity
+                        if(profileUser.identity){
+                            this.form.Document = profileUser.identity
+                        }
                         if(profileUser.identity_number){
                             this.form.numberDocument = profileUser.identity_number
                             this.showDocument = true

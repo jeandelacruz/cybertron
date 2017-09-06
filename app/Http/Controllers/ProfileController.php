@@ -463,7 +463,6 @@ class ProfileController extends CybertronController
             ]);
 
         $actionUpload = false;
-        $dniNull = true;
         $extensionFile = $file->getClientOriginalExtension();
 
         switch($file->getClientMimeType()){
@@ -474,24 +473,19 @@ class ProfileController extends CybertronController
             case ('image/png' && $request->nameUpload == 'avatar'):
             case ('image/bmp' && $request->nameUpload == 'avatar'):
                 $file = Image::make($file)->fit(450, 450)->encode('jpg');
+                $extensionFile = 'jpg';
                 break;
             case 'image/jpeg':
             case 'image/png':
             case 'image/bmp':
                 $file = Image::make($file)->encode('jpg');
+                $extensionFile = 'jpg';
                 break;
         }
 
         $nameFile = $request->nameUpload.'.'.$extensionFile;
-
-        if($request->nameFolder == '' || $request->nameFolder == null || $request->nameFolder == '-'){
-            $nameFolder = Auth::user()->username;
-            $nameDirectory = 'storage/'.Auth::user()->username;
-        }else{
-            $nameFolder = $request->nameFolder;
-            $nameDirectory = 'storage/'.$request->nameFolder;
-            $dniNull = false;
-        }
+        $nameFolder = $request->nameFolder;
+        $nameDirectory = 'storage/'.$request->nameFolder;
 
         UsersRepositories::updateOrInsert([
             'user_id'       => Auth::id(),
@@ -505,27 +499,23 @@ class ProfileController extends CybertronController
 
         if(!File::exists($nameDirectory)){
             $this->makeDirectory($nameDirectory);
-        }else{
-            if($dniNull){
-                $this->deleteFile($nameDirectory.'/'.$request->nameUpload,$extensionFile);
-                if($actionUpload){
-                    $file->move($nameDirectory, $nameFile);
-                }else{
-                    $file->save($nameDirectory.'/'.$nameFile);
-                }
-            }else{
-                $oldDirectory = 'storage/'.Auth::user()->username;
-                if(!File::exists($nameDirectory)){
-                    $this->renameDirectory($oldDirectory,$nameDirectory);
-                }
-                $this->deleteFile($nameDirectory.'/'.$request->nameUpload,$extensionFile);
-                if($actionUpload){
-                    $file->move($nameDirectory, $nameFile);
-                }else{
-                    $file->save($nameDirectory.'/'.$nameFile);
-                }
-            }
         }
+
+        $this->deleteFile($nameDirectory.'/'.$request->nameUpload,$extensionFile);
+        if($actionUpload){
+            $file->move($nameDirectory, $nameFile);
+        }else{
+            $file->save($nameDirectory.'/'.$nameFile);
+        }
+
+        return response(json_encode([
+            'code'          => '200',
+            'message'       => 'success',
+            'success'       => 'File Uploaded',
+            'rootPath'      => $nameDirectory.'/'.$nameFile.'?version='.Carbon::now(),
+            'nameUpload'    => $request->nameUpload
+        ], JSON_UNESCAPED_SLASHES))->header('Content-Type', "application/json");
+
     }
 
     public function getRepositories(Request $request){

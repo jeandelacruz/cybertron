@@ -4,7 +4,7 @@
         <h4 id="myLargeModalLabel3" class="modal-title">{{ $updateForm === true ? "Editar" : "Agregar" }} Datos Academicos</h4>
     </div>
     <div class="modal-body">
-        <form id="formAcademico" @submit.prevent="onSubmit" class="sky-form" @keydown="form.errors.clear($event.target.name)">
+        <form id="formAcademico" @submit.prevent="onSubmit" class="sky-form" @keydown="form.errors.clear($event.target.name)" @keydown.enter.prevent="">
             <fieldset>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -79,7 +79,7 @@
 </div>
 <script src="{!! asset('js/formDatosAcademicos.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    formEnter('formAcademico',true)
+    formEnter('formAcademico')
     @if($updateForm == true)
         vmFormDatosAcademicos.form.idAcademico = ''
         vmFormDatosAcademicos.form.idAcademico =  {{ $id }}

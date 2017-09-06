@@ -7,10 +7,10 @@ use Cybertron\Role;
 use Cybertron\UsersJob;
 use Cybertron\UsersStudies;
 use Cybertron\UsersCertificate;
+use Cybertron\UserInformation;
 use Cybertron\UsersExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends CybertronController
 {
@@ -80,7 +80,8 @@ class UserController extends CybertronController
         if ($request->isMethod('get')) {
             $resultado = User::Select()
                 ->where('users.id', $request->idUser)
-                ->join('users_jobs', 'users.id_job', '=', 'users_jobs.id')
+                ->leftJoin('users_jobs', 'users_jobs.id', '=', 'users.id_job')
+                ->leftJoin('users_information', 'users_information.user_id', '=', 'users.id')
                 ->get()
                 ->toArray();
         }
@@ -112,6 +113,13 @@ class UserController extends CybertronController
                 $user
                     ->roles()
                     ->attach(Role::where('name', 'user')->first());
+
+                UserInformation::updateOrInsert([
+                    'user_id' => $user->id
+                ], [
+                    'identity'          => $request->Document,
+                    'identity_number'   => $request->numberDocument
+                ]);
             }else{
                 if($request->passUser == null){
                     $this->validate(request(), [
@@ -124,6 +132,13 @@ class UserController extends CybertronController
                             'username'  => Str::lower($request->userRed),
                             'id_job'    => $id_job[0]['id']
                         ]);
+
+                    UserInformation::updateOrInsert([
+                        'user_id' => $request->idUser
+                    ], [
+                        'identity'          => $request->Document,
+                        'identity_number'   => $request->numberDocument
+                    ]);
                 }else{
                     $this->validate(request(), [
                         'userRed'        => 'required',

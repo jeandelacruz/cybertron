@@ -54,9 +54,6 @@ var vmBio = new Vue({
                         this.daysBirthday = validateBirthday(profileUser.datebirthday)
                     }
                 }
-                setTimeout(function () {
-                    CustomScrollBar();
-                }, 1000)
                 swal.close()
             }).catch(err => console.log(err))
 
@@ -99,7 +96,8 @@ var vmBioDatosAcademicos = new Vue({
     el: '#datosBioAcademicos',
     data: {
         academy: [],
-        routeAcademy: ''
+        routeAcademy: '',
+        viewAcademy: false
     },
     computed: {
         nameCareer() {
@@ -143,9 +141,13 @@ var vmBioDatosAcademicos = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeAcademy = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    this.viewAcademy = true
                     download(this.routeAcademy)
                 }
             })
+        },
+        count() {
+            if(Object.keys(this.academy).length > 2) scrollBar('scrollAcademy')
         }
     }
 })
@@ -154,7 +156,8 @@ var vmBioCertificaciones = new Vue({
     el: '#datosBioCertificaciones',
     data: {
         certificate: [],
-        routeCertificado: ''
+        routeCertificado: '',
+        viewCertificado: false
     },
     computed: {
         nameCertificate() {
@@ -193,9 +196,13 @@ var vmBioCertificaciones = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeCertificado = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    this.viewCertificado = true
                     download(this.routeCertificado)
                 }
             })
+        },
+        count() {
+            if(Object.keys(this.certificate).length > 2) scrollBar('scrollCertificaciones')
         }
     }
 })
@@ -204,7 +211,8 @@ var vmBioExperiencia = new Vue({
     el: '#datosBioExperiencia',
     data: {
         experience: [],
-        routeExperiencia: ''
+        routeExperiencia: '',
+        viewExperiencia: false
     },
     computed: {
         nameBusiness() {
@@ -248,12 +256,22 @@ var vmBioExperiencia = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeExperiencia = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    this.viewExperiencia = true
                     download(this.routeExperiencia)
                 }
             })
+        },
+        count() {
+            if(Object.keys(this.experience).length > 2) scrollBar('scrollExperiencia')
         }
     }
 })
+
+const scrollBar = (divScroll) => {
+    setTimeout(function () {
+        CustomScrollBar(divScroll)
+    }, 1000)
+}
 
 const validateBirthday = (dateProfile) => {
     let dateStart = moment().format('YYYY-') + moment(dateProfile).format('MM-DD')

@@ -6,7 +6,7 @@
                 <a onclick="modalUpload('div.bodyUpload','formUpload','.pdf','curriculum_vitae', 1)" data-toggle="modal" data-target=".modalUpload" style="cursor: pointer">
                     <i class="fa fa-upload fa-2x text-success"></i>
                 </a>&nbsp;
-                <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Ver Curriculum Vitae" style="cursor: pointer" :href="routeCV" v-if="routeCV != ''" download>
+                <a v-if="routeCV != ''" class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Ver Curriculum Vitae" style="cursor: pointer" :href="routeCV" download>
                     <i class="fa fa-eye fa-2x text-success"></i>
                 </a>
             </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <transition name="fade" enter-active-class="fadeIn" leave-active-class="">
-        <form class="sky-form" id="formDatosPersonales" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" v-if="showPersonales">
+        <form class="sky-form" id="formDatosPersonales" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" v-if="showPersonales" @keydown.enter.prevent="">
             <dl class="dl-horizontal">
                 <div class="headline">
                     <h3>Identificación</h3>
@@ -230,5 +230,5 @@
 </div>
 <script src="{!! asset('js/vueDatosPersonales.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    formEnter('formDatosPersonales',true)
+    formEnter('formDatosPersonales')
 </script>

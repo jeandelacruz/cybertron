@@ -4,7 +4,7 @@
         <h4 id="myLargeModalLabel3" class="modal-title">{{ $updateForm === true ? "Editar" : "Agregar" }} Certificados</h4>
     </div>
     <div class="modal-body">
-        <form id="formCertificacion" @submit.prevent="onSubmit" class="sky-form" @keydown="form.errors.clear($event.target.name)">
+        <form id="formCertificacion" @submit.prevent="onSubmit" class="sky-form" @keydown="form.errors.clear($event.target.name)" @keydown.enter.prevent="">
         <fieldset>
             <div class="col-md-6">
                 <section>
@@ -57,7 +57,7 @@
 </div>
 <script src="{!! asset('js/formCertificacion.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    formEnter('formCertificacion',true)
+    formEnter('formCertificacion')
     @if($updateForm == true)
         vmFormCertificaciones.form.idCertificado = ''
         vmFormCertificaciones.form.idCertificado =  {{ $id }}

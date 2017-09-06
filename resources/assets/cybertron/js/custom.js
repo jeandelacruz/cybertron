@@ -386,8 +386,8 @@ const changeStatus = (idUser, statusUser) => {
  * [CustomScrollBar description]
  * @return Retorna el evento para mostrar un scrollbar unico
  */
-const CustomScrollBar = () => {
-    $('.mCustomScrollbar').mCustomScrollbar({
+const CustomScrollBar = (divCustom = 'mCustomScrollbar') => {
+    $('.'+divCustom).mCustomScrollbar({
         theme: "minimal",
         setHeight: '420px',
         scrollEasing: "linear",
