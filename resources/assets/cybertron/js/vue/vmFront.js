@@ -92,6 +92,7 @@ var vmProfile = new Vue({
                 .catch(err => console.log(err))
         },
         loadUser(){
+            this.showListuser = false
             axios.get('/listUsers')
                 .then(response => {
                     this.listUser = response.data

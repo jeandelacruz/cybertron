@@ -5,7 +5,8 @@ var vmCertificaciones = new Vue({
     el: '#datosCertificaciones',
     data: {
         certificate: [],
-        showCertificate: false
+        showCertificate: false,
+        routeCertificado: ''
     },
     mounted(){
         this.loadData()
@@ -40,11 +41,24 @@ var vmCertificaciones = new Vue({
             return updateModal('div.bodyCertification','formCertificacionesUpdate', idItem)
         },
         onUpload(idItem) {
-            return modalUpload('div.bodyUpload','formUpload','image/*','certificado-'+idItem, 1)
+            return modalUpload('div.bodyUpload','formUpload','image/*,.pdf','certificado-'+idItem, 1)
         },
         refreshData() {
             this.showCertificate = false
             this.loadData()
+        },
+        Repositories(nameFile){
+            axios.get('/getRepositories', {
+                params: {
+                    nameFile: nameFile
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeCertificado = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    download(this.routeCertificado)
+                }
+            })
         }
     }
 })

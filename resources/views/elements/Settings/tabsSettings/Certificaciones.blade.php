@@ -18,37 +18,38 @@
                 </div>
             </div>
         </div>
-        <div v-if="showCertificate">
-            <transition-group name="fade" mode="out-in">
-                <div v-for="(item, index) in certificate" :key="item.id">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
-                        </div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <div class="col-md-4 text-center">
-                                    <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
-                                </div>
-                                <div class="col-md-7">
-                                    <dt class="text-primary">Certificado</dt>
-                                    <dd class="text-bold" v-text="nameCertificate[index]"></dd>
-                                    <dt class="text-primary">Fecha de Inicio</dt>
-                                    <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                                    <dt class="text-primary">Fecha de Fin</dt>
-                                    <dd class="text-bold" v-text="dateFinish[index]"></dd>
-                                </div>
-                                <div class="col-md-1">
-                                    <i style="cursor:pointer;" class="fa fa-edit fa-2x text-success" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalCertification"></i>
-                                    <hr>
-                                    <i style="cursor:pointer;" class="fa fa-upload fa-2x text-success" @click="onUpload(item.id)" data-toggle="modal" data-target=".modalUpload"></i>
-                                </div>
-                            </dl>
+        <transition-group name="fade" enter-active-class="fadeIn" leave-active-class="">
+            <div v-for="(item, index) in certificate" :key="item.id" v-if="showCertificate">
+                <div class="panel panel-success">
+                    <div class="panel-heading clearfix">
+                        <h1 class="panel-title pull-left"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
+                        <div class="pull-right" style="padding-top: 4px">
+                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Adjuntar Sustento"><i style="cursor:pointer;" class="fa fa-upload fa-2x text-white" @click="onUpload(item.id)" data-toggle="modal" data-target=".modalUpload"></i></a>
+                            &nbsp;
+                            <a @click="Repositories('certificado-' + item.id)" class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Ver Sustento"><i style="cursor:pointer;" class="fa fa-eye fa-2x text-white"></i></a>
                         </div>
                     </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <div class="col-md-4 text-center">
+                                <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
+                            </div>
+                            <div class="col-md-7">
+                                <dt class="text-primary">Certificado</dt>
+                                <dd class="text-bold" v-text="nameCertificate[index]"></dd>
+                                <dt class="text-primary">Fecha de Inicio</dt>
+                                <dd class="text-bold" v-text="dateBegin[index]"></dd>
+                                <dt class="text-primary">Fecha de Fin</dt>
+                                <dd class="text-bold" v-text="dateFinish[index]"></dd>
+                            </div>
+                            <div class="col-md-1">
+                                <i style="cursor:pointer;" class="fa fa-edit fa-2x text-success" @click="onUpdate(item.id)" data-toggle="modal" data-target=".modalCertification"></i>
+                            </div>
+                        </dl>
+                    </div>
                 </div>
-            </transition-group>
-        </div>
+            </div>
+        </transition-group>
     </div>
 </div>
 <script src="{!! asset('js/vueCertificacion.js?version='.date('YmdHis'))!!}"></script>

@@ -462,15 +462,24 @@ class ProfileController extends CybertronController
             'error' => 'File is not valid!'
         ]);
 
-        switch($request->filesPermited){
-            case '.pdf':
+        switch($file->getClientMimeType()){
+            case 'application/pdf':
                 $fileExtension = '.pdf';
                 $file = $file;
                 $actionUpload = true;
                 break;
-            case 'image/*':
+            case ('image/jpeg' && $request->nameUpload == 'avatar'):
+            case ('image/png' && $request->nameUpload == 'avatar'):
+            case ('image/bmp' && $request->nameUpload == 'avatar'):
                 $fileExtension = '.jpg';
-                $file = Image::make($file)->fit(440, 400)->encode('jpg');;
+                $file = Image::make($file)->fit(450, 450)->encode('jpg');
+                $actionUpload = false;
+                break;
+            case 'image/jpeg':
+            case 'image/png':
+            case 'image/bmp':
+                $fileExtension = '.jpg';
+                $file = Image::make($file)->encode('jpg');
                 $actionUpload = false;
                 break;
         }
@@ -488,9 +497,10 @@ class ProfileController extends CybertronController
             'user_id'       => Auth::id(),
             'name_file'     => $request->nameUpload
         ], [
-            'user_id'        => Auth::id(),
-            'name_folder'    => $nameFolder,
-            'name_file'      => $request->nameUpload
+            'user_id'           => Auth::id(),
+            'name_folder'       => $nameFolder,
+            'file_extension'    => $fileExtension,
+            'name_file'         => $request->nameUpload
         ]);
 
         if($request->nameFolder == '' || $request->nameFolder == null || $request->nameFolder == '-'){

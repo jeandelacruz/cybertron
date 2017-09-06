@@ -5,7 +5,8 @@ var vmDatosAcademicos = new Vue({
     el: '#datosAcademicos',
     data: {
         academy: [],
-        showAcademy: false
+        showAcademy: false,
+        routeAcademy: ''
     },
     mounted(){
         this.loadData()
@@ -45,11 +46,24 @@ var vmDatosAcademicos = new Vue({
             return updateModal('div.bodyStudy','formDatosAcademicosUpdate', idItem)
         },
         onUpload(idItem) {
-            return modalUpload('div.bodyUpload','formUpload','image/*','academico-'+idItem, 1)
+            return modalUpload('div.bodyUpload','formUpload','image/*,.pdf','academico-'+idItem, 1)
         },
         refreshData() {
             this.showAcademy = false
             this.loadData()
+        },
+        Repositories(nameFile){
+            axios.get('/getRepositories', {
+                params: {
+                    nameFile: nameFile
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeAcademy = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    download(this.routeAcademy)
+                }
+            })
         }
     }
 })

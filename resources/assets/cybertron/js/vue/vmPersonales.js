@@ -39,11 +39,13 @@ var vmDatosPersonales = new Vue({
             dateBirthday: ''
         }),
         showPersonales: false,
-        showDocument: false
+        showDocument: false,
+        routeCV: ''
     },
     mounted()  {
         this.loadData()
         this.loadDepartamento()
+        this.Repositories()
     },
     methods: {
         loadData(){
@@ -149,6 +151,18 @@ var vmDatosPersonales = new Vue({
                 }
             }
         },
+        Repositories(){
+            axios.get('/getRepositories', {
+                params: {
+                    nameFile: 'curriculum_vitae'
+                }
+            }).then(response => {
+                if(response.data[0]){
+                    let fileRepositorie = response.data[0]
+                    this.routeCV = 'storage/' + fileRepositorie['name_folder'] + '/curriculum_vitae' + fileRepositorie['file_extension']
+                }
+            })
+        },
         getDocument: function(typeDocument){
             this.form.Document = (typeDocument).toLowerCase()
         },
@@ -175,7 +189,9 @@ var vmDatosPersonales = new Vue({
     }
 })
 
-singleDate('dateBirthday', 'up')
-$('input[name=dateBirthday]').on('apply.daterangepicker', function (ev, picker) {
-    vmDatosPersonales.form.dateBirthday = picker.startDate.format('YYYY-MM-DD')
-})
+setTimeout(function() {
+    singleDate('dateBirthday', 'up')
+    $('input[name=dateBirthday]').on('apply.daterangepicker', function (ev, picker) {
+        vmDatosPersonales.form.dateBirthday = picker.startDate.format('YYYY-MM-DD')
+    })
+}, 2000)

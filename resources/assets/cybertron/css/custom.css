@@ -145,3 +145,35 @@ span > p.textError {
  }
 }
 /* Fin Vue Upload */
+
+.animated.v-enter {
+    animation: fadein .5s;
+}
+
+.animated.v-leave {
+    animation: fadeout .5s;
+}
+
+@keyframes fadein {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(0);
+    }
+}

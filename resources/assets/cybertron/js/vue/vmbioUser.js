@@ -68,7 +68,7 @@ var vmBio = new Vue({
             }).then(response => {
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
-                    this.routeAvatar = 'storage/' + fileRepositorie['name_folder'] + '/avatar.jpg'
+                    this.routeAvatar = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
                 }
             })
 
@@ -80,7 +80,7 @@ var vmBio = new Vue({
             }).then(response => {
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
-                    this.routeCV = 'storage/' + fileRepositorie['name_folder'] + '/curriculum_vitae.pdf'
+                    this.routeCV = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
                 }
             })
 
@@ -132,16 +132,18 @@ var vmBioDatosAcademicos = new Vue({
             })
             .then(response => this.academy = response.data)
             .catch(error => console.log(error))
-
+        },
+        Repositories(nameFile){
             axios.get('/getRepositories', {
                 params: {
                     idUser: vmBio.idUser,
-                    nameFile: 'avatar'
+                    nameFile: nameFile
                 }
             }).then(response => {
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
-                    this.routeAcademy = 'storage/' + fileRepositorie['name_folder']
+                    this.routeAcademy = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    download(this.routeAcademy)
                 }
             })
         }
@@ -180,16 +182,18 @@ var vmBioCertificaciones = new Vue({
             })
             .then(response => this.certificate = response.data)
             .catch(error => console.log(error))
-
+        },
+        Repositories(nameFile){
             axios.get('/getRepositories', {
                 params: {
                     idUser: vmBio.idUser,
-                    nameFile: 'avatar'
+                    nameFile: nameFile
                 }
             }).then(response => {
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
-                    this.routeCertificado = 'storage/' + fileRepositorie['name_folder']
+                    this.routeCertificado = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    download(this.routeCertificado)
                 }
             })
         }
@@ -233,16 +237,18 @@ var vmBioExperiencia = new Vue({
             })
             .then(response => this.experience = response.data)
             .catch(error => console.log(error))
-
+        },
+        Repositories(nameFile){
             axios.get('/getRepositories', {
                 params: {
                     idUser: vmBio.idUser,
-                    nameFile: 'avatar'
+                    nameFile: nameFile
                 }
             }).then(response => {
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
-                    this.routeExperiencia = 'storage/' + fileRepositorie['name_folder']
+                    this.routeExperiencia = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
+                    download(this.routeExperiencia)
                 }
             })
         }

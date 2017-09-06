@@ -18,6 +18,7 @@ class CreateUsersRepositoriesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('name_folder');
             $table->string('name_file');
+            $table->string('file_extension');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');

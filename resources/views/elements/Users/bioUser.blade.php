@@ -93,7 +93,7 @@
                                                 <dd class="text-bold" v-if="situationAcademy[index] != 'Cursando'" v-text="dateFinish[index]"></dd>
                                             </div>
                                             <div class="col-md-1">
-                                                <a :href="routeAcademy + '/academico-' + item.id + '.jpg'" download>
+                                                <a @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
                                                     <i style="cursor:pointer;" class="fa fa-download fa-2x text-primary"></i>
                                                 </a>
                                             </div>
@@ -139,7 +139,7 @@
                                                 <dd class="text-bold" v-text="dateFinish[index]"></dd>
                                             </div>
                                             <div class="col-md-1">
-                                                <a :href="routeCertificado + '/certificado-' + item.id + '.jpg'" download>
+                                                <a @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
                                                     <i style="cursor:pointer;" class="fa fa-download fa-2x text-success"></i>
                                                 </a>
                                             </div>
@@ -186,7 +186,7 @@
                                                 <dd class="text-bold" v-text="dateFinish[index]"></dd>
                                             </div>
                                             <div class="col-md-1">
-                                                <a :href="routeExperiencia + '/experiencia-' + item.id + '.jpg'" download>
+                                                <a @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
                                                     <i style="cursor:pointer;" class="fa fa-download fa-2x text-warning"></i>
                                                 </a>
                                             </div>

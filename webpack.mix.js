@@ -28,6 +28,7 @@ mix.styles([
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/css/sky-forms.css',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css',
     'resources/assets/cybertron/plugins/img-hover/imagehover.css',
+    'node_modules/vue2-animate/dist/vue2-animate.css',
     'node_modules/daterangepicker/daterangepicker.css',
     'node_modules/datatables.net-bs/css/dataTables.bootstrap.css'
 ], 'public/css/implement.css').version();
@@ -117,6 +118,7 @@ mix.babel([
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js',
     'resources/assets/cybertron/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js',
+    'node_modules/downloadjs/download.js',
     'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
     'resources/assets/cybertron/js/routes.js',
 ], 'public/js/implement.js').version();
