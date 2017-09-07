@@ -69,12 +69,12 @@ var vmFormExperiencia = new Vue({
     }
 })
 
-singleDate('dateBegin')
+singleDate('dateBegin', 'up')
 $('.dateBegin').on('apply.daterangepicker', function (ev, picker) {
     vmFormExperiencia.form.dateBegin = picker.startDate.format('YYYY-MM-DD')
 })
 
-singleDate('dateFinish')
+singleDate('dateFinish', 'up')
 $('.dateFinish').on('apply.daterangepicker', function (ev, picker) {
     vmFormExperiencia.form.dateFinish = picker.startDate.format('YYYY-MM-DD')
 })

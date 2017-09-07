@@ -68,6 +68,9 @@ var vmDatosPersonales = new Vue({
                         }
                         if(profileUser.identity_number){
                             this.form.numberDocument = profileUser.identity_number
+                            vmDatosAcademicos.profileDocument = profileUser.identity_number
+                            vmCertificaciones.profileDocument = profileUser.identity_number
+                            vmExperiencia.profileDocument = profileUser.identity_number
                             this.showDocument = true
                         }
                         this.form.License = profileUser.license

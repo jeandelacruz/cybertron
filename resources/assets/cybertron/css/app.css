@@ -49,7 +49,7 @@ h6 {
 }
 
 .font-open-sans {
-	font-family: "Open Sans", Arial, sans-serif;
+	font-family: "Roboto", sans-serif;;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 5px;
 	text-shadow: none;
 	font-weight: normal;
-	font-family: "Open Sans", Arial, sans-serif;
+	font-family: "Roboto", sans-serif;;
 }
 
 h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
@@ -192,7 +192,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
 	margin-bottom: 15px;
 	padding-bottom: 20px;
 	text-transform: uppercase;
-	font-family: "Open Sans", Arial, sans-serif;
+	font-family: "Roboto", sans-serif;;
 }
 
 .title-v1 h1:after,
@@ -2484,6 +2484,7 @@ img.image-md {
 .img-width-200 { width: 200px;}
 .lft-img-margin { margin:0 20px 5px 0;}
 .rgt-img-margin { margin:0 0 5px 10px;}
+.img-fix-table { width: 90px; height: 90px; margin-top: 0px; margin-bottom: 0px;}
 
 img.img-center,
 .img-center img {

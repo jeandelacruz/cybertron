@@ -97,7 +97,7 @@ var vmBioDatosAcademicos = new Vue({
     data: {
         academy: [],
         routeAcademy: '',
-        viewAcademy: false
+        viewAcademy: ''
     },
     computed: {
         nameCareer() {
@@ -141,13 +141,15 @@ var vmBioDatosAcademicos = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeAcademy = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
-                    this.viewAcademy = true
+                    this.viewAcademy = fileRepositorie['name_file']
                     download(this.routeAcademy)
+                }else{
+                    this.viewAcademy = 'not-' + nameFile
                 }
             })
         },
         count() {
-            if(Object.keys(this.academy).length > 2) scrollBar('scrollAcademy')
+            if(Object.keys(this.academy).length > 4) scrollBar('scrollAcademy')
         }
     }
 })
@@ -157,7 +159,7 @@ var vmBioCertificaciones = new Vue({
     data: {
         certificate: [],
         routeCertificado: '',
-        viewCertificado: false
+        viewCertificado: ''
     },
     computed: {
         nameCertificate() {
@@ -196,13 +198,15 @@ var vmBioCertificaciones = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeCertificado = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
-                    this.viewCertificado = true
+                    this.viewCertificado = fileRepositorie['name_file']
                     download(this.routeCertificado)
+                }else{
+                    this.viewCertificado = 'not-' + nameFile
                 }
             })
         },
         count() {
-            if(Object.keys(this.certificate).length > 2) scrollBar('scrollCertificaciones')
+            if(Object.keys(this.certificate).length > 4) scrollBar('scrollCertificaciones')
         }
     }
 })
@@ -212,7 +216,7 @@ var vmBioExperiencia = new Vue({
     data: {
         experience: [],
         routeExperiencia: '',
-        viewExperiencia: false
+        viewExperiencia: ''
     },
     computed: {
         nameBusiness() {
@@ -232,7 +236,11 @@ var vmBioExperiencia = new Vue({
         },
         dateFinish() {
             return this.experience.map(function(item) {
-                return moment(item.date_finish).format('DD/MM/YYYY')
+                if(moment(item.date_begin) === moment(item.date_begin)) {
+                    return 'Trabajando Actualmente'
+                }else{
+                    return ' Hasta : ' + moment(item.date_finish).format('DD/MM/YYYY')
+                }
             })
         }
     },
@@ -256,13 +264,15 @@ var vmBioExperiencia = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeExperiencia = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
-                    this.viewExperiencia = true
+                    this.viewExperiencia = fileRepositorie['name_file']
                     download(this.routeExperiencia)
+                }else{
+                    this.viewExperiencia = 'not-' + nameFile
                 }
             })
         },
         count() {
-            if(Object.keys(this.experience).length > 2) scrollBar('scrollExperiencia')
+            if(Object.keys(this.experience).length > 4) scrollBar('scrollExperiencia')
         }
     }
 })

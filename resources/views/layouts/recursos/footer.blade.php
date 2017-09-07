@@ -13,7 +13,7 @@
                     <ul class="footer-socials list-inline">
                         <li>
                             <?php
-                                $hostname =explode('.sapia.pe',gethostname());
+                                $hostname = explode('.cosapidata.pe',gethostname());
                                 echo  $hostname[0];
                             ?>
                         </li>

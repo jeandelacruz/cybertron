@@ -28,7 +28,7 @@
                 <h2 class="heading-md">Administra tus Certificados</h2>
                 <span>
                     <a class="pull-right" href="" onclick="bodyModal('div.bodyCertification','formCertificaciones')" data-toggle="modal" data-target=".modalCertification">
-                        <i class="fa fa-plus fa-2x text-success"></i>
+                        <i class="fa fa-plus fa-2x text-primary"></i>
                     </a>
                 </span>
                 <p>A continuación podras ver tus certificaciones que se encuentran ya registrados.</p>
@@ -40,7 +40,7 @@
                 <h2 class="heading-md">Admnistra tu experiencia laboral</h2>
                 <span>
                     <a class="pull-right" href="" onclick="bodyModal('div.bodyExperience','formExperiencia')" data-toggle="modal" data-target=".modalExperience">
-                        <i class="fa fa-plus fa-2x text-warning"></i>
+                        <i class="fa fa-plus fa-2x text-primary"></i>
                     </a>
                 </span>
                 <p>A continuación podras ver tu experiencia laboral que se encuentran ya registrados.</p>

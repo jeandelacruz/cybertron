@@ -449,6 +449,15 @@ class ProfileController extends CybertronController
     }
 
     // Funciones de Upload
+    public function getNumberDocument(){
+        $user = UserInformation::Select()
+                ->where('id', Auth::id())
+                ->get()
+                ->toArray();
+
+        return $user[0]['identity_number'];
+    }
+
     public function uploadFile(Request $request){
         if(!$request->hasFile('file'))
             return response()->json([
@@ -484,8 +493,8 @@ class ProfileController extends CybertronController
         }
 
         $nameFile = $request->nameUpload.'.'.$extensionFile;
-        $nameFolder = $request->nameFolder;
-        $nameDirectory = 'storage/'.$request->nameFolder;
+        $nameFolder = $this->getNumberDocument();
+        $nameDirectory = 'storage/'.$this->getNumberDocument();
 
         UsersRepositories::updateOrInsert([
             'user_id'       => Auth::id(),

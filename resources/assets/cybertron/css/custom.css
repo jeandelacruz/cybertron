@@ -146,6 +146,7 @@ span > p.textError {
 }
 /* Fin Vue Upload */
 
+/* Estilos para efecto de Vue */
 .animated.v-enter {
     animation: fadein .5s;
 }
@@ -176,4 +177,20 @@ span > p.textError {
     100% {
         transform: scale(0);
     }
+}
+
+/* Nuevos Estilos */
+
+.alert-sea {
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    color: #ffffff;
+}
+
+.alert-sea hr {
+    border-top-color: #167b63;
+}
+
+.alert-sea .alert-link {
+    color: #e6e5e5;
 }
