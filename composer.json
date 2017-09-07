@@ -41,7 +41,6 @@
         "post-install-cmd": [
             "php artisan clear-compiled",
             "php artisan config:clear",
-            "php artisan storage:link",
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan vendor:publish --provider='Yajra\\Datatables\\DatatablesServiceProvider'",
             "php artisan vendor:publish --tag=datatables",
