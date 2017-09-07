@@ -451,7 +451,7 @@ class ProfileController extends CybertronController
     // Funciones de Upload
     public function getNumberDocument(){
         $user = UserInformation::Select()
-                ->where('id', Auth::id())
+                ->where('user_id', Auth::id())
                 ->get()
                 ->toArray();
 
