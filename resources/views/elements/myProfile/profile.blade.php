@@ -13,8 +13,8 @@
             <div class="col-sm-6 sm-margin-bottom-20" v-if="showProfile">
                     <div class="service-block-v3 service-block-u">
                         <i class="icon-users"></i>
-                        <span class="service-heading">Nombre Completo</span>
-                        <span class="textName" v-text="nameComplete"></span>
+                        <span class="textName" v-text="fullName"></span>
+                        <span class="service-heading" v-text="lastName"></span>
 
                         <div class="clearfix margin-bottom-20"></div>
 

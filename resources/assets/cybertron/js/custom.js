@@ -6,10 +6,10 @@
  * @return Seguridad para todas las peticiones ajax se pasen con token
  */
 $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+})
 
 /**
  * Created by jdealcruz2712 on 18/08/2017.
@@ -18,19 +18,19 @@ $.ajaxSetup({
  * @return Valida los campos necesario y ejecuta el login
  */
 const loginSistema = () => {
-    let username = $('.username').val()
-    let password = $('.password').val()
-    if(username === '' && password === '') return alertaSimple('','Favor de llenar todos los campos','error')
-    if(username === '') return alertaSimple('','Favor de llenar el campo de Username','error')
-    if(password === '') return alertaSimple('','Favor de llenar el campo de Password','error')
-    $.ajax({
-        beforeSend: function(){
-            $('.btnLogin').html('<i class="fa fa-spin fa-spinner"></i> Cargando')
-        },
-        success: function(){
-            $('#login-form').submit()
-        }
-    })
+  let username = $('.username').val()
+  let password = $('.password').val()
+  if (username === '' && password === '') return alertaSimple('', 'Favor de llenar todos los campos', 'error')
+  if (username === '') return alertaSimple('', 'Favor de llenar el campo de Username', 'error')
+  if (password === '') return alertaSimple('', 'Favor de llenar el campo de Password', 'error')
+  $.ajax({
+    beforeSend: function () {
+      $('.btnLogin').html('<i class="fa fa-spin fa-spinner"></i> Cargando')
+    },
+    success: function () {
+      $('#login-form').submit()
+    }
+  })
 }
 
 /**
@@ -40,14 +40,14 @@ const loginSistema = () => {
  * @return Deslogea al usuario del sistema
  */
 const logoutSistema = () => {
-    $.ajax({
-        beforeSend: function(){
-            alertaSimple('','Te desconectaste con exito','success')
-            setTimeout(function () {
-                $('#logout-form').submit()
-            }, 2000)
-        }
-    })
+  $.ajax({
+    beforeSend: function () {
+      alertaSimple('', 'Te desconectaste con exito', 'success')
+      setTimeout(function () {
+        $('#logout-form').submit()
+      }, 2000)
+    }
+  })
 }
 
 /**
@@ -58,18 +58,18 @@ const logoutSistema = () => {
  * @tipoAalerta Tipo de alerta (succes,info,error,warning)
  * @return Retorna una alerta con sweetlalert2
  */
-const alertaSimple = (titleAlerta = '',textoAlerta,tipoAalerta,tiempoAlerta = 2000) => {
-    swal({
-        title: titleAlerta,
-        html: textoAlerta,
-        type: tipoAalerta,
-        showConfirmButton: false,
-        showCancelButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        timer: tiempoAlerta
-    }).then(
+const alertaSimple = (titleAlerta = '', textoAlerta, tipoAalerta, tiempoAlerta = 2000) => {
+  swal({
+    title: titleAlerta,
+    html: textoAlerta,
+    type: tipoAalerta,
+    showConfirmButton: false,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: tiempoAlerta
+  }).then(
         function () {},
         function (dismiss) { }
     )
@@ -82,7 +82,7 @@ const alertaSimple = (titleAlerta = '',textoAlerta,tipoAalerta,tiempoAlerta = 20
  * @return Crea el loading interactivo en el cuero del contenido
  */
 const loadingCss = () => {
-    $('div.loading').html('<div class="cssload-container">' +
+  $('div.loading').html('<div class="cssload-container">' +
         '<div class="cssload-crazy-arrow"></div>' +
         '</div>')
 }
@@ -95,15 +95,15 @@ const loadingCss = () => {
  * @return Retorna lo que sera cargado en el cuerpo del sistema
  */
 const loadingSystem = (routeLoad) => {
-    $('div.bodySystem').fadeOut(function() {
-        $('div.loading').fadeIn(function() {
-            $('.bodySystem').load(routeLoad, function() {
-                $('div.loading').fadeOut(function() {
-                    $('.bodySystem').fadeIn()
-                })
-            })
+  $('div.bodySystem').fadeOut(function () {
+    $('div.loading').fadeIn(function () {
+      $('.bodySystem').load(routeLoad, function () {
+        $('div.loading').fadeOut(function () {
+          $('.bodySystem').fadeIn()
         })
+      })
     })
+  })
 }
 
 /**
@@ -115,12 +115,12 @@ const loadingSystem = (routeLoad) => {
  * @return Retorna lo que toma de la ruta al modal
  */
 const bodyModal = (nameRoute, routeLoad) => {
-    $(nameRoute).html('' +
+  $(nameRoute).html('' +
         '<div class="cssload-container">' +
             '<div class="cssload-crazy-arrow"></div>' +
-        '</div>').promise().done(function() {
-        $(nameRoute).load(routeLoad, function() { })
-    })
+        '</div>').promise().done(function () {
+          $(nameRoute).load(routeLoad, function () { })
+        })
 }
 
 /**
@@ -132,12 +132,12 @@ const bodyModal = (nameRoute, routeLoad) => {
  * @return Retorna lo que toma de la ruta al modal
  */
 const updateModal = (nameRoute, routeLoad, valID) => {
-    $(nameRoute).html('' +
+  $(nameRoute).html('' +
         '<div class="cssload-container">' +
             '<div class="cssload-crazy-arrow"></div>' +
-        '</div>').promise().done(function() {
-        $(nameRoute).load(routeLoad, {valueId: valID}, function() { })
-    })
+        '</div>').promise().done(function () {
+          $(nameRoute).load(routeLoad, {valueId: valID}, function () { })
+        })
 }
 
 /**
@@ -149,12 +149,12 @@ const updateModal = (nameRoute, routeLoad, valID) => {
  * @return Retorna lo que toma de la ruta al modal
  */
 const modalUpload = (nameRoute, routeLoad, filesPermited, nameUpload, numberFiles) => {
-    $(nameRoute).html('' +
+  $(nameRoute).html('' +
         '<div class="cssload-container">' +
             '<div class="cssload-crazy-arrow"></div>' +
-        '</div>').promise().done(function() {
-        $(nameRoute).load(routeLoad, {filesPermited: filesPermited, nameUpload: nameUpload, numberFiles: numberFiles}, function() { })
-    })
+        '</div>').promise().done(function () {
+          $(nameRoute).load(routeLoad, {filesPermited: filesPermited, nameUpload: nameUpload, numberFiles: numberFiles}, function () { })
+        })
 }
 
 /**
@@ -166,8 +166,8 @@ const modalUpload = (nameRoute, routeLoad, filesPermited, nameUpload, numberFile
  * @return Agregara el estilo active al item deseado
  */
 const activeDiv = (nameContainer, nameClass) => {
-    $(nameContainer).removeClass('active')
-    $(nameClass).addClass('active')
+  $(nameContainer).removeClass('active')
+  $(nameClass).addClass('active')
 }
 
 /**
@@ -178,16 +178,16 @@ const activeDiv = (nameContainer, nameClass) => {
  * @return Retorna el calendario en el input ingresado con el formato 2017-08-18
  */
 const singleDate = (nameInput, drops = 'down') => {
-    $(`input[name=${nameInput}`).daterangepicker({
-        locale: {
-            format: 'YYYY-MM-DD'
-        },
-        singleDatePicker: true,
-        autoUpdateInput: false,
-        showDropdowns: true,
-        opens: "left",
-        drops: drops
-    })
+  $(`input[name=${nameInput}`).daterangepicker({
+    locale: {
+      format: 'YYYY-MM-DD'
+    },
+    singleDatePicker: true,
+    autoUpdateInput: false,
+    showDropdowns: true,
+    opens: 'left',
+    drops: drops
+  })
 }
 
 /**
@@ -199,8 +199,8 @@ const singleDate = (nameInput, drops = 'down') => {
  * @value Dato del objeto para guardar en el array
  * @return Convierte un objeto a un array
  */
-function objectToArray(object, array, value){
-    object.forEach((item, index) => array.push(item[value]))
+function objectToArray (object, array, value) {
+  object.forEach((item, index) => array.push(item[value]))
 }
 
 /**
@@ -211,7 +211,10 @@ function objectToArray(object, array, value){
  * @return Retorna el primer caracter en mayuscula y lo demas en minuscula
  */
 const CharUpper = (string) => {
-    return string.charAt(0).toUpperCase() + (string.slice(1)).toLowerCase()
+  let newString = ''
+  let dataTransform = string.split(' ').map((item) => item.charAt(0).toUpperCase() + (item.slice(1)).toLowerCase())
+  dataTransform.forEach((item, index) => (index === 0) ? newString += item : newString += ' ' + item)
+  return newString
 }
 
 /**
@@ -221,14 +224,13 @@ const CharUpper = (string) => {
  * @return Al darle con la tecla enter se logea en el sistema
  */
 const formEnter = (idForm, functionForm = false) => {
-    $('#'+idForm).keypress(function(e) {
-        if (e.which == 13) {
-            if(functionForm) loginSistema()
-            return false
-        }
-    })
+  $('#' + idForm).keypress(function (e) {
+    if (e.which == 13) {
+      if (functionForm) loginSistema()
+      return false
+    }
+  })
 }
-
 
 /**
  * Created by jdealcruz2712 on 18/08/2017.
@@ -237,32 +239,32 @@ const formEnter = (idForm, functionForm = false) => {
  * @return Retorna el idioma para el datatable
  */
 const dataTables_lang_spanish = () => {
-    let lang = {
-        'sProcessing': 'Procesando...',
-        'sLengthMenu': 'Mostrar _MENU_ registros',
-        'sZeroRecords': 'No se encontraron resultados',
-        'sEmptyTable': 'Ningún dato disponible en esta tabla',
-        'sInfo': 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
-        'sInfoEmpty': 'Mostrando registros del 0 al 0 de un total de 0 registros',
-        'sInfoFiltered': '(filtrado de un total de _MAX_ registros)',
-        'sInfoPostFix': '',
-        'sSearch': 'Buscar:',
-        'sUrl': '',
-        'sInfoThousands': ',',
-        'sLoadingRecords': 'Cargando...',
-        'oPaginate': {
-            'sFirst': 'Primero',
-            'sLast': 'Último',
-            'sNext': 'Siguiente',
-            'sPrevious': 'Anterior'
-        },
-        'oAria': {
-            'sSortAscending': ': Activar para ordenar la columna de manera ascendente',
-            'sSortDescending': ': Activar para ordenar la columna de manera descendente'
-        }
+  let lang = {
+    'sProcessing': 'Procesando...',
+    'sLengthMenu': 'Mostrar _MENU_ registros',
+    'sZeroRecords': 'No se encontraron resultados',
+    'sEmptyTable': 'Ningún dato disponible en esta tabla',
+    'sInfo': 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+    'sInfoEmpty': 'Mostrando registros del 0 al 0 de un total de 0 registros',
+    'sInfoFiltered': '(filtrado de un total de _MAX_ registros)',
+    'sInfoPostFix': '',
+    'sSearch': 'Buscar:',
+    'sUrl': '',
+    'sInfoThousands': ',',
+    'sLoadingRecords': 'Cargando...',
+    'oPaginate': {
+      'sFirst': 'Primero',
+      'sLast': 'Último',
+      'sNext': 'Siguiente',
+      'sPrevious': 'Anterior'
+    },
+    'oAria': {
+      'sSortAscending': ': Activar para ordenar la columna de manera ascendente',
+      'sSortDescending': ': Activar para ordenar la columna de manera descendente'
     }
+  }
 
-    return lang
+  return lang
 }
 
 /**
@@ -273,19 +275,19 @@ const dataTables_lang_spanish = () => {
  * @return Devuelve las columnas a tomarse
  */
 const columnsDatatable = (route) => {
-    let columns = ''
-    if(route === 'listUsers'){
-        columns = [
+  let columns = ''
+  if (route === 'listUsers') {
+    columns = [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'last_name', name: 'last_name'},
             {data: 'username', name: 'username'},
             {data: 'roles', name: 'roles'},
-            {data: 'status', name: 'status', className: "text-center"},
-            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}
-        ]
-    }
-    return columns
+            {data: 'status', name: 'status', className: 'text-center'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
+    ]
+  }
+  return columns
 }
 
 /**
@@ -297,23 +299,23 @@ const columnsDatatable = (route) => {
  * @return Estructura el Datatable ah tomarse
  */
 const dataTables = (nombreDIV, routes) => {
-    //Eliminación del DataTable en caso de que exista
-    $(`#${nombreDIV}`).dataTable().fnDestroy()
-    //Creacion del DataTable
-    $(`#${nombreDIV}`).DataTable({
-        'deferRender': true,
-        'processing': true,
-        'serverSide': true,
-        'ajax': {
-            url: routes,
-            type: 'POST'
-        },
-        'paging': true,
-        'pageLength': 10,
-        'lengthMenu': [10, 20, 40, 50, 100, 200, 300, 400, 500],
-        'language': dataTables_lang_spanish(),
-        'columns': columnsDatatable(nombreDIV)
-    })
+    // Eliminación del DataTable en caso de que exista
+  $(`#${nombreDIV}`).dataTable().fnDestroy()
+    // Creacion del DataTable
+  $(`#${nombreDIV}`).DataTable({
+    'deferRender': true,
+    'processing': true,
+    'serverSide': true,
+    'ajax': {
+      url: routes,
+      type: 'POST'
+    },
+    'paging': true,
+    'pageLength': 10,
+    'lengthMenu': [10, 20, 40, 50, 100, 200, 300, 400, 500],
+    'language': dataTables_lang_spanish(),
+    'columns': columnsDatatable(nombreDIV)
+  })
 }
 
 /**
@@ -323,20 +325,20 @@ const dataTables = (nombreDIV, routes) => {
  * @return Solo permite letras y letras con acentos en los inputs
  */
 const filterLetter = (e) => {
-    const key = e.keyCode || e.which
-    const board = String.fromCharCode(key).toLowerCase()
-    const letter = " áéíóúabcdefghijklmnñopqrstuvwxyz"
-    const specials = "8-37-39-46"
-    let specialskey = false
-    for(let i in specials){
-        if(key === specials[i]){
-            specialskey = true
-            break
-        }
+  const key = e.keyCode || e.which
+  const board = String.fromCharCode(key).toLowerCase()
+  const letter = ' áéíóúabcdefghijklmnñopqrstuvwxyz'
+  const specials = '8-37-39-46'
+  let specialskey = false
+  for (let i in specials) {
+    if (key === specials[i]) {
+      specialskey = true
+      break
     }
-    if(letter.indexOf(board) === -1 && !specialskey){
-        return false
-    }
+  }
+  if (letter.indexOf(board) === -1 && !specialskey) {
+    return false
+  }
 }
 
 /**
@@ -346,7 +348,7 @@ const filterLetter = (e) => {
  * @return Bloquea el Ctrl C y Ctrl V
  */
 const BlockCopyPaste = (e) => {
-    if(e.ctrlKey === true && (e.which === 118 || e.which === 86)) return false
+  if (e.ctrlKey === true && (e.which === 118 || e.which === 86)) return false
 }
 
 /**
@@ -356,8 +358,8 @@ const BlockCopyPaste = (e) => {
  * @return Solo permite ingresar numeros
  */
 const filterNumber = (e) => {
-    let key = window.Event ? e.which : e.keyCode
-    return (key >= 48 && key <= 57 || key === 8 || key === 9 || key === 46 || key === 190)
+  let key = window.Event ? e.which : e.keyCode
+  return (key >= 48 && key <= 57 || key === 8 || key === 9 || key === 46 || key === 190)
 }
 
 /**
@@ -367,16 +369,16 @@ const filterNumber = (e) => {
  * @return Cambia el estado del usuario [Activo | Cesador]
  */
 const changeStatus = (idUser, statusUser) => {
-    axios.post('/user/changeStatus', {
-            idUser: idUser,
-            statusUser: statusUser
-        })
+  axios.post('/user/changeStatus', {
+    idUser: idUser,
+    statusUser: statusUser
+  })
         .then(function (response) {
-            alertaSimple('','Se cambio el estado del Usuario Correctamente','success')
-            $('#listUsers').DataTable().ajax.reload( null, false )
+          alertaSimple('', 'Se cambio el estado del Usuario Correctamente', 'success')
+          $('#listUsers').DataTable().ajax.reload(null, false)
         })
         .catch(function (error) {
-            alertaSimple('','No completaste los campos correctamente o</br>Ha ocurrido un problema<br>Comunicarse con los especialistas','error','4000')
+          alertaSimple('', 'No completaste los campos correctamente o</br>Ha ocurrido un problema<br>Comunicarse con los especialistas', 'error', '4000')
         })
 }
 
@@ -387,14 +389,14 @@ const changeStatus = (idUser, statusUser) => {
  * @return Retorna el evento para mostrar un scrollbar unico
  */
 const CustomScrollBar = (divCustom = 'mCustomScrollbar') => {
-    $('.'+divCustom).mCustomScrollbar({
-        theme: "minimal",
-        setHeight: '420px',
-        scrollEasing: "linear",
-        scrollInertia: 200,
-        autoHideScrollbar: true,
-        scrollButtons: true
-    })
+  $('.' + divCustom).mCustomScrollbar({
+    theme: 'minimal',
+    setHeight: '420px',
+    scrollEasing: 'linear',
+    scrollInertia: 200,
+    autoHideScrollbar: true,
+    scrollButtons: true
+  })
 }
 
 /**
@@ -404,11 +406,11 @@ const CustomScrollBar = (divCustom = 'mCustomScrollbar') => {
  * @return Retorna el evento tooltips
  */
 const CustomTooltips = () => {
-    $('.tooltips').tooltip()
-    $('.tooltips-show').tooltip('show')
-    $('.tooltips-hide').tooltip('hide')
-    $('.tooltips-toggle').tooltip('toggle')
-    $('.tooltips-destroy').tooltip('destroy')
+  $('.tooltips').tooltip()
+  $('.tooltips-show').tooltip('show')
+  $('.tooltips-hide').tooltip('hide')
+  $('.tooltips-toggle').tooltip('toggle')
+  $('.tooltips-destroy').tooltip('destroy')
 }
 
 /**
@@ -419,15 +421,15 @@ const CustomTooltips = () => {
  * @return Retorna una alerta al cargar data de Vuejs en un modal
  */
 const alertaAjax = (textoAlerta) => {
-    swal({
-        html: textoAlerta,
-        type: 'info',
-        showConfirmButton: false,
-        showCancelButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false
-    }).then(
+  swal({
+    html: textoAlerta,
+    type: 'info',
+    showConfirmButton: false,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false
+  }).then(
         function () {},
         function (dismiss) { }
     )
@@ -441,10 +443,10 @@ const alertaAjax = (textoAlerta) => {
  */
 
 const enterTextarea = () => {
-    $(window).keydown(function(event) {
-        if(event.which==13 && !$(event.target).is("textarea")) {
-            event.preventDefault()
-            return false;
-        }
-    })
+  $(window).keydown(function (event) {
+    if (event.which == 13 && !$(event.target).is('textarea')) {
+      event.preventDefault()
+      return false
+    }
+  })
 }

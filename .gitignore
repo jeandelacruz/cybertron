@@ -17,6 +17,7 @@ storage/*.key
 .env.*.php
 .env.php
 .env
+composer.lock
 Homestead.yaml
 Homestead.json
 
