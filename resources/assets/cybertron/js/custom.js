@@ -443,11 +443,10 @@ const alertaAjax = (textoAlerta) => {
  */
 
 const enterTextarea = () => {
-  $('textarea').keypress(function (event) {
-    if (event.which == 13) {
+  $(window).keydown(function (event) {
+    if (event.which == 13 && !$(event.target).is('textarea')) {
       event.preventDefault()
-      var s = $(this).val()
-      $(this).val(s + '\n')
+      return false
     }
   })
 }

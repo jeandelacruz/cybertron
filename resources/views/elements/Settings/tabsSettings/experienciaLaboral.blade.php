@@ -41,7 +41,7 @@
                     </div>
                     <div class="clearfix margin-bottom-20"></div>
                     <hr>
-                    <p>@{{ item.review_business }}</p>
+                    <p v-html="item.review_business"></p>
                 </div>
                 <div class="margin-bottom-10"></div>
             </div>

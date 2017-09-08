@@ -73,7 +73,6 @@
 </div>
 <script src="{!! asset('js/formExperiencia.js?version='.date('YmdHis'))!!}"></script>
 <script>
-    formEnter('formExperiencia')
     enterTextarea()
     @if($updateForm == true)
         vmFormExperiencia.form.idExperience = ''
