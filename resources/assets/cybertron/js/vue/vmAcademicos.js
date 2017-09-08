@@ -6,7 +6,8 @@ var vmDatosAcademicos = new Vue({
     data: {
         academy: [],
         showAcademy: false,
-        routeAcademy: ''
+        routeAcademy: '',
+        profileDocument: ''
     },
     mounted(){
         this.loadData()
@@ -61,7 +62,9 @@ var vmDatosAcademicos = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeAcademy = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
-                    download(this.routeAcademy)
+                    download(this.routeAcademy+'?version='+moment())
+                }else{
+                    alertaSimple('','No existe documento registrado','error')
                 }
             })
         }

@@ -6,7 +6,8 @@ var vmExperiencia = new Vue({
     data: {
         experience: [],
         showExperience: false,
-        routeExperiencia: ''
+        routeExperiencia: '',
+        profileDocument: ''
     },
     mounted(){
         this.loadData()
@@ -29,7 +30,12 @@ var vmExperiencia = new Vue({
         },
         dateFinish() {
             return this.experience.map(function(item) {
-                return moment(item.date_finish).format('DD/MM/YYYY')
+                if(moment(item.date_begin) === moment(item.date_begin)) {
+                    return 'Trabajando Actualmente'
+                }else{
+                    return ' Hasta : ' + moment(item.date_finish).format('DD/MM/YYYY')
+                }
+
             })
         }
     },
@@ -61,7 +67,9 @@ var vmExperiencia = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeExperiencia = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
-                    download(this.routeExperiencia)
+                    download(this.routeExperiencia+'?version='+moment())
+                }else{
+                    alertaSimple('','No existe documento registrado','error')
                 }
             })
         }

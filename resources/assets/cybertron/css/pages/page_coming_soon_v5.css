@@ -23,7 +23,7 @@ html:after {
 	}
 }
 body {
-	font: 300 14px/1.6 "Open Sans", Arial, sans-serif;
+	font: 300 14px/1.6 "Roboto", sans-serif;
 	background: none;
 	position: relative;
 	z-index: 2;

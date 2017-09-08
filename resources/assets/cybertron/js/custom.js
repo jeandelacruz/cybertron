@@ -153,7 +153,7 @@ const modalUpload = (nameRoute, routeLoad, filesPermited, nameUpload, numberFile
         '<div class="cssload-container">' +
             '<div class="cssload-crazy-arrow"></div>' +
         '</div>').promise().done(function () {
-          $(nameRoute).load(routeLoad, {filesPermited: filesPermited, nameUpload: nameUpload, numberFiles: numberFiles, nameFolder: vmProfile.numberDocument}, function () { })
+          $(nameRoute).load(routeLoad, {filesPermited: filesPermited, nameUpload: nameUpload, numberFiles: numberFiles}, function () { })
         })
 }
 
@@ -433,4 +433,21 @@ const alertaAjax = (textoAlerta) => {
         function () {},
         function (dismiss) { }
     )
+}
+
+/**
+ * Created by jdealcruz2712 on 07/09/2017.
+ *
+ * [enterTextarea description]
+ * @return Funcion que sirve para que pueda agregar salto de lineas en los textarea
+ */
+
+const enterTextarea = () => {
+  $('textarea').keypress(function (event) {
+    if (event.which == 13) {
+      event.preventDefault()
+      var s = $(this).val()
+      $(this).val(s + '\n')
+    }
+  })
 }

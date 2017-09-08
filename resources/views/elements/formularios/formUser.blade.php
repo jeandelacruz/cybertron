@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label class="label text-bold">Tipo Documento:</label>
                             <v-select :on-change="getDocument" :options="['DNI','EXTRANJERIA']" :value.sync="typeDocument" placeholder="Choose Type Document Here !"></v-select>
-                            <p class="text-danger" v-if="form.errors.has('typeDocument')" v-text="form.errors.get('typeDocument')"></p>
+                            <p class="text-danger" v-if="form.errors.has('Document')" v-text="form.errors.get('Document')"></p>
                         </div>
                     </div>
                     <div class="col-md-6">

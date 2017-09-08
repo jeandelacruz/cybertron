@@ -1,18 +1,18 @@
 <div class="modal-content profile">
     <div class="modal-header">
         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-        <h4 id="myLargeModalLabel3" class="modal-title">Datos Academicos</h4>
+        <h4 id="myLargeModalLabel3" class="modal-title">Vista del Usuario</h4>
     </div>
     <div class="modal-body">
         <div class="profile-body">
             <div id="bioUser" class="profile-bio">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img class="img-responsive md-margin-bottom-10" :src="routeAvatar" alt="">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="col-md-12">
-                            <div class="headline pull-left">
+                            <div class="headline pull-left" style="margin: 0px 0 10px 0 !important;">
                                 <h2 v-text="nameComplete"></h2>
                             </div>
                             <div class="pull-right">
@@ -65,7 +65,7 @@
                     </div>
                     <div id="datosBioAcademicos" class="scrollAcademy" data-mcs-theme="minimal-dark">
                         <div v-if="academy.length == 0">
-                            <div class="alert alert-info text-center">
+                            <div class="alert alert-sea text-center">
                                 <div class="row">
                                     <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con datos academicos Registrados </h2>
                                 </div>
@@ -73,40 +73,43 @@
                         </div>
                         <div v-else>
                             <div v-for="(item, index) in academy">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
+                                <div class="profile-blog blog-border-v2">
+                                    <img class="rounded-md" src="assets/img/universidad.png">
+                                    <div class="name-location pull-left">
+                                        <div class="margin-bottom-5">
+                                            <strong>@{{ nameCareer[index] }}</strong>
+                                        </div>
+                                        <div class="margin-bottom-5">
+                                            <span><i class="fa fa-university"></i>@{{ item.name_institute }}</span>
+                                        </div>
+                                        <div class="margin-bottom-5">
+                                            <span><i class="fa fa-sitemap"></i>@{{ ' Situación Academica : ' + situationAcademy[index] }}</span>
+                                        </div>
+                                        <div class="margin-bottom-5">
+                                            <span><i class="fa fa-calendar-check-o"></i>@{{ ' Inicio : ' + dateBegin[index] }}</span>&nbsp;
+                                            <span v-if="situationAcademy[index] != 'Cursando'"><i class="fa fa-calendar"></i>@{{ ' Fin : ' + dateFinish[index] }}</span>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <dl class="dl-horizontal">
-                                            <div class="col-md-4 text-center">
-                                                <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
-                                            </div>
-                                            <div class="col-md-7">
-                                                <dt class="text-primary">Ramas de Carrera</dt>
-                                                <dd class="text-bold" v-text="nameCareer[index]"></dd>
-                                                <dt class="text-primary">Situación Académica</dt>
-                                                <dd class="text-bold" v-text="situationAcademy[index]"></dd>
-                                                <dt class="text-primary">Fecha de Inicio</dt>
-                                                <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                                                <dt class="text-primary" v-if="situationAcademy[index] != 'Cursando'">Fecha de Graduación</dt>
-                                                <dd class="text-bold" v-if="situationAcademy[index] != 'Cursando'" v-text="dateFinish[index]"></dd>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div v-if="viewAcademy">
-                                                    <a @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
-                                                        <i style="cursor:pointer;" class="fa fa-download fa-2x text-primary"></i>
-                                                    </a>
-                                                </div>
-                                                <div v-else>
-                                                    <a @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
-                                                        <i style="cursor:pointer;" class="fa fa-search fa-2x color-darker"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </dl>
+                                    <div class="pull-right">
+                                        <div v-if="viewAcademy == 'academico-' + item.id">
+                                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Descargar Sustento" @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
+                                                <i style="cursor:pointer;" class="fa fa-download fa-lg text-primary"></i>
+                                            </a>
+                                        </div>
+                                        <div v-else-if="viewAcademy == 'not-academico-' + item.id">
+                                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="No Tiene Sustento" @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
+                                                <i style="cursor:pointer;" class="fa fa-close fa-lg text-danger"></i>
+                                            </a>
+                                        </div>
+                                        <div v-else>
+                                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Buscar Sustento" @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
+                                                <i style="cursor:pointer;" class="fa fa-search fa-lg color-darker"></i>
+                                            </a>
+                                        </div>
                                     </div>
+                                    <div class="clearfix margin-bottom-20"></div>
                                 </div>
+                                <div class="margin-bottom-10"></div>
                             </div>
                         </div>
                     </div>
@@ -121,7 +124,7 @@
                     <div id="datosBioCertificaciones">
                         <div class="scrollCertificaciones" data-mcs-theme="minimal-dark">
                             <div v-if="certificate.length == 0">
-                                <div class="alert alert-info text-center">
+                                <div class="alert alert-sea text-center">
                                     <div class="row">
                                         <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Certificaciones Ingresadas </h2>
                                     </div>
@@ -129,38 +132,40 @@
                             </div>
                             <div v-else>
                                 <div v-for="(item, index) in certificate">
-                                    <div class="panel panel-success">
-                                        <div class="panel-heading">
-                                            <h1 class="panel-title"><i class="fa fa-university"></i> <span class="text-bold">@{{ item.name_institute }}</span></h1>
+                                    <div class="profile-blog blog-border-v2">
+                                        <img class="rounded-md" src="assets/img/certificado.png">
+                                        <div class="name-location pull-left">
+                                            <div class="margin-bottom-5">
+                                                <strong>@{{ nameCertificate[index]}}</strong>
+                                            </div>
+                                            <div class="margin-bottom-5">
+                                                <span><i class="fa fa-university"></i>@{{ ' en : ' + item.name_institute }}</span>
+                                            </div>
+                                            <div class="margin-bottom-5">
+                                                <span><i class="fa fa-calendar-check-o"></i>@{{ ' Inicio : ' + dateBegin[index] }}</span>&nbsp;
+                                                <span><i class="fa fa-calendar"></i>@{{ ' Fin : ' + dateFinish[index] }}</span>
+                                            </div>
                                         </div>
-                                        <div class="panel-body">
-                                            <dl class="dl-horizontal">
-                                                <div class="col-md-4 text-center">
-                                                    <img class="img-width-120 b-lazy" src="assets/img/logo.png" alt="Logo">
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <dt class="text-primary">Certificado</dt>
-                                                    <dd class="text-bold" v-text="nameCertificate[index]"></dd>
-                                                    <dt class="text-primary">Fecha de Inicio</dt>
-                                                    <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                                                    <dt class="text-primary">Fecha de Fin</dt>
-                                                    <dd class="text-bold" v-text="dateFinish[index]"></dd>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div v-if="viewCertificado">
-                                                        <a @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
-                                                            <i style="cursor:pointer;" class="fa fa-download fa-2x text-success"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div v-else>
-                                                        <a @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
-                                                            <i style="cursor:pointer;" class="fa fa-search fa-2x color-darker"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </dl>
+                                        <div class="pull-right">
+                                            <div v-if="viewCertificado == 'certificado-' + item.id">
+                                                <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Descargar Sustento" @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
+                                                    <i style="cursor:pointer;" class="fa fa-download fa-lg text-primary"></i>
+                                                </a>
+                                            </div>
+                                            <div v-else-if="viewCertificado == 'not-certificado-' + item.id">
+                                                <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="No Tiene Sustento" @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
+                                                    <i style="cursor:pointer;" class="fa fa-close fa-lg text-danger"></i>
+                                                </a>
+                                            </div>
+                                            <div v-else>
+                                                <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Buscar Sustento" @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
+                                                    <i style="cursor:pointer;" class="fa fa-search fa-lg color-darker"></i>
+                                                </a>
+                                            </div>
                                         </div>
+                                        <div class="clearfix margin-bottom-20"></div>
                                     </div>
+                                    <div class="margin-bottom-10"></div>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +180,7 @@
                     </div>
                     <div id="datosBioExperiencia" class="scrollExperiencia" data-mcs-theme="minimal-dark">
                         <div v-if="experience.length == 0">
-                            <div class="alert alert-info text-center">
+                            <div class="alert alert-sea text-center">
                                 <div class="row">
                                     <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Experiencia Laboral Registradas </h2>
                                 </div>
@@ -183,58 +188,42 @@
                         </div>
                         <div v-else>
                             <div v-for="(item, index) in experience">
-                                <div class="panel panel-warning">
-                                    <div class="panel-heading">
-                                        <h1 class="panel-title"><i class="fa fa-building"></i> <span class="text-bold">@{{ item.name_job + ' en : ' + item.name_business }}</span></h1>
+                                <div class="profile-blog blog-border-v2">
+                                    <img class="rounded-md" src="assets/img/experiencia.png">
+                                    <div class="name-location pull-left">
+                                        <div class="margin-bottom-5">
+                                            <strong>@{{ item.name_job}}</strong>
+                                        </div>
+                                        <div class="margin-bottom-5">
+                                            <span><i class="fa fa-building"></i>@{{ ' en : ' + item.name_business }}</span>
+                                        </div>
+                                        <div class="margin-bottom-5">
+                                            <span><i class="fa fa-calendar-check-o"></i>@{{ ' Desde : ' + dateBegin[index] }}</span>&nbsp;
+                                            <span><i class="fa fa-calendar"></i>@{{ dateFinish[index] }}</span>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <dl class="dl-horizontal">
-                                            <div class="col-md-6 text-center">
-                                                <dt class="text-primary">Empresa</dt>
-                                                <dd class="text-bold" v-text="nameBusiness[index]"></dd>
-                                                <dt class="text-primary">Puesto Laboral</dt>
-                                                <dd class="text-bold" v-text="nameJob[index]"></dd>
-                                            </div>
-                                            <div class="col-md-5 text-center">
-                                                <dt class="text-primary">Desde</dt>
-                                                <dd class="text-bold" v-text="dateBegin[index]"></dd>
-                                                <dt class="text-primary">Hasta</dt>
-                                                <dd class="text-bold" v-text="dateFinish[index]"></dd>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div v-if="viewExperiencia">
-                                                    <a @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
-                                                        <i style="cursor:pointer;" class="fa fa-download fa-2x text-warning"></i>
-                                                    </a>
-                                                </div>
-                                                <div v-else>
-                                                    <a @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
-                                                        <i style="cursor:pointer;" class="fa fa-search fa-2x color-darker"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <dl class="dl-horizontal"><dd></dd></dl>
-                                                <div class="panel panel-warning">
-                                                    <div class="panel-heading text-center">
-                                                        <span class="panel-title" style="cursor:pointer;" class="accordion-toggle" data-toggle="collapse" :data-parent="'#accordion-'+item.id" :href="'#collapse-'+item.id">
-                                                            Funcionalidades y Responsabilidades <i class="fa fa-unsorted"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div :id="'collapse-'+item.id" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <div class="row text-center">
-                                                                <div class="col-md-12">
-                                                                    @{{ item.review_business }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </dl>
+                                    <div class="pull-right">
+                                        <div v-if="viewExperiencia == 'experiencia-' + item.id">
+                                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Descargar Sustento" @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
+                                                <i style="cursor:pointer;" class="fa fa-download fa-lg text-primary"></i>
+                                            </a>
+                                        </div>
+                                        <div v-else-if="viewExperiencia == 'not-experiencia-' + item.id">
+                                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="No Tiene Sustento" @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
+                                                <i style="cursor:pointer;" class="fa fa-close fa-lg text-danger"></i>
+                                            </a>
+                                        </div>
+                                        <div v-else>
+                                            <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Buscar Sustento" @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
+                                                <i style="cursor:pointer;" class="fa fa-search fa-lg color-darker"></i>
+                                            </a>
+                                        </div>
                                     </div>
+                                    <div class="clearfix margin-bottom-20"></div>
+                                    <hr>
+                                    <p>@{{ item.review_business }}</p>
                                 </div>
+                                <div class="margin-bottom-10"></div>
                             </div>
                         </div>
                     </div>

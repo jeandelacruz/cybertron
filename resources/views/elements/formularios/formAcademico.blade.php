@@ -25,7 +25,7 @@
                         <label class="label text-bold">Nombre de la Institución</label>
                         <label class="input">
                             <i class="icon-append fa fa-institution"></i>
-                            <autocomplete :suggestions="completeInstitute" v-model="form.nameInstitution" onkeydown="return BlockCopyPaste(event)"></autocomplete>
+                            <autocomplete :suggestions="completeInstitute" v-model="form.nameInstitution"></autocomplete>
                         </label>
                         <p class="text-danger" v-if="form.errors.has('nameInstitution')" v-text="form.errors.get('nameInstitution')"></p>
                     </section>
@@ -35,7 +35,7 @@
                         <label class="label text-bold">Carrera</label>
                         <label class="input">
                             <i class="icon-append fa fa-graduation-cap"></i>
-                            <autocomplete :suggestions="completeCareer" v-model="form.nameCareer" onkeydown="return BlockCopyPaste(event)"></autocomplete>
+                            <autocomplete :suggestions="completeCareer" v-model="form.nameCareer"></autocomplete>
                         </label>
                         <p class="text-danger" v-if="form.errors.has('nameCareer')" v-text="form.errors.get('nameCareer')"></p>
                     </section>
@@ -69,6 +69,11 @@
                             <span class="label label-blue rounded-2x text-white text-center"> 👨🏻‍🎓 Sigues cursando tu carrera </span>
                         </label>
                     </section>
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-sea">
+                        <span class="glyphicon glyphicon-info-sign"></span> <strong>Solo ingresa una palabra en el nombre del instituto y la carrera, asi se mostrara un listado </strong>
+                    </div>
                 </div>
             </fieldset>
             <div class="modal-footer">

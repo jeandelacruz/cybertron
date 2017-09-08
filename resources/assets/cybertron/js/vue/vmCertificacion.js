@@ -6,7 +6,8 @@ var vmCertificaciones = new Vue({
     data: {
         certificate: [],
         showCertificate: false,
-        routeCertificado: ''
+        routeCertificado: '',
+        profileDocument: ''
     },
     mounted(){
         this.loadData()
@@ -56,7 +57,9 @@ var vmCertificaciones = new Vue({
                 if(response.data[0]){
                     let fileRepositorie = response.data[0]
                     this.routeCertificado = 'storage/' + fileRepositorie['name_folder'] + '/' + fileRepositorie['name_file'] + fileRepositorie['file_extension']
-                    download(this.routeCertificado)
+                    download(this.routeCertificado+'?version='+moment())
+                }else{
+                    alertaSimple('','No existe documento registrado','error')
                 }
             })
         }

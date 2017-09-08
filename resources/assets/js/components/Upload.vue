@@ -11,7 +11,6 @@
                   ref="myUniqueID">
             <input type="hidden" name="nameUpload" :value="nameUpload">
             <input type="hidden" name="filesPermited" :value="filesPermited">
-            <input type="hidden" name="nameFolder" :value="nameFolder">
         </dropzone>
     </div>
 </template>
@@ -38,9 +37,6 @@
             },
             numberFiles: {
                 type: String
-            },
-            nameFolder: {
-                type: String
             }
         },
         methods: {
@@ -55,6 +51,9 @@
                         switch (response.nameUpload){
                             case 'avatar':
                                 return vmLeft.refreshAvatar(response.rootPath)
+                            break
+                            case 'curriculum_vitae':
+                                return vmDatosPersonales.Repositories()
                             break
                         }
                     }
@@ -72,7 +71,8 @@
                         dictDefaultMessage: '<br> Arrastra los archivos aquí para subirlos'
                     },
                     maxNumberOfFiles: this.numberFiles,
-                    acceptedFileTypes: this.filesPermited
+                    acceptedFileTypes: this.filesPermited,
+                    maxFileSizeInMB: 10
                 }
 
             }

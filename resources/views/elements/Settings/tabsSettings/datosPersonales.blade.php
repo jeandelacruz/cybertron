@@ -13,12 +13,26 @@
         </div>
         <div v-else>
             <a class="tooltips pull-right" data-toggle="tooltip" data-placement="bottom" data-original-title="Debes llenar tu DNI para poder subir tu CV" style="cursor: pointer">
-                <i class="fa fa-upload fa-2x text-danger"></i>
+                <span class="fa-stack">
+                  <i class="fa fa-upload fa-stack-1x text-success fa-2x"></i>
+                <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                </span>
             </a>
         </div>
     </span>
     <p>A continuación podras ver tus datos que se encuentran ya registrados.</p>
     <br>
+    <div v-if="showDocument">
+        <div class="alert alert-success">
+            <span style="float: right"><i class="fa fa-upload fa-2x"></i></span>
+            <span class="glyphicon glyphicon-ok"></span> <strong>Ahora, puedes subir tu CV debes darle click en el icono  <i class="fa fa-arrow-right"></i></strong>
+        </div>
+    </div>
+    <div v-else>
+        <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-remove"></span> <strong>Debes llenar tu DNI para poder Adjuntar algun archivo </strong>
+        </div>
+    </div>
     <div v-if="!showPersonales" class="row margin-bottom-10">
         <div class="service-block-v8">
             <i class="fa fa-gear fa-spin text-primary"></i>

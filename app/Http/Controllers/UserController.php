@@ -98,8 +98,10 @@ class UserController extends CybertronController
 
             if($request->idUser == null){
                 $this->validate(request(), [
-                    'userRed'        => 'required',
-                    'typeUser'       => 'required'
+                    'userRed'               => 'required',
+                    'typeUser'              => 'required',
+                    'Document'              => 'required',
+                    'numberDocument'        => 'required'
                 ]);
 
                 $user = User::create([
@@ -123,8 +125,10 @@ class UserController extends CybertronController
             }else{
                 if($request->passUser == null){
                     $this->validate(request(), [
-                        'userRed'        => 'required',
-                        'typeUser'       => 'required'
+                        'userRed'               => 'required',
+                        'typeUser'              => 'required',
+                        'Document'              => 'required',
+                        'numberDocument'        => 'required'
                     ]);
 
                     User::where('id', $request->idUser)
@@ -306,8 +310,7 @@ class UserController extends CybertronController
                 return view('elements/formularios/formUpload')->with(array(
                     'filesPermited'    => $request->filesPermited,
                     'nameUpload'       => $request->nameUpload,
-                    'numberFiles'      => $request->numberFiles,
-                    'nameFolder'       => $request->nameFolder
+                    'numberFiles'      => $request->numberFiles
                 ));
             }
         }
