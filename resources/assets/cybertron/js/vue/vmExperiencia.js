@@ -30,7 +30,7 @@ var vmExperiencia = new Vue({
         },
         dateFinish() {
             return this.experience.map(function(item) {
-                if(moment(item.date_begin) === moment(item.date_begin)) {
+                if(moment(item.date_begin).format('X') === moment(item.date_finish).format('X')) {
                     return 'Trabajando Actualmente'
                 }else{
                     return ' Hasta : ' + moment(item.date_finish).format('DD/MM/YYYY')
