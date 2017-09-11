@@ -40,28 +40,28 @@ El sistema Cybertron ya cuenta con datos ingresados (seeders), para poder usarlo
 #### <i class="icon-file"></i> Imagenes del sistema
 
 - **Login**
-<p align="center"><img src="https://lh6.googleusercontent.com/ECh6qh8azevNEjqTiQuVfqTC_KTBK4s0mt2WeUenJdINUGwr_U_CYXGX4hUA7Q9B382bCXNSlCJxDbI=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh4.googleusercontent.com/VsO_hPYX7UsYm32hElAaWx4BHfiEITwOjWKl_-RI-JqJfO1My0sw8oPwSHyTgrH6eg7t57Krdmd_gd0=w1440-h770-rw"></p>
 
 - **Inicio**
-<p align="center"><img src="https://lh4.googleusercontent.com/AmOlL3Gz6dTHPsXuFUksqgKfOlDGLkL4v2mBiVsY8yX2k4_4tPFxP4H01nM_Gnd040JXElCoYvzF20M=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh4.googleusercontent.com/hnBI1tUUPjUFad-DOOZpd6B6WFLf94sQEFHXHEiotwDrXODIOeX0Cq7vQByn6Z8lWj9UxLlzPQsySy0=w1440-h770-rw"></p>
 
 - **Editar Perfil - Datos Personales**
-<p align="center"><img src="https://lh6.googleusercontent.com/xlwLzS5fWYkTVJOHDUVKEp2kfzXEzjac856GPRLpsvydRVf2JggcgtDnb5Zyt4xXf0rJ2qyzq0awdkY=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh3.googleusercontent.com/DUm38kNXxBuER3pg5b0S8tqIIRlO61FxJr9vv2yY7vCGk35oG57QTdHloqDZ6UkTJvgaeeXjOr1iuq0=w1440-h770-rw"></p>
 
 - **Editar Perfil - Datos Academicos**
-<p align="center"><img src="https://lh6.googleusercontent.com/8LrMwBIVaexh31STTQkPPIkHm6ZOR1kSKOCQs-y30uvxr6RX5gmb7uTf3OLUOYepaA1T6bEn6vcJ32g=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh4.googleusercontent.com/C9cFVLr3phPmbvG67fC2eAF2DaGr61jltjxrkC8Ff1hJMuiXrdnkSQNYzaPPDQ3tkF7AM0BKVJpec6o=w1440-h770-rw"></p>
 
 - **Editar Perfil - Certificaciones**
-<p align="center"><img src="https://lh3.googleusercontent.com/HialT0RDd6BN_Zxa8y7D9n1JSsu4Hb8iIojmJ2E2M-V9mgHVKp3jkekJFjwWJnujI8fxpsbPQxwt6mU=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh6.googleusercontent.com/vA4NASIuxjTw2WSbU1pZSpqBImk1e6Jl1NL416qaqRKWbtUVpsBkP7A1NDxJTUDM5ARTl98x1fVHMfw=w1440-h770-rw"></p>
 
 - **Editar Perfil - Experiencia Laboral**
-<p align="center"><img src="https://lh6.googleusercontent.com/Okv0_uxcaNycaYKqFSVG3uh0IxnY3RGPPSq74-9nXTt3eTVc-U1m_U6aJ0Zqy9aYs0XmV1xtbfUrUAU=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh5.googleusercontent.com/FFD9h-hAj6DwjbL-6Xgeev4481ctb9_PyDJTpfU0CRwpsOvEgsknxeBAyhozmm5987dujpZdsPOHQV8=w1440-h770-rw"></p>
 
 - **Listado de Usuarios**
-<p align="center"><img src="https://lh6.googleusercontent.com/7USw-ykthD6efEV2KfV2Asx-iqiB3gkWUfAg__yigMmBYTLA5XxfJ0tcEGBjgpjeSpLfhFRB_6lkdzI=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh5.googleusercontent.com/EmqBZ1Q4_jtj9MDKaas2dPWr-2tNfzuVglPQYwwJ52iUq4UE3_0Ank0XbdaGwfzGrgAkYK1z3z_FbCM=w1440-h770-rw"></p>
 
 - **Vista del Usuario**
-<p align="center"><img src="https://lh3.googleusercontent.com/x0W4B1yVxPvjrufoeiR0zwbPMngu20o9T9TZv9KSLnSxk2mY2IhBWwjSIctQx8QWCiTpMlpZqi758SY=w1440-h770-rw"></p>
+<p align="center"><img src="https://lh3.googleusercontent.com/FWY78tBPcq8y_XSS2zklYD8bMBvGZy2VAAEwQOxm7gn3Bo4qRHg4XL8NGdJFMqlbxC-z8U86q5DQCmg=w1440-h770-rw"></p>
 
 - **Subida de Archivos**
-<p align="center"><img src="https://lh4.googleusercontent.com/6J-a7d6GiMin0dpt-HkDxi5_xGGzQuWx7jzdW40YrDLmjhK7WVCsL5ipQUn9Z8JtmSED0H6WMa1RzH4=w1440-h770"></p>
+<p align="center"><img src="https://lh6.googleusercontent.com/yWeIS-8rLhzjPZcF1qpnc4NuAnlHrqJlqEBA3y_2CWTufl8gsM0ha2_NAP3N1IqUNfFbsvQvBfacCog=w1440-h770"></p>
