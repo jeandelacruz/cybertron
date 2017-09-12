@@ -132,6 +132,7 @@ class ProfileController extends CybertronController
         if ($request->isMethod('get')) {
             $resultado = UsersStudies::Select()
                 ->where('user_id', Auth::id())
+                ->orderby('date_begin','desc')
                 ->get()
                 ->toArray();
         }
@@ -142,6 +143,7 @@ class ProfileController extends CybertronController
         if ($request->isMethod('get')) {
             $resultado = UsersCertificate::Select()
                 ->where('user_id', Auth::id())
+                ->orderby('date_begin','desc')
                 ->get()
                 ->toArray();
         }
@@ -152,6 +154,7 @@ class ProfileController extends CybertronController
         if ($request->isMethod('get')) {
             $resultado = UsersExperience::Select()
                 ->where('user_id', Auth::id())
+                ->orderby('date_begin','desc')
                 ->get()
                 ->toArray();
         }
