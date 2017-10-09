@@ -102,7 +102,8 @@ class UserController extends CybertronController
                     'userRed'               => 'required',
                     'typeUser'              => 'required',
                     'Document'              => 'required',
-                    'numberDocument'        => 'required'
+                    'numberDocument'        => 'required',
+                    'projectUser'           => 'required',
                 ]);
 
                 $user = User::create([
@@ -110,7 +111,8 @@ class UserController extends CybertronController
                     'password'      => bcrypt(Str::lower($request->userRed)),
                     'email'         => Str::lower($request->userRed).'@sapia.com.pe',
                     'status_id'     => '1',
-                    'id_job'        => $id_job[0]['id']
+                    'id_job'        => $id_job[0]['id'],
+                    'name_project'  => $request->projectUser
                 ]);
 
                 $user
@@ -134,8 +136,9 @@ class UserController extends CybertronController
 
                     User::where('id', $request->idUser)
                         ->update([
-                            'username'  => Str::lower($request->userRed),
-                            'id_job'    => $id_job[0]['id']
+                            'username'      => Str::lower($request->userRed),
+                            'id_job'        => $id_job[0]['id'],
+                            'name_project'  => $request->projectUser
                         ]);
 
                     UserInformation::updateOrInsert([
@@ -152,9 +155,10 @@ class UserController extends CybertronController
 
                     User::where('id', $request->idUser)
                         ->update([
-                            'username'  => Str::lower($request->userRed),
-                            'password'  => bcrypt(Str::lower($request->passUser)),
-                            'id_job'    => $id_job[0]['id']
+                            'username'      => Str::lower($request->userRed),
+                            'password'      => bcrypt(Str::lower($request->passUser)),
+                            'id_job'        => $id_job[0]['id'],
+                            'name_project'  => $request->projectUser
                         ]);
                 }
             }

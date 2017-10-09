@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedInteger('status_id');
             $table->unsignedInteger('id_job');
+            $table->string('name_project')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

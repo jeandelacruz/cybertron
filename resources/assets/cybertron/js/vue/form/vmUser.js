@@ -56,6 +56,7 @@ var vmFormUser = new Vue({
                 if(response.data[0].identity_number){
                     this.form.numberDocument = response.data[0].identity_number
                 }
+                this.selectProject = response.data[0].name_project
                 swal.close()
             })
             .catch(error => console.log(error))
@@ -81,6 +82,7 @@ var vmFormUser = new Vue({
             })
                 .then(response => {
                     this.managerProject = response.data
+                    this.form.projectUser = data
                 })
                 .catch(err => { console.log(err) })
         },
