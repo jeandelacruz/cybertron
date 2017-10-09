@@ -7,17 +7,22 @@ var vmFormUser = new Vue({
         typeDocument: null,
         selectType: '',
         UserType: [],
+        Projects: [],
+        selectProject: '',
+        managerProject: '',
         form: new Form({
             userRed: '',
             typeUser: '',
             idUser: '',
             passUser: '',
             Document: '',
-            numberDocument: ''
+            numberDocument: '',
+            projectUser: ''
         })
     },
-    mounted(){
+    created(){
         this.typeOptions()
+        this.loadProjects()
     },
     methods: {
         getTypeUser: function(typeUser) {
@@ -57,6 +62,27 @@ var vmFormUser = new Vue({
         },
         getDocument: function(typeDocument){
             this.form.Document = (typeDocument).toLowerCase()
+        },
+        loadProjects() {
+            axios.post('user/viewProjects')
+                .then(response => {
+                    let arrayproject = []
+                    let objectSearch = 'name_project'
+                    objectToArray(response.data, arrayproject, objectSearch)
+                    this.Projects = arrayproject
+                })
+                .catch(err => { console.log(err) })
+        },
+        getProject(data) {
+            axios.get('user/getManagerProject', {
+                params: {
+                    name_project: data
+                }
+            })
+                .then(response => {
+                    this.managerProject = response.data
+                })
+                .catch(err => { console.log(err) })
         },
         onSubmit() {
             $('.btnUser').html('<i class="fa fa-spin fa-spinner"></i> Cargando')

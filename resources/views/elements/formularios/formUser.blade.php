@@ -57,6 +57,22 @@
                         </section>
                     </div>
                 @endif
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="label text-bold">Proyecto Asignado:</label>
+                        <v-select :on-change="getProject" :options="Projects" :value.sync="selectProject" placeholder="Choose Project Here !"></v-select>
+                        <p class="text-danger" v-if="form.errors.has('Document')" v-text="form.errors.get('Document')"></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <section>
+                        <label class="label text-bold">Jefe del Proyecto</label>
+                        <label class="input">
+                            <i class="icon-append fa fa-user"></i>
+                            <input type="text" v-model="managerProject" disabled>
+                        </label>
+                    </section>
+                </div>
             </fieldset>
             <div class="modal-footer">
                 <button type="submit" class="btn-u btnUser"><i class="fa fa-save"></i> Guardar Cambios</button>

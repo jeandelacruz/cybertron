@@ -1,5 +1,5 @@
 <div id="datosCertificaciones">
-    <div v-if="certificate.length == 0">
+    <template v-if="certificate.length == 0">
         <div class="alert alert-sea text-center">
             <div class="row">
                 <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con certificaciones </h2>
@@ -8,8 +8,8 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div v-else>
+    </template>
+    <template v-else>
         <div v-if="!showCertificate" class="row margin-bottom-10">
             <div class="service-block-v8">
                 <i class="fa fa-gear fa-spin text-primary"></i>
@@ -44,6 +44,6 @@
                 <div class="margin-bottom-10"></div>
             </div>
         </transition-group>
-    </div>
+    </template>
 </div>
 <script src="{!! asset('js/vueCertificacion.js?version='.date('YmdHis'))!!}"></script>

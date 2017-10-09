@@ -64,14 +64,14 @@
                         <h2>Datos Academicos</h2>
                     </div>
                     <div id="datosBioAcademicos" class="scrollAcademy" data-mcs-theme="minimal-dark">
-                        <div v-if="academy.length == 0">
+                        <template v-if="academy.length == 0">
                             <div class="alert alert-sea text-center">
                                 <div class="row">
                                     <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con datos academicos Registrados </h2>
                                 </div>
                             </div>
-                        </div>
-                        <div v-else>
+                        </template>
+                        <template v-else>
                             <div v-for="(item, index) in academy">
                                 <div class="profile-blog blog-border-v2">
                                     <img class="rounded-md" src="assets/img/universidad.png">
@@ -87,31 +87,31 @@
                                         </div>
                                         <div class="margin-bottom-5">
                                             <span><i class="fa fa-calendar-check-o"></i>@{{ ' Inicio : ' + dateBegin[index] }}</span>&nbsp;
-                                            <span v-if="situationAcademy[index] != 'Cursando'"><i class="fa fa-calendar"></i>@{{ ' Fin : ' + dateFinish[index] }}</span>
+                                            <template v-if="situationAcademy[index] != 'Cursando'"><span><i class="fa fa-calendar"></i>@{{ ' Fin : ' + dateFinish[index] }}</span></template>
                                         </div>
                                     </div>
                                     <div class="pull-right">
-                                        <div v-if="viewAcademy == 'academico-' + item.id">
+                                        <template v-if="viewAcademy == 'academico-' + item.id">
                                             <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Descargar Sustento" @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
                                                 <i style="cursor:pointer;" class="fa fa-download fa-lg text-primary"></i>
                                             </a>
-                                        </div>
-                                        <div v-else-if="viewAcademy == 'not-academico-' + item.id">
+                                        </template>
+                                        <template v-else-if="viewAcademy == 'not-academico-' + item.id">
                                             <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="No Tiene Sustento" @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
                                                 <i style="cursor:pointer;" class="fa fa-close fa-lg text-danger"></i>
                                             </a>
-                                        </div>
-                                        <div v-else>
+                                        </template>
+                                        <template v-else>
                                             <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Buscar Sustento" @click="Repositories('academico-' + item.id)" style="cursor: pointer" download>
                                                 <i style="cursor:pointer;" class="fa fa-search fa-lg color-darker"></i>
                                             </a>
-                                        </div>
+                                        </template>
                                     </div>
                                     <div class="clearfix margin-bottom-20"></div>
                                 </div>
                                 <div class="margin-bottom-10"></div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -123,14 +123,14 @@
                     </div>
                     <div id="datosBioCertificaciones">
                         <div class="scrollCertificaciones" data-mcs-theme="minimal-dark">
-                            <div v-if="certificate.length == 0">
+                            <template v-if="certificate.length == 0">
                                 <div class="alert alert-sea text-center">
                                     <div class="row">
                                         <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Certificaciones Ingresadas </h2>
                                     </div>
                                 </div>
-                            </div>
-                            <div v-else>
+                            </template>
+                            <template v-else>
                                 <div v-for="(item, index) in certificate">
                                     <div class="profile-blog blog-border-v2">
                                         <img class="rounded-md" src="assets/img/certificado.png">
@@ -147,27 +147,27 @@
                                             </div>
                                         </div>
                                         <div class="pull-right">
-                                            <div v-if="viewCertificado == 'certificado-' + item.id">
+                                            <template v-if="viewCertificado == 'certificado-' + item.id">
                                                 <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Descargar Sustento" @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
                                                     <i style="cursor:pointer;" class="fa fa-download fa-lg text-primary"></i>
                                                 </a>
-                                            </div>
-                                            <div v-else-if="viewCertificado == 'not-certificado-' + item.id">
+                                            </template>
+                                            <template v-else-if="viewCertificado == 'not-certificado-' + item.id">
                                                 <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="No Tiene Sustento" @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
                                                     <i style="cursor:pointer;" class="fa fa-close fa-lg text-danger"></i>
                                                 </a>
-                                            </div>
-                                            <div v-else>
+                                            </template>
+                                            <template v-else>
                                                 <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Buscar Sustento" @click="Repositories('certificado-' + item.id)" style="cursor: pointer" download>
                                                     <i style="cursor:pointer;" class="fa fa-search fa-lg color-darker"></i>
                                                 </a>
-                                            </div>
+                                            </template>
                                         </div>
                                         <div class="clearfix margin-bottom-20"></div>
                                     </div>
                                     <div class="margin-bottom-10"></div>
                                 </div>
-                            </div>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -179,14 +179,14 @@
                         <h2>Experiencia Laboral</h2>
                     </div>
                     <div id="datosBioExperiencia" class="scrollExperiencia" data-mcs-theme="minimal-dark">
-                        <div v-if="experience.length == 0">
+                        <template v-if="experience.length == 0">
                             <div class="alert alert-sea text-center">
                                 <div class="row">
                                     <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuenta con Experiencia Laboral Registradas </h2>
                                 </div>
                             </div>
-                        </div>
-                        <div v-else>
+                        </template>
+                        <template v-else>
                             <div v-for="(item, index) in experience">
                                 <div class="profile-blog blog-border-v2">
                                     <img class="rounded-md" src="assets/img/experiencia.png">
@@ -203,21 +203,21 @@
                                         </div>
                                     </div>
                                     <div class="pull-right">
-                                        <div v-if="viewExperiencia == 'experiencia-' + item.id">
+                                        <template v-if="viewExperiencia == 'experiencia-' + item.id">
                                             <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Descargar Sustento" @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
                                                 <i style="cursor:pointer;" class="fa fa-download fa-lg text-primary"></i>
                                             </a>
-                                        </div>
-                                        <div v-else-if="viewExperiencia == 'not-experiencia-' + item.id">
+                                        </template>
+                                        <template v-else-if="viewExperiencia == 'not-experiencia-' + item.id">
                                             <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="No Tiene Sustento" @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
                                                 <i style="cursor:pointer;" class="fa fa-close fa-lg text-danger"></i>
                                             </a>
-                                        </div>
-                                        <div v-else>
+                                        </template>
+                                        <template v-else>
                                             <a class="tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="Buscar Sustento" @click="Repositories('experiencia-' + item.id)" style="cursor: pointer" download>
                                                 <i style="cursor:pointer;" class="fa fa-search fa-lg color-darker"></i>
                                             </a>
-                                        </div>
+                                        </template>
                                     </div>
                                     <div class="clearfix margin-bottom-20"></div>
                                     <hr>
@@ -225,7 +225,7 @@
                                 </div>
                                 <div class="margin-bottom-10"></div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>

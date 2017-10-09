@@ -44,15 +44,15 @@
 
                         <div class="row margin-bottom-20">
                             <div class="col-xs-12 service-in text-center">
-                                <div v-if="daysBirthday === 'Happy'">
+                                <template v-if="daysBirthday === 'Happy'">
                                     <small>Feliz Cumpleaños</small>
                                     <h4 class="textName" v-text="nameComplete"></h4>
                                     <h4 class="textName"><span class="fa fa-birthday-cake" style="font-size: medium"></span></h4>
-                                </div>
-                                <div v-else>
+                                </template>
+                                <template v-else>
                                     <small>Faltan solo :</small>
                                     <h4 class="textName"><span class="counter textName" v-text="daysBirthday"></span> dias</h4>
-                                </div>
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -95,9 +95,9 @@
                                                 <i class="fa fa-envelope text-primary"></i> <span> @{{ item.email  }} </span>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div v-if="item.users_information === null">
+                                                <template v-if="item.users_information === null">
                                                     <i class="fa fa-mobile text-primary"></i> <span> - </span>
-                                                </div>
+                                                </template>
                                                 <div v-else-if="countphoneMobil[index]">
                                                     <i class="fa fa-mobile text-primary"></i> <span> @{{ item.users_information.phone_mobile }} </span>
                                                 </div>
@@ -106,9 +106,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div v-if="item.users_information === null">
+                                                <template v-if="item.users_information === null">
                                                     <i class="fa fa-phone text-primary"></i> <span> - </span>
-                                                </div>
+                                                </template>
                                                 <div v-else-if="countPhone[index]">
                                                     <i class="fa fa-phone text-primary"></i> <span> @{{ item.users_information.phone_home }} </span>
                                                 </div>

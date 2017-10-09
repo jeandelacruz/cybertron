@@ -1,5 +1,5 @@
 <div id="datosAcademicos">
-    <div v-if="academy.length == 0">
+    <template v-if="academy.length == 0">
         <div class="alert alert-sea text-center">
             <div class="row">
                 <h2 class="text-white"><i class="fa fa-frown-o"></i> Aún no cuentas con datos academicos </h2>
@@ -8,8 +8,8 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div v-else>
+    </template>
+    <template v-else>
         <div v-if="!showAcademy" class="row margin-bottom-10">
             <div class="service-block-v8">
                 <i class="fa fa-gear fa-spin text-primary"></i>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="margin-bottom-5">
                             <span><i class="fa fa-calendar-check-o"></i>@{{ ' Inicio : ' + dateBegin[index] }}</span>&nbsp;
-                            <span v-if="situationAcademy[index] != 'Cursando'"><i class="fa fa-calendar"></i>@{{ ' Fin : ' + dateFinish[index] }}</span>
+                            <template v-if="situationAcademy[index] != 'Cursando'"><span><i class="fa fa-calendar"></i>@{{ ' Fin : ' + dateFinish[index] }}</span></template>
                         </div>
                     </div>
                     <div class="pull-right" v-if="profileDocument != ''">
@@ -47,6 +47,6 @@
                 <div class="margin-bottom-10"></div>
             </div>
         </transition-group>
-    </div>
+    </template>
 </div>
 <script src="{!! asset('js/vueDatosAcademicos.js?version='.date('YmdHis'))!!}"></script>

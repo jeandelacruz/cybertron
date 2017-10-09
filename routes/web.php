@@ -61,6 +61,10 @@ Route::get('getNameCertificate',                'ProfileController@getNameCertif
 Route::get('getNamePuesto',                     'ProfileController@getNamePuesto');
 Route::get('getNameEmpresa',                    'ProfileController@getNameEmpresa');
 
+// Rutas que extrae data para editar el Usuario
+Route::post('user/viewProjects',                 'UserController@viewProjects');
+Route::get('user/getManagerProject',             'UserController@viewManagerProject');
+
 // Rutas Acciones
 Route::post('profile/saveDatos',                'ProfileController@saveDatos')->name('savedatos');
 Route::post('profile/saveAcademico',            'ProfileController@saveAcademico')->name('saveacademico');

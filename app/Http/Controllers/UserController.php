@@ -2,6 +2,7 @@
 
 namespace Cybertron\Http\Controllers;
 
+use Cybertron\Project;
 use Cybertron\User;
 use Cybertron\Role;
 use Cybertron\UsersJob;
@@ -300,6 +301,25 @@ class UserController extends CybertronController
                 ->toArray();
         }
         return $resultado;
+    }
+
+    public function viewProjects(Request $request){
+        if ($request->isMethod('post')) {
+            $resultado = Project::Select()
+                ->get()
+                ->toArray();
+        }
+        return $resultado;
+    }
+
+    public function viewManagerProject(Request $request){
+        if ($request->isMethod('get')) {
+            $resultado = Project::Select()
+                ->where('name_project', $request->name_project)
+                ->get()
+                ->toArray();
+        }
+        return ($resultado) ? $resultado[0]['manager_project'] : '';
     }
 
     // Funciones para Subir Archivos
