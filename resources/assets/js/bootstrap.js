@@ -5,6 +5,7 @@ window.moment = require('moment');
 window.swal = require('sweetalert2');
 window.daterangepicker = require('daterangepicker');
 window.DataTable = require('datatables.net');
+window.bootbox = require('bootbox');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

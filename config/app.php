@@ -186,6 +186,9 @@ return [
         /* Intervention Image */
         Intervention\Image\ImageServiceProvider::class,
 
+        /* File Manager */
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+
     ],
 
     /*

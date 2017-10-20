@@ -23,4 +23,9 @@ class HomeController extends CybertronController
     {
         return view('home');
     }
+
+    public function test()
+    {
+        return view('vendor/laravel-filemanager/index');
+    }
 }

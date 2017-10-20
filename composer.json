@@ -11,6 +11,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "^1.22",
+        "unisharp/laravel-filemanager": "v1.8.2.1",
         "yajra/laravel-datatables-oracle": "^7.5"
     },
     "require-dev": {
@@ -45,6 +46,8 @@
             "php artisan vendor:publish --provider='Yajra\\Datatables\\DatatablesServiceProvider'",
             "php artisan vendor:publish --tag=datatables",
             "php artisan vendor:publish --provider='Intervention\\Image\\ImageServiceProviderLaravel5'",
+            "php artisan vendor:publish --tag=lfm_config",
+            "php artisan route:clear",
             "php artisan optimize"
         ],
         "post-update-cmd": [

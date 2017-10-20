@@ -77,7 +77,6 @@
             <div class="container content height-500">
                 <div class="profile">
                     <div class="row">
-                        @include('layouts.recursos.leftsidebar')
                         @yield('content')
                     </div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

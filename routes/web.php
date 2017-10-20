@@ -13,6 +13,7 @@
 
 Route::get('/',                                 'ProfileController@index')->name('profile');
 Route::get('/home',                             'HomeController@index')->name('home');
+Route::get('/test',                             'HomeController@test')->name('test');
 Auth::routes();
 
 // Rutas Gestion del Sistema

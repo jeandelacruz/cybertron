@@ -132,5 +132,9 @@ mix.copyDirectory([
 ],'public/fonts');
 
 mix.copyDirectory([
+    'resources/cybertron/laravel-filemanager'
+],'resources/views/vendor/laravel-filemanager');
+
+mix.copyDirectory([
     'resources/assets/img'
 ],'public/assets/img');
