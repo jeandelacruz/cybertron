@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "blazy": "^1.8.2",
-    "datatables.net": "^1.10.15",
+    "datatables.net": "^1.10.22",
     "datatables.net-bs": "^1.10.15",
     "daterangepicker": "^2.1.25",
     "downloadjs": "^1.4.7",
